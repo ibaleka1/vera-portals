@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VERA Regulator Portal – Real-Time Biometric Regulation</title>
+  <meta name="description" content="VERA Regulator: Premium biometric integration, real-time HRV tracking, and crisis intervention. Where your nervous system finally speaks." />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap">
+  <style>
+    :root {
+      --vera-purple: #9B59B6;
+      --vera-lavender: #B19CD9;
+      --vera-neural-blue: #64B5F6;
+      --vera-glow-pink: #F8BBD0;
+      --vera-emerald: #10B981;
+      --vera-soft-gold: #FFD700;
+      --vera-bg: #0A0E27;
+      --text-primary: #fff;
+      --text-soft: #EAEAF7;
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(ellipse at top, var(--vera-bg) 0%, #151832 60%, #000 100%);
+      color: var(--text-primary);
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(180deg,rgba(10,14,39,.95) 0%,rgba(10,14,39,.85) 100%);
+      border-bottom: 1px solid var(--glass-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: .3em;
+      background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      cursor: pointer;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-link, .nav-cta {
+      color: var(--text-soft);
+      text-decoration: none;
+      padding: .5rem 1.2rem;
+      border-radius: 50px;
+      transition: .2s;
+      font-weight: 500;
+    }
+    .nav-link:hover, .nav-cta:hover {
+      background: var(--glass);
+      color: var(--vera-lavender);
+    }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+    }
+    .back-link {
+      display: inline-block;
+      margin: 2rem 0 0 2rem;
+      color: var(--vera-lavender);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--vera-neural-blue); }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+      background: linear-gradient(135deg, rgba(155,89,182,.10) 0%, rgba(100,181,246,.06) 100%);
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 200;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 0%, var(--vera-lavender) 50%, var(--vera-neural-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      color: var(--text-soft);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .subscribe-btn {
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: background .2s;
+    }
+    .subscribe-btn:hover {
+      background: linear-gradient(135deg, var(--vera-neural-blue), var(--vera-lavender));
+    }
+
+    .features-section {
+      max-width: 800px;
+      margin: 3rem auto 2rem;
+      background: var(--glass);
+      border-radius: 24px;
+      border: 1px solid var(--glass-border);
+      padding: 2.5rem 1.5rem;
+      box-shadow: 0 10px 40px rgba(155,89,182,.08);
+    }
+    .features-title {
+      font-size: 1.5rem;
+      color: var(--vera-lavender);
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+      color: var(--text-soft);
+      font-size: 1.1rem;
+    }
+    .feature-list li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+    .biometric-dashboard {
+      background: rgba(100,181,246,.08);
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(100,181,246,.08);
+    }
+    .dashboard-title {
+      color: var(--vera-neural-blue);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .hrv-graph {
+      width: 100%;
+      max-width: 320px;
+      height: 120px;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, #b19cd9 0%, #64b5f6 100%);
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .hrv-bar {
+      width: 18px;
+      margin: 0 2px;
+      background: var(--vera-emerald);
+      border-radius: 6px 6px 0 0;
+      display: inline-block;
+      animation: hrvPulse 2s infinite alternate;
+    }
+    @keyframes hrvPulse {
+      0% { height: 30px; }
+      100% { height: 100px; }
+    }
+    .devices-panel {
+      margin: 1.5rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .device {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: .8rem 1.2rem;
+      color: var(--vera-neural-blue);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-size: 1rem;
+    }
+    .crisis-btn {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 1.1rem 2.5rem;
+      background: linear-gradient(90deg, #ff0080 0%, #ff8c00 100%);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 16px rgba(255,0,128,.08);
+      transition: background .2s;
+    }
+    .crisis-btn:hover {
+      background: linear-gradient(90deg, #ff8c00 0%, #ff0080 100%);
+    }
+    .disclaimer, .footer {
+      max-width: 900px;
+      margin: 2rem auto 0;
+      color: var(--text-soft);
+      font-size: .95rem;
+      background: rgba(255,255,255,.02);
+      border-radius: 18px;
+      padding: 1.5rem 2rem;
+      border: 1px solid var(--glass-border);
+    }
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 1rem;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      padding: 1.5rem 0 0 0;
+    }
+    .footer-links {
+      margin-top: 1rem;
+      color: var(--vera-lavender);
+    }
+    .footer-links a {
+      color: var(--vera-lavender);
+      text-decoration: none;
+      margin: 0 .5rem;
+      font-size: .98rem;
+    }
+    .footer-links a:hover { color: var(--vera-neural-blue); }
+    @media (max-width: 700px) {
+      .features-section { padding: 1.5rem .5rem; }
+      .hero-title { font-size: 1.5rem; }
+      nav { flex-direction: column; gap: 1rem; padding: 1rem; }
+      .devices-panel { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">VERA</a>
+    <div class="nav-menu">
+      <a href="index.html#experience" class="nav-link">Experience</a>
+      <a href="index.html#methodology" class="nav-link">Soul Method</a>
+      <a href="index.html#intelligence" class="nav-link">Intelligence</a>
+      <a href="index.html#pricing" class="nav-link">Journey</a>
+      <a href="portal-regulator.html" class="nav-cta">Regulator</a>
+    </div>
+  </nav>
+
+  <a href="index.html#pricing" class="back-link">&larr; Back to Tiers</a>
+
+  <section class="hero">
+    <h1 class="hero-title">Regulator Portal</h1>
+    <div class="hero-sub">
+      Welcome to Regulator.<br>
+      Unlock real-time biometric tracking, crisis protocols, and device integration.<br>
+      VERA adapts to your nervous system in the moment.
+    </div>
+    <button class="subscribe-btn" data-tier="regulator" data-price="39">
+      Start 7-Day Free Trial
+    </button>
+  </section>
+
+  <section class="features-section">
+    <div class="features-title">Regulator Features</div>
+    <ul class="feature-list">
+      <li>📊 Real-time HRV & coherence dashboard</li>
+      <li>🔗 Connect Apple Watch, Oura, Whoop, and more</li>
+      <li>🚨 One-tap crisis intervention protocol</li>
+      <li>🧠 Advanced somatic pattern recognition</li>
+      <li>📈 Regulation success tracking</li>
+      <li>🔒 Encrypted, HIPAA-compliant data</li>
+    </ul>
+    <div class="biometric-dashboard">
+      <div class="dashboard-title">Biometric Dashboard (Sample)</div>
+      <div class="hrv-graph">
+        <div class="hrv-bar" style="height:60px"></div>
+        <div class="hrv-bar" style="height:80px"></div>
+        <div class="hrv-bar" style="height:40px"></div>
+        <div class="hrv-bar" style="height:100px"></div>
+        <div class="hrv-bar" style="height:70px"></div>
+        <div class="hrv-bar" style="height:90px"></div>
+        <div class="hrv-bar" style="height:50px"></div>
+      </div>
+      <div class="devices-panel">
+        <div class="device">⌚ Apple Watch</div>
+        <div class="device">💍 Oura Ring</div>
+        <div class="device">🏋️ Whoop</div>
+        <div class="device">📱 More...</div>
+      </div>
+      <button class="crisis-btn" onclick="alert('Crisis protocol activated!')">
+        Activate Crisis Protocol
+      </button>
+    </div>
+  </section>
+
+  <div class="disclaimer">
+    <strong>Medical Disclaimer:</strong> VERA is for informational and educational purposes only. Not a substitute for professional medical advice, diagnosis, or treatment. If you are experiencing a crisis, contact emergency services.<br><br>
+    <strong>Privacy &amp; Security:</strong> HIPAA Certified with BAA Agreement. End-to-end encryption for all biometric data.<br><br>
+    <strong>Terms of Service:</strong> By using VERA, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+  </div>
+
+  <footer class="footer">
+    <div>© 2024 VERA. Transforming nervous system regulation for humanity.</div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </div>
+    <div style="margin-top:1rem;font-style:italic;color:var(--vera-lavender)">
+      “Where Your Nervous System Finally Speaks”
+    </div>
+  </footer>
+</body>
+</html>
