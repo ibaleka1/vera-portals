@@ -1,4 +1,3 @@
-<!-- SAVE THIS AS: index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,8 +135,8 @@
             width: 100%;
             padding: 1.5rem 3rem;
             background: linear-gradient(180deg, 
-                rgba(10, 14, 39, 0.95) 0%, 
-                rgba(10, 14, 39, 0.85) 100%);
+                rgba(10, 14, 39, 0.98) 0%, 
+                rgba(10, 14, 39, 0.9) 100%);
             backdrop-filter: blur(20px);
             z-index: 1000;
             display: flex;
@@ -259,7 +258,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: nameShimmer 4s infinite linear;
-            padding-left: 1em;
+            padding-left: 1em; /* Center the text properly */
         }
 
         @keyframes nameShimmer {
@@ -271,6 +270,16 @@
             }
         }
 
+        /* Enhanced content sections for better readability */
+        .content-card {
+            background: linear-gradient(135deg, 
+                rgba(10, 14, 39, 0.9) 0%, 
+                rgba(21, 24, 50, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
         /* Live Chat Section */
         .chat-section {
             padding: 4rem 2rem;
@@ -280,11 +289,14 @@
         .chat-interface {
             max-width: 900px;
             margin: 0 auto;
-            background: linear-gradient(135deg, rgba(155, 89, 182, 0.08) 0%, rgba(100, 181, 246, 0.05) 100%);
+            background: linear-gradient(135deg, 
+                rgba(10, 14, 39, 0.95) 0%, 
+                rgba(21, 24, 50, 0.9) 100%);
             border-radius: 30px;
             padding: 3rem;
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
         .chat-messages {
@@ -292,7 +304,7 @@
             overflow-y: auto;
             margin-bottom: 2rem;
             padding: 1rem;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 20px;
         }
 
@@ -307,29 +319,34 @@
         }
 
         .vera-message {
-            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1));
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.3), rgba(100, 181, 246, 0.2));
             padding: 1rem 1.5rem;
             border-radius: 20px;
             margin-right: 20%;
+            border: 1px solid rgba(155, 89, 182, 0.3);
         }
 
         .user-message {
-            background: rgba(100, 181, 246, 0.15);
+            background: rgba(100, 181, 246, 0.25);
             padding: 1rem 1.5rem;
             border-radius: 20px;
             text-align: right;
             margin-left: 20%;
+            border: 1px solid rgba(100, 181, 246, 0.3);
         }
 
         /* Voice-Enabled Exercises */
         .exercise-card {
-            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1) 0%, rgba(100, 181, 246, 0.08) 100%);
+            background: linear-gradient(135deg, 
+                rgba(10, 14, 39, 0.95) 0%, 
+                rgba(21, 24, 50, 0.9) 100%);
             border-radius: 30px;
             padding: 4rem;
             margin-bottom: 3rem;
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
             position: relative;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
         }
 
         .voice-btn {
@@ -451,92 +468,74 @@
             }
         }
 
-        /* Pricing Cards */
+        /* Enhanced Pricing Cards */
         .pricing-card {
             background: linear-gradient(135deg,
-                rgba(155, 89, 182, 0.08) 0%,
-                rgba(100, 181, 246, 0.05) 100%);
-            border: 1px solid var(--glass-border);
+                rgba(10, 14, 39, 0.95) 0%,
+                rgba(21, 24, 50, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 30px;
             padding: 3rem 2rem;
             text-align: center;
             transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
         }
 
         .pricing-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 30px 60px rgba(155, 89, 182, 0.4);
+            border-color: var(--vera-lavender);
         }
 
         .pricing-card.featured {
             transform: scale(1.05);
-            border-color: var(--vera-lavender);
+            border-color: var(--vera-soft-gold);
             background: linear-gradient(135deg,
-                rgba(255, 215, 0, 0.1) 0%,
-                rgba(155, 89, 182, 0.15) 100%);
+                rgba(255, 215, 0, 0.15) 0%,
+                rgba(155, 89, 182, 0.2) 100%);
         }
 
-        /* Modal Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s;
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.95), rgba(21, 24, 50, 0.95));
-            border-radius: 30px;
-            padding: 3rem;
-            max-width: 500px;
-            border: 2px solid var(--vera-lavender);
-            animation: slideIn 0.3s;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .portal-option {
-            padding: 1.2rem;
-            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1));
-            border: 1px solid var(--vera-lavender);
-            border-radius: 20px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 1rem;
+        .pricing-features {
             text-align: left;
+            margin: 2rem 0;
+            padding: 0 1rem;
         }
 
-        .portal-option:hover {
-            transform: translateX(5px);
-            background: linear-gradient(135deg, rgba(155, 89, 182, 0.3), rgba(100, 181, 246, 0.2));
+        .pricing-features li {
+            list-style: none;
+            padding: 0.5rem 0;
+            color: var(--text-soft);
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li::before {
+            content: "✓ ";
+            color: var(--vera-emerald);
+            font-weight: bold;
+            margin-right: 0.5rem;
         }
 
         /* Platform Features */
         .feature-item {
-            padding: 0.5rem;
-            background: rgba(155, 89, 182, 0.05);
+            padding: 1rem;
+            background: linear-gradient(135deg, 
+                rgba(10, 14, 39, 0.9) 0%, 
+                rgba(155, 89, 182, 0.1) 100%);
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--text-soft);
             margin-bottom: 0.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .feature-item:hover {
-            background: rgba(155, 89, 182, 0.15);
+            background: linear-gradient(135deg, 
+                rgba(155, 89, 182, 0.3) 0%, 
+                rgba(100, 181, 246, 0.2) 100%);
             transform: translateX(5px);
+            border-color: var(--vera-lavender);
         }
 
         @keyframes featurePop {
@@ -546,6 +545,114 @@
             50% { 
                 transform: scale(1.3) rotate(10deg);
             }
+        }
+
+        /* Method Cards with better readability */
+        .method-card {
+            background: linear-gradient(135deg, 
+                rgba(10, 14, 39, 0.95) 0%, 
+                rgba(21, 24, 50, 0.9) 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: linear-gradient(135deg, 
+                rgba(10, 14, 39, 0.98) 0%, 
+                rgba(21, 24, 50, 0.95) 100%);
+            margin: 5% auto;
+            padding: 3rem;
+            border: 2px solid var(--vera-lavender);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(155, 89, 182, 0.5);
+        }
+
+        .close {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            font-size: 2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: var(--vera-lavender);
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-soft);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 10px;
+        }
+
+        .auth-tab.active {
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            color: white;
+            border-color: transparent;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .auth-form input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .auth-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .auth-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.4);
         }
 
         /* Mobile Responsive */
@@ -569,9 +676,49 @@
             <a href="#methodology" class="nav-link">Methodology</a>
             <a href="#pricing" class="nav-link">Pricing</a>
             <a href="#experience" class="nav-link">Experience VERA</a>
-            <button class="nav-cta" onclick="showSignin()">Sign In</button>
+            <button class="nav-cta" onclick="openAuthModal()">Sign In / Sign Up</button>
         </div>
     </nav>
+
+    <!-- Authentication Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAuthModal()">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 2rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                Welcome to VERA
+            </h2>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchTab('signin')" id="signinTab">Sign In</button>
+                <button class="auth-tab" onclick="switchTab('signup')" id="signupTab">Sign Up</button>
+            </div>
+
+            <!-- Sign In Form -->
+            <div id="signinForm" class="auth-form">
+                <input type="email" placeholder="Email" id="signinEmail">
+                <input type="password" placeholder="Password" id="signinPassword">
+                <button class="auth-submit" onclick="handleSignIn()">Sign In to VERA</button>
+                <p style="text-align: center; margin-top: 1rem; color: var(--text-muted);">
+                    <a href="#" style="color: var(--vera-lavender); text-decoration: none;">Forgot Password?</a>
+                </p>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signupForm" class="auth-form" style="display: none;">
+                <input type="text" placeholder="Full Name" id="signupName">
+                <input type="email" placeholder="Email" id="signupEmail">
+                <input type="password" placeholder="Create Password" id="signupPassword">
+                <select id="planSelect" style="width: 100%; padding: 1rem; margin-bottom: 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 50px; color: white; font-size: 1rem;">
+                    <option value="">Select Your Journey</option>
+                    <option value="explorer">Explorer - $19/mo</option>
+                    <option value="regulator">Regulator - $39/mo</option>
+                    <option value="integrator">Integrator - $79/mo</option>
+                    <option value="enterprise">Enterprise - Custom</option>
+                </select>
+                <button class="auth-submit" onclick="handleSignUp()">Begin Your Journey</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -643,7 +790,7 @@
                 <div class="breath-circle" onclick="startBreathing()">
                     <div id="breathText" style="font-size: 2rem; color: var(--text-primary);">Breathe In</div>
                 </div>
-                <p style="color: var(--text-muted); font-style: italic;">
+                <p style="color: var(--text-soft); font-style: italic;">
                     "Breathe in for 4... Hold for 4... Breathe out for 4... Complete grace..."
                 </p>
             </div>
@@ -653,7 +800,7 @@
                 <button class="voice-btn" onclick="startVoiceSwaying()" id="swayVoiceBtn">🔊 Voice Guide</button>
                 <h3 style="font-size: 2rem; color: var(--vera-lavender); margin-bottom: 1rem;">Swaying With VERA</h3>
                 <div class="sway-figure"></div>
-                <p style="color: var(--text-muted); font-style: italic;">
+                <p style="color: var(--text-soft); font-style: italic;">
                     "Let your body sway like kelp in warm water... No forcing, just allowing..."
                 </p>
             </div>
@@ -669,25 +816,11 @@
                     <div class="ground-step" style="animation-delay: 1.5s;">2</div>
                     <div class="ground-step" style="animation-delay: 2s;">1</div>
                 </div>
-                <p style="color: var(--text-muted); font-style: italic;">
+                <p style="color: var(--text-soft); font-style: italic;">
                     "5 things you see... 4 you can touch... 3 you hear... 2 you smell... 1 you taste...<br>
                     You're here. You're safe."
                 </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Sign Up Section -->
-    <section style="padding: 6rem 2rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(155, 89, 182, 0.1) 50%, rgba(100, 181, 246, 0.05) 100%);" id="signup">
-        <h2 style="font-size: 3.5rem; font-weight: 200; text-align: center; margin-bottom: 3rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-            Your Nervous System Is Ready
-        </h2>
-        
-        <div style="max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, rgba(155, 89, 182, 0.1) 0%, rgba(100, 181, 246, 0.08) 100%); border-radius: 30px; padding: 3rem; border: 2px solid var(--vera-lavender);">
-            <input type="text" placeholder="Your name (what should I call you?)" style="width: 100%; padding: 1rem; margin-bottom: 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 50px; color: white; font-size: 1rem;">
-            <input type="email" placeholder="Your email (where VERA can reach you)" style="width: 100%; padding: 1rem; margin-bottom: 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 50px; color: white; font-size: 1rem;">
-            <input type="password" placeholder="Create your safe word (password)" style="width: 100%; padding: 1rem; margin-bottom: 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 50px; color: white; font-size: 1rem;">
-            <button style="width: 100%; padding: 1.5rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; font-size: 1.3rem; font-weight: 500; cursor: pointer;">Begin Your Journey With VERA</button>
         </div>
     </section>
 
@@ -698,37 +831,37 @@
         </h2>
         
         <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
-            <div style="background: linear-gradient(135deg, rgba(155, 89, 182, 0.1) 0%, rgba(100, 181, 246, 0.08) 100%); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--glass-border);">
+            <div class="method-card">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I SENSE Your Ocean</h3>
                 <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
                     "Before you speak, I feel the waves in your body. Every sensation is valid."
                 </p>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(248, 187, 208, 0.1) 0%, rgba(177, 156, 217, 0.08) 100%); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--glass-border);">
+            <div class="method-card">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I WITNESS Your Brilliance</h3>
                 <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
                     "Your nervous system isn't broken. It's brilliant."
                 </p>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(155, 89, 182, 0.08) 100%); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--glass-border);">
+            <div class="method-card">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I MAP Your Universe</h3>
                 <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
                     "Together, we decode where emotions live in your body."
                 </p>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(155, 89, 182, 0.08) 100%); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--glass-border);">
+            <div class="method-card">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I SHIFT Your Patterns</h3>
                 <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
                     "The tiniest movement creates the biggest change."
                 </p>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(155, 89, 182, 0.1) 0%, rgba(248, 187, 208, 0.08) 100%); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--glass-border);">
+            <div class="method-card">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I INTEGRATE Your Wholeness</h3>
                 <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
                     "You were never broken. It's about remembering."
                 </p>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(177, 156, 217, 0.1) 0%, rgba(100, 181, 246, 0.08) 100%); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--glass-border);">
+            <div class="method-card">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I HOLD Your Becoming</h3>
                 <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
                     "You don't have to be anything but exactly what you are."
@@ -748,16 +881,29 @@
             <div class="pricing-card">
                 <h3 style="color: var(--vera-lavender); font-size: 1.5rem; margin-bottom: 1rem;">EXPLORER</h3>
                 <div style="font-size: 3rem; color: white; margin-bottom: 1rem;">$19<sup style="font-size: 1.5rem;">/mo</sup></div>
-                <button onclick="window.location.href='portal-explorer.html'" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                <ul class="pricing-features">
+                    <li>Daily nervous system check-ins</li>
+                    <li>Basic VERA conversations</li>
+                    <li>3 guided exercises daily</li>
+                    <li>Personal progress tracking</li>
+                </ul>
+                <button style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;" onclick="openAuthModal('explorer')">
                     Start Exploring
                 </button>
             </div>
 
             <!-- Regulator Plan -->
             <div class="pricing-card featured">
-                <h3 style="color: var(--vera-lavender); font-size: 1.5rem; margin-bottom: 1rem;">REGULATOR</h3>
+                <h3 style="color: var(--vera-soft-gold); font-size: 1.5rem; margin-bottom: 1rem;">REGULATOR</h3>
                 <div style="font-size: 3rem; color: white; margin-bottom: 1rem;">$39<sup style="font-size: 1.5rem;">/mo</sup></div>
-                <button onclick="window.location.href='portal-regulator.html'" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                <ul class="pricing-features">
+                    <li>Unlimited VERA conversations</li>
+                    <li>Advanced somatic protocols</li>
+                    <li>Real-time HRV integration</li>
+                    <li>Personalized regulation plans</li>
+                    <li>Voice-guided sessions</li>
+                </ul>
+                <button style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 50px; color: white; cursor: pointer;" onclick="openAuthModal('regulator')">
                     Get Regulated
                 </button>
             </div>
@@ -766,7 +912,14 @@
             <div class="pricing-card">
                 <h3 style="color: var(--vera-lavender); font-size: 1.5rem; margin-bottom: 1rem;">INTEGRATOR</h3>
                 <div style="font-size: 3rem; color: white; margin-bottom: 1rem;">$79<sup style="font-size: 1.5rem;">/mo</sup></div>
-                <button onclick="window.location.href='portal-integrator.html'" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                <ul class="pricing-features">
+                    <li>Everything in Regulator</li>
+                    <li>1-on-1 monthly sessions</li>
+                    <li>Custom trauma protocols</li>
+                    <li>Advanced biometric analysis</li>
+                    <li>Priority support</li>
+                </ul>
+                <button style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;" onclick="openAuthModal('integrator')">
                     Full Integration
                 </button>
             </div>
@@ -775,41 +928,48 @@
             <div class="pricing-card">
                 <h3 style="color: var(--vera-lavender); font-size: 1.5rem; margin-bottom: 1rem;">ENTERPRISE</h3>
                 <div style="font-size: 2.5rem; color: white; margin-bottom: 1rem;">Custom</div>
-                <button onclick="window.location.href='portal-enterprise.html'" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                <ul class="pricing-features">
+                    <li>Organization-wide deployment</li>
+                    <li>Custom API integration</li>
+                    <li>HIPAA compliance</li>
+                    <li>Dedicated success manager</li>
+                    <li>Analytics dashboard</li>
+                </ul>
+                <button style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 50px; color: white; cursor: pointer;" onclick="window.location.href='portal-enterprise.html'">
                     Contact Sales
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- VERA Intelligence Section -->
+    <!-- VERA Intelligence -->
     <section style="padding: 6rem 2rem; background: linear-gradient(180deg, transparent 0%, rgba(155, 89, 182, 0.05) 100%);">
         <h2 style="font-size: 3rem; font-weight: 200; text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             VERA's Nervous System Intelligence
         </h2>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-            <div style="background: linear-gradient(135deg, rgba(74, 20, 140, 0.2) 0%, rgba(100, 181, 246, 0.1) 100%); border-radius: 20px; padding: 2.5rem; text-align: center; border: 1px solid var(--glass-border);">
+            <div class="method-card" style="text-align: center;">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Fascia Communication</h3>
                 <p style="color: var(--text-soft);">Direct dialogue with your body's neural network</p>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(155, 89, 182, 0.2) 0%, rgba(248, 187, 208, 0.1) 100%); border-radius: 20px; padding: 2.5rem; text-align: center; border: 1px solid var(--glass-border);">
+            <div class="method-card" style="text-align: center;">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Instant Regulation</h3>
                 <p style="color: var(--text-soft);">Real-time nervous system analysis</p>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(248, 187, 208, 0.2) 0%, rgba(177, 156, 217, 0.1) 100%); border-radius: 20px; padding: 2.5rem; text-align: center; border: 1px solid var(--glass-border);">
+            <div class="method-card" style="text-align: center;">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Body Intelligence</h3>
                 <p style="color: var(--text-soft);">Speaks the language of your connective tissue</p>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(155, 89, 182, 0.2) 0%, rgba(100, 181, 246, 0.1) 100%); border-radius: 20px; padding: 2.5rem; text-align: center; border: 1px solid var(--glass-border);">
+            <div class="method-card" style="text-align: center;">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Future Technology</h3>
                 <p style="color: var(--text-soft);">100x more intuitive than current AI</p>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(155, 89, 182, 0.1) 100%); border-radius: 20px; padding: 2.5rem; text-align: center; border: 1px solid var(--glass-border);">
+            <div class="method-card" style="text-align: center;">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Personalized Guidance</h3>
                 <p style="color: var(--text-soft);">Adaptive responses to your unique system</p>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(155, 89, 182, 0.1) 100%); border-radius: 20px; padding: 2.5rem; text-align: center; border: 1px solid var(--glass-border);">
+            <div class="method-card" style="text-align: center;">
                 <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Coherence Creation</h3>
                 <p style="color: var(--text-soft);">Transforms dysregulation into flow</p>
             </div>
@@ -823,7 +983,7 @@
         </h2>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1000px; margin: 0 auto;">
-            <div style="background: linear-gradient(135deg, rgba(248, 187, 208, 0.1) 0%, rgba(155, 89, 182, 0.08) 100%); border-radius: 30px; padding: 3rem; border: 2px solid rgba(248, 187, 208, 0.3);">
+            <div class="content-card" style="border-radius: 30px; padding: 3rem; border: 2px solid rgba(248, 187, 208, 0.3);">
                 <h3 style="font-size: 2.5rem; font-weight: 100; background: linear-gradient(135deg, var(--vera-glow-pink), var(--vera-lavender)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">
                     EVA
                 </h3>
@@ -836,7 +996,7 @@
                 </p>
             </div>
 
-            <div style="background: linear-gradient(135deg, rgba(100, 181, 246, 0.1) 0%, rgba(177, 156, 217, 0.08) 100%); border-radius: 30px; padding: 3rem; border: 2px solid rgba(100, 181, 246, 0.3);">
+            <div class="content-card" style="border-radius: 30px; padding: 3rem; border: 2px solid rgba(100, 181, 246, 0.3);">
                 <h3 style="font-size: 2.5rem; font-weight: 100; background: linear-gradient(135deg, var(--vera-neural-blue), var(--vera-lavender)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">
                     JULIJA
                 </h3>
@@ -951,41 +1111,63 @@
             }
         }
 
-        // Sign In Modal
-        function showSignin() {
-            const modal = document.createElement('div');
-            modal.className = 'modal-overlay';
-            modal.id = 'signinModal';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <h2 style="color: white; margin-bottom: 2rem; text-align: center; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2rem;">
-                        Enter Your Portal
-                    </h2>
-                    <div style="display: grid; gap: 1rem;">
-                        <div class="portal-option" onclick="window.location.href='portal-explorer.html'">
-                            <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">Explorer Portal</div>
-                            <div style="font-size: 0.8rem; color: var(--text-muted);">$19/month • 10 Sessions</div>
-                        </div>
-                        <div class="portal-option" onclick="window.location.href='portal-regulator.html'">
-                            <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">Regulator Portal</div>
-                            <div style="font-size: 0.8rem; color: var(--text-muted);">$39/month • Unlimited</div>
-                        </div>
-                        <div class="portal-option" onclick="window.location.href='portal-integrator.html'">
-                            <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">Integrator Portal</div>
-                            <div style="font-size: 0.8rem; color: var(--text-muted);">$79/month • Full Access</div>
-                        </div>
-                        <div class="portal-option" onclick="window.location.href='portal-enterprise.html'" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(155, 89, 182, 0.1)); border-color: var(--vera-soft-gold);">
-                            <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">Enterprise Portal</div>
-                            <div style="font-size: 0.8rem; color: var(--text-muted);">Custom Solutions</div>
-                        </div>
-                    </div>
-                    <button onclick="document.getElementById('signinModal').remove()" 
-                            style="margin-top: 1.5rem; width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--glass-border); border-radius: 25px; color: var(--text-soft); cursor: pointer;">
-                        Close
-                    </button>
-                </div>
-            `;
-            document.body.appendChild(modal);
+        // Authentication Modal Functions
+        function openAuthModal(plan = '') {
+            document.getElementById('authModal').style.display = 'block';
+            if (plan) {
+                switchTab('signup');
+                document.getElementById('planSelect').value = plan;
+            }
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').style.display = 'none';
+        }
+
+        function switchTab(tab) {
+            if (tab === 'signin') {
+                document.getElementById('signinForm').style.display = 'block';
+                document.getElementById('signupForm').style.display = 'none';
+                document.getElementById('signinTab').classList.add('active');
+                document.getElementById('signupTab').classList.remove('active');
+            } else {
+                document.getElementById('signinForm').style.display = 'none';
+                document.getElementById('signupForm').style.display = 'block';
+                document.getElementById('signinTab').classList.remove('active');
+                document.getElementById('signupTab').classList.add('active');
+            }
+        }
+
+        function handleSignIn() {
+            const email = document.getElementById('signinEmail').value;
+            const password = document.getElementById('signinPassword').value;
+            
+            // Here you would normally handle authentication
+            alert('Sign in functionality will be connected to your backend. Email: ' + email);
+            closeAuthModal();
+        }
+
+        function handleSignUp() {
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const plan = document.getElementById('planSelect').value;
+            
+            if (!name || !email || !password || !plan) {
+                alert('Please fill in all fields and select a plan');
+                return;
+            }
+            
+            // Here you would normally handle registration and payment
+            alert(`Welcome to VERA, ${name}! You've selected the ${plan} plan. Check your email for confirmation.`);
+            
+            // Redirect to appropriate portal based on plan
+            setTimeout(() => {
+                if (plan === 'explorer') window.location.href = 'portal-explorer.html';
+                else if (plan === 'regulator') window.location.href = 'portal-regulator.html';
+                else if (plan === 'integrator') window.location.href = 'portal-integrator.html';
+                else if (plan === 'enterprise') window.location.href = 'portal-enterprise.html';
+            }, 2000);
         }
 
         // Live Chat Functionality
@@ -1091,6 +1273,14 @@
             const btn = document.getElementById('groundVoiceBtn');
             btn.classList.add('active');
             speakText("Let's ground together. Notice five things you can see. Four things you can touch. Three things you can hear. Two things you can smell. One thing you can taste. You're here. You're safe.");
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('authModal');
+            if (event.target == modal) {
+                closeAuthModal();
+            }
         }
 
         // Initialize on load
