@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERA Enterprise Command Center</title>
+    <title>VERA Enterprise - Organizational Neural Intelligence Platform</title>
     <style>
         * {
             margin: 0;
@@ -11,858 +11,559 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --vera-deep-space: #0A0E27;
+            --vera-midnight: #151832;
+            --vera-purple: #9B59B6;
+            --vera-lavender: #B19CD9;
+            --vera-neural-blue: #64B5F6;
+            --vera-glow-pink: #F8BBD0;
+            --vera-deep-violet: #4A148C;
+            --vera-soft-gold: #FFD700;
+            --vera-emerald: #10B981;
+            --vera-platinum: #E5E4E2;
+            --glass-white: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-primary: rgba(255, 255, 255, 0.95);
+            --text-soft: rgba(255, 255, 255, 0.75);
+            --text-muted: rgba(255, 255, 255, 0.45);
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #000;
-            color: #fff;
-            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--vera-deep-space) 0%, #000814 50%, var(--vera-midnight) 100%);
+            color: var(--text-primary);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Quantum Matrix Background */
-        .matrix-bg {
+        /* Enterprise Neural Network */
+        .enterprise-universe {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.15), transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(0, 255, 255, 0.15), transparent 50%),
-                radial-gradient(circle at 50% 20%, rgba(255, 0, 128, 0.15), transparent 50%),
-                linear-gradient(180deg, #000 0%, #0a0015 50%, #000 100%);
-            animation: quantumShift 30s infinite alternate;
-        }
-
-        @keyframes quantumShift {
-            0%, 100% { filter: hue-rotate(0deg) brightness(1); }
-            50% { filter: hue-rotate(30deg) brightness(1.2); }
-        }
-
-        /* Neural Grid System */
-        .neural-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            opacity: 0.3;
-        }
-
-        .grid-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.3), transparent);
-            animation: gridPulse 4s infinite;
-        }
-
-        .grid-line.horizontal {
             width: 100%;
-            height: 1px;
-        }
-
-        .grid-line.vertical {
-            width: 1px;
             height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        @keyframes gridPulse {
-            0%, 100% { opacity: 0.1; }
-            50% { opacity: 0.3; }
+        .enterprise-neuron {
+            position: absolute;
+            border-radius: 50%;
+            animation: enterpriseFloat 20s infinite ease-in-out;
+            box-shadow: 0 0 30px currentColor;
         }
 
-        /* Command Center Header */
-        .command-header {
-            position: relative;
-            padding: 30px;
-            background: linear-gradient(180deg, rgba(138, 43, 226, 0.1), transparent);
-            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(20px);
+        @keyframes enterpriseFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translate(100px, -80px) scale(1.5) rotate(120deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-80px, 100px) scale(1.4) rotate(240deg);
+                opacity: 0.9;
+            }
+            75% {
+                transform: translate(80px, 80px) scale(1.6) rotate(360deg);
+                opacity: 0.95;
+            }
+        }
+
+        /* Enterprise Header */
+        .header {
+            background: linear-gradient(180deg, 
+                rgba(10, 14, 39, 0.98) 0%,
+                rgba(0, 8, 20, 0.95) 100%);
+            backdrop-filter: blur(30px);
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, var(--vera-platinum), var(--vera-soft-gold), var(--vera-platinum)) 1;
+            padding: 1.5rem 3rem;
+            position: sticky;
+            top: 0;
             z-index: 100;
         }
 
-        .org-info {
+        .header-content {
+            max-width: 1920px;
+            margin: 0 auto;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
         }
 
-        .org-logo {
-            width: 60px;
-            height: 60px;
-            background: conic-gradient(from 0deg, #8a2be2, #00ffff, #ff0080, #8a2be2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 24px;
-            animation: logoRotate 10s linear infinite;
-        }
-
-        @keyframes logoRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .org-details h1 {
-            font-size: 28px;
-            background: linear-gradient(90deg, #8a2be2, #00ffff, #ff0080);
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            background: linear-gradient(135deg, var(--vera-platinum), var(--vera-soft-gold), var(--vera-platinum));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-        }
-
-        .org-tier {
-            color: #00ffff;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Status Bar */
-        .status-bar {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .status-item {
-            padding: 10px 20px;
-            background: rgba(138, 43, 226, 0.1);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s;
-        }
-
-        .status-item:hover {
-            background: rgba(138, 43, 226, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .status-indicator {
-            width: 8px;
-            height: 8px;
-            background: #00ff00;
-            border-radius: 50%;
-            animation: statusPulse 2s infinite;
-        }
-
-        @keyframes statusPulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 5px currentColor; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Main Dashboard Grid */
-        .dashboard-container {
-            padding: 30px;
-            display: grid;
-            grid-template-columns: 250px 1fr 300px;
-            gap: 30px;
-            max-width: 1800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Sidebar with 500+ Neurons */
-        .sidebar {
-            background: rgba(20, 10, 40, 0.8);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            backdrop-filter: blur(20px);
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-
-        .vera-core {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 30px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .neural-sphere {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, 
-                #8a2be2, #00ffff, #ff0080, #ffff00, #00ff00, #8a2be2);
-            animation: sphereRotate 5s linear infinite;
-            filter: blur(2px);
-        }
-
-        .vera-orb {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(138, 43, 226, 0.8), rgba(0, 255, 255, 0.4));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            font-weight: bold;
-            z-index: 2;
-            box-shadow: 0 0 50px rgba(138, 43, 226, 0.5);
-            animation: orbPulse 3s infinite alternate;
-        }
-
-        @keyframes sphereRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes orbPulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-
-        /* Navigation */
-        .nav-menu {
-            list-style: none;
-        }
-
-        .nav-item {
-            padding: 15px;
-            margin: 10px 0;
-            background: rgba(138, 43, 226, 0.1);
-            border-left: 3px solid transparent;
-            transition: all 0.3s;
             cursor: pointer;
-            border-radius: 10px;
         }
 
-        .nav-item:hover, .nav-item.active {
-            background: rgba(138, 43, 226, 0.2);
-            border-left-color: #00ffff;
-            transform: translateX(5px);
+        .enterprise-badge {
+            background: linear-gradient(135deg, rgba(229, 228, 226, 0.3), rgba(255, 215, 0, 0.3));
+            padding: 0.6rem 2rem;
+            border-radius: 25px;
+            border: 2px solid var(--vera-platinum);
+            font-size: 1rem;
+            color: var(--vera-platinum);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 600;
+            animation: enterprisePulse 3s infinite;
         }
 
-        /* Main Content Area */
-        .main-content {
+        @keyframes enterprisePulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(229, 228, 226, 0.5); }
+            50% { box-shadow: 0 0 50px rgba(255, 215, 0, 0.7); }
+        }
+
+        /* Enterprise Dashboard */
+        .enterprise-dashboard {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Organization Overview */
+        .org-overview {
+            background: linear-gradient(135deg, 
+                rgba(229, 228, 226, 0.05) 0%,
+                rgba(255, 215, 0, 0.03) 50%,
+                rgba(155, 89, 182, 0.02) 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 1px solid rgba(229, 228, 226, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .org-title {
+            font-size: 3.5rem;
+            font-weight: 200;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--vera-platinum), var(--vera-soft-gold), var(--vera-lavender));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Organization Stats Grid */
+        .org-stats-grid {
             display: grid;
-            grid-template-rows: auto 1fr;
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
 
-        /* Metric Cards Grid */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .metric-card {
-            background: rgba(20, 10, 40, 0.6);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
+        .org-stat-card {
+            background: linear-gradient(135deg, 
+                rgba(229, 228, 226, 0.1) 0%,
+                rgba(255, 215, 0, 0.08) 50%,
+                rgba(155, 89, 182, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(229, 228, 226, 0.3);
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .metric-card::before {
+        .org-stat-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #8a2be2, #00ffff, #ff0080);
-            animation: shimmer 3s infinite;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(229, 228, 226, 0.1), transparent);
+            animation: statRotate 10s infinite linear;
         }
 
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        @keyframes statRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .metric-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
-        }
-
-        .metric-value {
-            font-size: 36px;
-            font-weight: bold;
-            background: linear-gradient(90deg, #8a2be2, #00ffff);
+        .org-stat-value {
+            font-size: 3rem;
+            font-weight: 200;
+            background: linear-gradient(135deg, var(--vera-platinum), var(--vera-soft-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 10px 0;
+            position: relative;
+            z-index: 1;
         }
 
-        .metric-label {
-            color: #888;
-            font-size: 12px;
+        .org-stat-label {
+            color: var(--text-soft);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .metric-change {
-            color: #00ff00;
-            font-size: 14px;
-            margin-top: 5px;
-        }
-
-        /* Team Management Section */
-        .team-section {
-            background: rgba(20, 10, 40, 0.6);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .section-title {
-            font-size: 24px;
-            background: linear-gradient(90deg, #8a2be2, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .team-grid {
+        /* Department Management */
+        .department-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
-        .practitioner-card {
-            background: rgba(138, 43, 226, 0.05);
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            border-radius: 15px;
-            padding: 20px;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .practitioner-card:hover {
-            background: rgba(138, 43, 226, 0.1);
-            transform: scale(1.02);
-        }
-
-        .practitioner-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .practitioner-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #8a2be2, #00ffff);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .practitioner-info h4 {
-            color: #fff;
-            margin-bottom: 5px;
-        }
-
-        .practitioner-role {
-            color: #00ffff;
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-
-        .practitioner-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(138, 43, 226, 0.2);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 18px;
-            font-weight: bold;
-            color: #8a2be2;
-        }
-
-        .stat-label {
-            font-size: 10px;
-            color: #666;
-            text-transform: uppercase;
-        }
-
-        /* Right Panel */
-        .right-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        /* Compliance Dashboard */
-        .compliance-panel {
-            background: rgba(20, 10, 40, 0.6);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .compliance-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            margin: 10px 0;
-            background: rgba(138, 43, 226, 0.05);
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-
-        .compliance-item:hover {
-            background: rgba(138, 43, 226, 0.1);
-        }
-
-        .compliance-status {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #00ff00;
-            animation: statusGlow 2s infinite;
-        }
-
-        @keyframes statusGlow {
-            0%, 100% { box-shadow: 0 0 5px currentColor; }
-            50% { box-shadow: 0 0 20px currentColor; }
-        }
-
-        /* API Monitor */
-        .api-monitor {
-            background: rgba(20, 10, 40, 0.6);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .api-usage-bar {
-            height: 8px;
-            background: rgba(138, 43, 226, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 15px 0;
-        }
-
-        .api-usage-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #8a2be2, #00ffff);
-            width: 75%;
-            animation: usagePulse 3s infinite;
-        }
-
-        @keyframes usagePulse {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
-        }
-
-        /* Training Modules */
-        .training-section {
-            background: rgba(20, 10, 40, 0.6);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .module-list {
-            list-style: none;
-        }
-
-        .module-item {
-            padding: 15px;
-            margin: 10px 0;
-            background: rgba(138, 43, 226, 0.05);
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .module-item:hover {
-            background: rgba(138, 43, 226, 0.1);
-            transform: translateX(5px);
-        }
-
-        .module-progress {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: conic-gradient(#00ffff 0deg 270deg, rgba(138, 43, 226, 0.1) 270deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        /* Action Buttons */
-        .action-btn {
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #8a2be2, #00ffff);
-            border: none;
+        .department-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(229, 228, 226, 0.2);
             border-radius: 25px;
-            color: white;
-            font-weight: bold;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .department-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(229, 228, 226, 0.2);
+            background: rgba(229, 228, 226, 0.05);
+        }
+
+        .department-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .department-name {
+            font-size: 1.5rem;
+            color: var(--vera-soft-gold);
+        }
+
+        .department-status {
+            padding: 0.3rem 1rem;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid var(--vera-emerald);
+            border-radius: 15px;
+            color: var(--vera-emerald);
+            font-size: 0.8rem;
+        }
+
+        /* Admin Controls */
+        .admin-controls {
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.08) 0%,
+                rgba(229, 228, 226, 0.05) 100%);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            margin: 2rem 0;
+        }
+
+        .control-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .control-button {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(229, 228, 226, 0.3);
+            border-radius: 20px;
+            color: var(--text-primary);
+            text-align: center;
             cursor: pointer;
             transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
         }
 
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
+        .control-button:hover {
+            background: linear-gradient(135deg, rgba(229, 228, 226, 0.2), rgba(255, 215, 0, 0.1));
+            transform: translateY(-3px);
         }
 
-        .btn-critical {
-            background: linear-gradient(135deg, #ff0080, #ff6b6b);
-            animation: criticalPulse 2s infinite;
+        .control-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        @keyframes criticalPulse {
-            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 128, 0.5); }
-            50% { box-shadow: 0 0 30px rgba(255, 0, 128, 0.8); }
+        /* Analytics Dashboard */
+        .analytics-dashboard {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 25px;
+            padding: 2rem;
+            border: 1px solid rgba(229, 228, 226, 0.2);
+            margin: 2rem 0;
         }
 
-        /* Neural Particles */
-        .neural-particle {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: radial-gradient(circle, #8a2be2, transparent);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: floatParticle 20s infinite linear;
+        .chart-container {
+            height: 300px;
+            background: linear-gradient(135deg, 
+                rgba(100, 181, 246, 0.05),
+                rgba(155, 89, 182, 0.03));
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
         }
 
-        @keyframes floatParticle {
-            0% {
-                transform: translate(0, 100vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(100vw, -100vh) scale(1.5);
-                opacity: 0;
-            }
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(180deg, var(--vera-platinum), var(--vera-soft-gold));
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            animation: growBar 2s ease-out;
+        }
+
+        /* HIPAA Compliance Badge */
+        .compliance-section {
+            background: linear-gradient(135deg, 
+                rgba(16, 185, 129, 0.1) 0%,
+                rgba(100, 181, 246, 0.05) 100%);
+            border-radius: 25px;
+            padding: 2rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            margin: 2rem 0;
+        }
+
+        .compliance-badges {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .compliance-badge {
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--vera-emerald);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Custom Solutions */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.05) 0%,
+                rgba(229, 228, 226, 0.03) 100%);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 1px solid rgba(229, 228, 226, 0.2);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .solution-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 50px rgba(229, 228, 226, 0.3);
+        }
+
+        .solution-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            color: var(--vera-soft-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Support Section */
+        .support-section {
+            background: linear-gradient(135deg,
+                rgba(229, 228, 226, 0.08) 0%,
+                rgba(255, 215, 0, 0.05) 100%);
+            border-radius: 25px;
+            padding: 3rem;
+            border: 1px solid rgba(229, 228, 226, 0.3);
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .support-contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(229, 228, 226, 0.2);
+        }
+
+        .contact-title {
+            color: var(--vera-platinum);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            color: var(--vera-soft-gold);
+            font-size: 1.1rem;
         }
 
         /* Responsive */
-        @media (max-width: 1200px) {
-            .dashboard-container {
+        @media (max-width: 1400px) {
+            .department-grid, .solutions-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .sidebar {
-                position: static;
-                width: 100%;
-            }
-            
-            .right-panel {
-                grid-row: 3;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Quantum Matrix Background -->
-    <div class="matrix-bg"></div>
-    
-    <!-- Neural Grid System -->
-    <div class="neural-grid">
-        <div class="grid-line horizontal" style="top: 20%"></div>
-        <div class="grid-line horizontal" style="top: 40%"></div>
-        <div class="grid-line horizontal" style="top: 60%"></div>
-        <div class="grid-line horizontal" style="top: 80%"></div>
-        <div class="grid-line vertical" style="left: 20%"></div>
-        <div class="grid-line vertical" style="left: 40%"></div>
-        <div class="grid-line vertical" style="left: 60%"></div>
-        <div class="grid-line vertical" style="left: 80%"></div>
-    </div>
+    <!-- Enterprise Neural Universe -->
+    <div class="enterprise-universe" id="enterpriseUniverse"></div>
 
-    <!-- Command Center Header -->
-    <div class="command-header">
-        <div class="org-info">
-            <div class="org-logo">V</div>
-            <div class="org-details">
-                <h1>NeuraCorp Global</h1>
-                <div class="org-tier">ENTERPRISE • UNLIMITED ACCESS</div>
+    <!-- Enterprise Header -->
+    <header class="header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <div class="logo" onclick="window.location.href='index.html'">VERA</div>
+                <div class="enterprise-badge">ENTERPRISE</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <div style="padding: 0.5rem 1.5rem; background: rgba(229, 228, 226, 0.2); border: 1px solid var(--vera-platinum); border-radius: 20px; color: var(--vera-platinum);">
+                    Admin Console
+                </div>
+                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--vera-platinum), var(--vera-soft-gold)); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    👔
+                </div>
             </div>
         </div>
-        
-        <div class="status-bar">
-            <div class="status-item">
-                <span class="status-indicator"></span>
-                <span>All Systems Online</span>
-            </div>
-            <div class="status-item">
-                <span class="status-indicator" style="background: #ffff00"></span>
-                <span>247 Active Users</span>
-            </div>
-            <div class="status-item">
-                <span class="status-indicator"></span>
-                <span>SLA: 99.99%</span>
-            </div>
-        </div>
-    </div>
+    </header>
 
-    <!-- Main Dashboard -->
-    <div class="dashboard-container">
-        <!-- Enhanced Sidebar -->
-        <div class="sidebar">
-            <div class="vera-core">
-                <div class="neural-sphere"></div>
-                <div class="vera-orb">V</div>
-            </div>
+    <!-- Enterprise Dashboard -->
+    <div class="enterprise-dashboard">
+        <!-- Organization Overview -->
+        <section class="org-overview">
+            <h1 class="org-title">Enterprise Neural Intelligence Platform</h1>
+            <p style="font-size: 1.3rem; color: var(--text-soft); margin-bottom: 2rem;">
+                Transforming organizational wellness through nervous system intelligence at scale
+            </p>
             
-            <ul class="nav-menu">
-                <li class="nav-item active">Command Center</li>
-                <li class="nav-item">Team Management</li>
-                <li class="nav-item">Organization Analytics</li>
-                <li class="nav-item">API Console</li>
-                <li class="nav-item">Training Academy</li>
-                <li class="nav-item">Compliance Hub</li>
-                <li class="nav-item">Custom Reports</li>
-                <li class="nav-item">White Label Studio</li>
-                <li class="nav-item">Research Lab</li>
-                <li class="nav-item">Global Settings</li>
-            </ul>
-        </div>
-
-        <!-- Main Content Area -->
-        <div class="main-content">
-            <!-- Organization Metrics -->
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-label">Total Sessions</div>
-                    <div class="metric-value">48,726</div>
-                    <div class="metric-change">↑ 18% this month</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">Active Practitioners</div>
-                    <div class="metric-value">42</div>
-                    <div class="metric-change">↑ 6 new this week</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">Coherence Score</div>
-                    <div class="metric-value">94.2%</div>
-                    <div class="metric-change">↑ 3.1% improvement</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">API Calls Today</div>
-                    <div class="metric-value">127K</div>
-                    <div class="metric-change">Normal usage</div>
-                </div>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                <button style="padding: 1rem 3rem; background: linear-gradient(135deg, var(--vera-platinum), var(--vera-soft-gold)); border: none; border-radius: 25px; color: var(--vera-deep-space); font-weight: 600; font-size: 1.1rem; cursor: pointer;">
+                    Organization Dashboard
+                </button>
+                <button style="padding: 1rem 3rem; background: transparent; border: 2px solid var(--vera-platinum); border-radius: 25px; color: var(--vera-platinum); font-weight: 600; font-size: 1.1rem; cursor: pointer;">
+                    Generate Reports
+                </button>
+                <button style="padding: 1rem 3rem; background: transparent; border: 2px solid var(--vera-platinum); border-radius: 25px; color: var(--vera-platinum); font-weight: 600; font-size: 1.1rem; cursor: pointer;">
+                    API Documentation
+                </button>
             </div>
+        </section>
 
-            <!-- Team Management Section -->
-            <div class="team-section">
-                <div class="section-header">
-                    <h2 class="section-title">Practitioner Teams</h2>
-                    <button class="action-btn">+ Add Team Member</button>
-                </div>
-                
-                <div class="team-grid">
-                    <div class="practitioner-card">
-                        <div class="practitioner-header">
-                            <div class="practitioner-avatar">DS</div>
-                            <div class="practitioner-info">
-                                <h4>Dr. Sarah Mitchell</h4>
-                                <div class="practitioner-role">Lead Therapist</div>
-                            </div>
+        <!-- Organization Stats -->
+        <section class="org-stats-grid">
+            <div class="org-stat-card">
+                <div class="org-stat-value">10,847</div>
+                <div class="org-stat-label">Active Users</div>
+            </div>
+            <div class="org-stat-card">
+                <div class="org-stat-value">92%</div>
+                <div class="org-stat-label">Engagement Rate</div>
+            </div>
+            <div class="org-stat-card">
+                <div class="org-stat-value">45ms</div>
+                <div class="org-stat-label">Avg HRV Improvement</div>
+            </div>
+            <div class="org-stat-card">
+                <div class="org-stat-value">$2.4M</div>
+                <div class="org-stat-label">Healthcare Savings</div>
+            </div>
+            <div class="org-stat-card">
+                <div class="org-stat-value">18</div>
+                <div class="org-stat-label">Departments</div>
+            </div>
+            <div class="org-stat-card">
+                <div class="org-stat-value">247k</div>
+                <div class="org-stat-label">Sessions This Month</div>
+            </div>
+        </section>
+
+        <!-- Department Management -->
+        <section style="margin: 3rem 0;">
+            <h2 style="font-size: 2.5rem; color: var(--vera-platinum); margin-bottom: 2rem;">Department Overview</h2>
+            <div class="department-grid">
+                <div class="department-card">
+                    <div class="department-header">
+                        <div class="department-name">Engineering</div>
+                        <div class="department-status">Active</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">Users</div>
+                            <div style="font-size: 1.5rem; color: var(--vera-neural-blue);">2,847</div>
                         </div>
-                        <div class="practitioner-stats">
-                            <div class="stat-item">
-                                <div class="stat-value">847</div>
-                                <div class="stat-label">Sessions</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">96%</div>
-                                <div class="stat-label">Success</div>
-                            </div>
+                        <div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">Avg Coherence</div>
+                            <div style="font-size: 1.5rem; color: var(--vera-emerald);">89%</div>
                         </div>
                     </div>
-                    
-                    <div class="practitioner-card">
-                        <div class="practitioner-header">
-                            <div class="practitioner-avatar">JC</div>
-                            <div class="practitioner-info">
-                                <h4>James Chen</h4>
-                                <div class="practitioner-role">Senior Practitioner</div>
-                            </div>
+                    <button style="width: 100%; margin-top: 1rem; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 15px; color: var(--text-soft); cursor: pointer;">
+                        View Details
+                    </button>
+                </div>
+
+                <div class="department-card">
+                    <div class="department-header">
+                        <div class="department-name">Human Resources</div>
+                        <div class="department-status">Active</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">Users</div>
+                            <div style="font-size: 1.5rem; color: var(--vera-neural-blue);">456</div>
                         </div>
-                        <div class="practitioner-stats">
-                            <div class="stat-item">
-                                <div class="stat-value">623</div>
-                                <div class="stat-label">Sessions</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">94%</div>
-                                <div class="stat-label">Success</div>
-                            </div>
+                        <div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">Avg Coherence</div>
+                            <div style="font-size: 1.5rem; color: var(--vera-emerald);">94%</div>
                         </div>
                     </div>
-                    
-                    <div class="practitioner-card">
-                        <div class="practitioner-header">
-                            <div class="practitioner-avatar">MR</div>
-                            <div class="practitioner-info">
-                                <h4>Maria Rodriguez</h4>
-                                <div class="practitioner-role">Trauma Specialist</div>
-                            </div>
+                    <button style="width: 100%; margin-top: 1rem; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 15px; color: var(--text-soft); cursor: pointer;">
+                        View Details
+                    </button>
+                </div>
+
+                <div class="department-card">
+                    <div class="department-header">
+                        <div class="department-name">Sales</div>
+                        <div class="department-status">Active</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">Users</div>
+                            <div style="font-size: 1.5rem; color: var(--vera-neural-blue);">1,892</div>
                         </div>
-                        <div class="practitioner-stats">
-                            <div class="stat-item">
-                                <div class="stat-value">492</div>
-                                <div class="stat-label">Sessions</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">98%</div>
-                                <div class="stat-label">Success</div>
-                            </div>
+                        <div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">Avg Coherence</div>
+                            <div style="font-size: 1.5rem; color: var(--vera-emerald);">86%</div>
                         </div>
                     </div>
+                    <button style="width: 100%; margin-top: 1rem; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 15px; color: var(--text-soft); cursor: pointer;">
+                        View Details
+                    </button>
                 </div>
-            </div>
-        </div>
 
-        <!-- Right Panel -->
-        <div class="right-panel">
-            <!-- Compliance Dashboard -->
-            <div class="compliance-panel">
-                <h3 class="section-title">Compliance Status</h3>
-                <div class="compliance-item">
-                    <span>HIPAA Compliant</span>
-                    <span class="compliance-status"></span>
-                </div>
-                <div class="compliance-item">
-                    <span>SOC 2 Type II</span>
-                    <span class="compliance-status"></span>
-                </div>
-                <div class="compliance-item">
-                    <span>GDPR Ready</span>
-                    <span class="compliance-status"></span>
-                </div>
-                <div class="compliance-item">
-                    <span>Data Encryption</span>
-                    <span class="compliance-status"></span>
-                </div>
-            </div>
-
-            <!-- API Monitor -->
-            <div class="api-monitor">
-                <h3 class="section-title">API Usage</h3>
-                <div style="display: flex; justify-content: space-between; margin: 15px 0;">
-                    <span style="color: #888;">75% of limit</span>
-                    <span style="color: #00ffff;">500K / 667K</span>
-                </div>
-                <div class="api-usage-bar">
-                    <div class="api-usage-fill"></div>
-                </div>
-                <button class="action-btn" style="width: 100%; margin-top: 15px;">View API Docs</button>
-            </div>
-
-            <!-- Training Modules -->
-            <div class="training-section">
-                <h3 class="section-title">Training Academy</h3>
-                <ul class="module-list">
-                    <li class="module-item">
-                        <span>Advanced Protocols</span>
-                        <div class="module-progress">75%</div>
-                    </li>
-                    <li class="module-item">
-                        <span>Team Onboarding</span>
-                        <div class="module-progress">100%</div>
-                    </li>
-                    <li class="module-item">
-                        <span>API Integration</span>
-                        <div class="module-progress">60%</div>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Emergency Protocol -->
-            <button class="action-btn btn-critical" style="width: 100%;">
-                CRISIS PROTOCOL CENTER
-            </button>
-        </div>
-    </div>
-
-    <!-- Neural Particles -->
-    <script>
-        // Create 500+ neural particles for enterprise tier
-        for (let i = 0; i < 500; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'neural-particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-            
-            // Vary particle colors for enterprise
-            const colors = ['#8a2be2', '#00ffff', '#ff0080', '#ffff00', '#00ff00'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.background = `radial-gradient(circle, ${color}, transparent)`;
-            
-            document.body.appendChild(particle);
-        }
-
-        // Dynamic metric updates
-        setInterval(() => {
-            const apiCalls = document.querySelector('.metric-card:nth-child(4) .metric-value');
-            const current = parseInt(apiCalls.textContent.replace('K', '')) * 1000;
-            const newValue = current + Math.floor(Math.random() * 100);
-            apiCalls.textContent = (newValue / 1000).toFixed(0) + 'K';
-        }, 3000);
-
-        // Nav item interactions
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function() {
-                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    </script>
-</body>
-</html>
+                <div class="department-card">
+                    <div class="department-header
