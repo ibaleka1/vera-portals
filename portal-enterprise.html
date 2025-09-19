@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERA Enterprise Command Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Quantum Matrix Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.15), transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 255, 255, 0.15), transparent 50%),
+                radial-gradient(circle at 50% 20%, rgba(255, 0, 128, 0.15), transparent 50%),
+                linear-gradient(180deg, #000 0%, #0a0015 50%, #000 100%);
+            animation: quantumShift 30s infinite alternate;
+        }
+
+        @keyframes quantumShift {
+            0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+            50% { filter: hue-rotate(30deg) brightness(1.2); }
+        }
+
+        /* Neural Grid System */
+        .neural-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .grid-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.3), transparent);
+            animation: gridPulse 4s infinite;
+        }
+
+        .grid-line.horizontal {
+            width: 100%;
+            height: 1px;
+        }
+
+        .grid-line.vertical {
+            width: 1px;
+            height: 100%;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Command Center Header */
+        .command-header {
+            position: relative;
+            padding: 30px;
+            background: linear-gradient(180deg, rgba(138, 43, 226, 0.1), transparent);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            z-index: 100;
+        }
+
+        .org-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .org-logo {
+            width: 60px;
+            height: 60px;
+            background: conic-gradient(from 0deg, #8a2be2, #00ffff, #ff0080, #8a2be2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            animation: logoRotate 10s linear infinite;
+        }
+
+        @keyframes logoRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .org-details h1 {
+            font-size: 28px;
+            background: linear-gradient(90deg, #8a2be2, #00ffff, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .org-tier {
+            color: #00ffff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .status-item {
+            padding: 10px 20px;
+            background: rgba(138, 43, 226, 0.1);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .status-item:hover {
+            background: rgba(138, 43, 226, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: statusPulse 2s infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 5px currentColor; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Main Dashboard Grid */
+        .dashboard-container {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 250px 1fr 300px;
+            gap: 30px;
+            max-width: 1800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Sidebar with 500+ Neurons */
+        .sidebar {
+            background: rgba(20, 10, 40, 0.8);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(20px);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .vera-core {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .neural-sphere {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, 
+                #8a2be2, #00ffff, #ff0080, #ffff00, #00ff00, #8a2be2);
+            animation: sphereRotate 5s linear infinite;
+            filter: blur(2px);
+        }
+
+        .vera-orb {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.8), rgba(0, 255, 255, 0.4));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 0 50px rgba(138, 43, 226, 0.5);
+            animation: orbPulse 3s infinite alternate;
+        }
+
+        @keyframes sphereRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes orbPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* Navigation */
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(138, 43, 226, 0.1);
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(138, 43, 226, 0.2);
+            border-left-color: #00ffff;
+            transform: translateX(5px);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 30px;
+        }
+
+        /* Metric Cards Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .metric-card {
+            background: rgba(20, 10, 40, 0.6);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8a2be2, #00ffff, #ff0080);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #8a2be2, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+        }
+
+        .metric-label {
+            color: #888;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-change {
+            color: #00ff00;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Team Management Section */
+        .team-section {
+            background: rgba(20, 10, 40, 0.6);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            background: linear-gradient(90deg, #8a2be2, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .practitioner-card {
+            background: rgba(138, 43, 226, 0.05);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .practitioner-card:hover {
+            background: rgba(138, 43, 226, 0.1);
+            transform: scale(1.02);
+        }
+
+        .practitioner-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .practitioner-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8a2be2, #00ffff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .practitioner-info h4 {
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .practitioner-role {
+            color: #00ffff;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .practitioner-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #8a2be2;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        /* Right Panel */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Compliance Dashboard */
+        .compliance-panel {
+            background: rgba(20, 10, 40, 0.6);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .compliance-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(138, 43, 226, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .compliance-item:hover {
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        .compliance-status {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00ff00;
+            animation: statusGlow 2s infinite;
+        }
+
+        @keyframes statusGlow {
+            0%, 100% { box-shadow: 0 0 5px currentColor; }
+            50% { box-shadow: 0 0 20px currentColor; }
+        }
+
+        /* API Monitor */
+        .api-monitor {
+            background: rgba(20, 10, 40, 0.6);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .api-usage-bar {
+            height: 8px;
+            background: rgba(138, 43, 226, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .api-usage-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8a2be2, #00ffff);
+            width: 75%;
+            animation: usagePulse 3s infinite;
+        }
+
+        @keyframes usagePulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        /* Training Modules */
+        .training-section {
+            background: rgba(20, 10, 40, 0.6);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .module-list {
+            list-style: none;
+        }
+
+        .module-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(138, 43, 226, 0.05);
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .module-item:hover {
+            background: rgba(138, 43, 226, 0.1);
+            transform: translateX(5px);
+        }
+
+        .module-progress {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: conic-gradient(#00ffff 0deg 270deg, rgba(138, 43, 226, 0.1) 270deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Action Buttons */
+        .action-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #8a2be2, #00ffff);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
+        }
+
+        .btn-critical {
+            background: linear-gradient(135deg, #ff0080, #ff6b6b);
+            animation: criticalPulse 2s infinite;
+        }
+
+        @keyframes criticalPulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 128, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(255, 0, 128, 0.8); }
+        }
+
+        /* Neural Particles */
+        .neural-particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #8a2be2, transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatParticle 20s infinite linear;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translate(0, 100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100vw, -100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                width: 100%;
+            }
+            
+            .right-panel {
+                grid-row: 3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Quantum Matrix Background -->
+    <div class="matrix-bg"></div>
+    
+    <!-- Neural Grid System -->
+    <div class="neural-grid">
+        <div class="grid-line horizontal" style="top: 20%"></div>
+        <div class="grid-line horizontal" style="top: 40%"></div>
+        <div class="grid-line horizontal" style="top: 60%"></div>
+        <div class="grid-line horizontal" style="top: 80%"></div>
+        <div class="grid-line vertical" style="left: 20%"></div>
+        <div class="grid-line vertical" style="left: 40%"></div>
+        <div class="grid-line vertical" style="left: 60%"></div>
+        <div class="grid-line vertical" style="left: 80%"></div>
+    </div>
+
+    <!-- Command Center Header -->
+    <div class="command-header">
+        <div class="org-info">
+            <div class="org-logo">V</div>
+            <div class="org-details">
+                <h1>NeuraCorp Global</h1>
+                <div class="org-tier">ENTERPRISE • UNLIMITED ACCESS</div>
+            </div>
+        </div>
+        
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-indicator"></span>
+                <span>All Systems Online</span>
+            </div>
+            <div class="status-item">
+                <span class="status-indicator" style="background: #ffff00"></span>
+                <span>247 Active Users</span>
+            </div>
+            <div class="status-item">
+                <span class="status-indicator"></span>
+                <span>SLA: 99.99%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard-container">
+        <!-- Enhanced Sidebar -->
+        <div class="sidebar">
+            <div class="vera-core">
+                <div class="neural-sphere"></div>
+                <div class="vera-orb">V</div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item active">Command Center</li>
+                <li class="nav-item">Team Management</li>
+                <li class="nav-item">Organization Analytics</li>
+                <li class="nav-item">API Console</li>
+                <li class="nav-item">Training Academy</li>
+                <li class="nav-item">Compliance Hub</li>
+                <li class="nav-item">Custom Reports</li>
+                <li class="nav-item">White Label Studio</li>
+                <li class="nav-item">Research Lab</li>
+                <li class="nav-item">Global Settings</li>
+            </ul>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Organization Metrics -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Total Sessions</div>
+                    <div class="metric-value">48,726</div>
+                    <div class="metric-change">↑ 18% this month</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Active Practitioners</div>
+                    <div class="metric-value">42</div>
+                    <div class="metric-change">↑ 6 new this week</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Coherence Score</div>
+                    <div class="metric-value">94.2%</div>
+                    <div class="metric-change">↑ 3.1% improvement</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">API Calls Today</div>
+                    <div class="metric-value">127K</div>
+                    <div class="metric-change">Normal usage</div>
+                </div>
+            </div>
+
+            <!-- Team Management Section -->
+            <div class="team-section">
+                <div class="section-header">
+                    <h2 class="section-title">Practitioner Teams</h2>
+                    <button class="action-btn">+ Add Team Member</button>
+                </div>
+                
+                <div class="team-grid">
+                    <div class="practitioner-card">
+                        <div class="practitioner-header">
+                            <div class="practitioner-avatar">DS</div>
+                            <div class="practitioner-info">
+                                <h4>Dr. Sarah Mitchell</h4>
+                                <div class="practitioner-role">Lead Therapist</div>
+                            </div>
+                        </div>
+                        <div class="practitioner-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">847</div>
+                                <div class="stat-label">Sessions</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">96%</div>
+                                <div class="stat-label">Success</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="practitioner-card">
+                        <div class="practitioner-header">
+                            <div class="practitioner-avatar">JC</div>
+                            <div class="practitioner-info">
+                                <h4>James Chen</h4>
+                                <div class="practitioner-role">Senior Practitioner</div>
+                            </div>
+                        </div>
+                        <div class="practitioner-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">623</div>
+                                <div class="stat-label">Sessions</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">94%</div>
+                                <div class="stat-label">Success</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="practitioner-card">
+                        <div class="practitioner-header">
+                            <div class="practitioner-avatar">MR</div>
+                            <div class="practitioner-info">
+                                <h4>Maria Rodriguez</h4>
+                                <div class="practitioner-role">Trauma Specialist</div>
+                            </div>
+                        </div>
+                        <div class="practitioner-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">492</div>
+                                <div class="stat-label">Sessions</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">98%</div>
+                                <div class="stat-label">Success</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <!-- Compliance Dashboard -->
+            <div class="compliance-panel">
+                <h3 class="section-title">Compliance Status</h3>
+                <div class="compliance-item">
+                    <span>HIPAA Compliant</span>
+                    <span class="compliance-status"></span>
+                </div>
+                <div class="compliance-item">
+                    <span>SOC 2 Type II</span>
+                    <span class="compliance-status"></span>
+                </div>
+                <div class="compliance-item">
+                    <span>GDPR Ready</span>
+                    <span class="compliance-status"></span>
+                </div>
+                <div class="compliance-item">
+                    <span>Data Encryption</span>
+                    <span class="compliance-status"></span>
+                </div>
+            </div>
+
+            <!-- API Monitor -->
+            <div class="api-monitor">
+                <h3 class="section-title">API Usage</h3>
+                <div style="display: flex; justify-content: space-between; margin: 15px 0;">
+                    <span style="color: #888;">75% of limit</span>
+                    <span style="color: #00ffff;">500K / 667K</span>
+                </div>
+                <div class="api-usage-bar">
+                    <div class="api-usage-fill"></div>
+                </div>
+                <button class="action-btn" style="width: 100%; margin-top: 15px;">View API Docs</button>
+            </div>
+
+            <!-- Training Modules -->
+            <div class="training-section">
+                <h3 class="section-title">Training Academy</h3>
+                <ul class="module-list">
+                    <li class="module-item">
+                        <span>Advanced Protocols</span>
+                        <div class="module-progress">75%</div>
+                    </li>
+                    <li class="module-item">
+                        <span>Team Onboarding</span>
+                        <div class="module-progress">100%</div>
+                    </li>
+                    <li class="module-item">
+                        <span>API Integration</span>
+                        <div class="module-progress">60%</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Emergency Protocol -->
+            <button class="action-btn btn-critical" style="width: 100%;">
+                CRISIS PROTOCOL CENTER
+            </button>
+        </div>
+    </div>
+
+    <!-- Neural Particles -->
+    <script>
+        // Create 500+ neural particles for enterprise tier
+        for (let i = 0; i < 500; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'neural-particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            
+            // Vary particle colors for enterprise
+            const colors = ['#8a2be2', '#00ffff', '#ff0080', '#ffff00', '#00ff00'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.background = `radial-gradient(circle, ${color}, transparent)`;
+            
+            document.body.appendChild(particle);
+        }
+
+        // Dynamic metric updates
+        setInterval(() => {
+            const apiCalls = document.querySelector('.metric-card:nth-child(4) .metric-value');
+            const current = parseInt(apiCalls.textContent.replace('K', '')) * 1000;
+            const newValue = current + Math.floor(Math.random() * 100);
+            apiCalls.textContent = (newValue / 1000).toFixed(0) + 'K';
+        }, 3000);
+
+        // Nav item interactions
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
