@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERA Sanctuary Portal - $19/month</title>
+    <title>VERA Explorer Portal - Your Nervous System Sanctuary</title>
     <style>
         * {
             margin: 0;
@@ -11,162 +11,258 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --vera-deep-space: #0A0E27;
+            --vera-midnight: #151832;
+            --vera-purple: #9B59B6;
+            --vera-lavender: #B19CD9;
+            --vera-neural-blue: #64B5F6;
+            --vera-glow-pink: #F8BBD0;
+            --vera-deep-violet: #4A148C;
+            --vera-soft-gold: #FFD700;
+            --vera-emerald: #10B981;
+            --glass-white: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-primary: rgba(255, 255, 255, 0.95);
+            --text-soft: rgba(255, 255, 255, 0.75);
+            --text-muted: rgba(255, 255, 255, 0.45);
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #1a0033 0%, #220044 50%, #1a0033 100%);
-            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: radial-gradient(ellipse at top, var(--vera-midnight) 0%, var(--vera-deep-space) 40%, #000 100%);
+            color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Animated background */
-        .neural-bg {
+        /* Living Neural Universe Background */
+        .neural-universe {
             position: fixed;
+            width: 100%;
+            height: 100%;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0.3;
             pointer-events: none;
+            z-index: 0;
         }
 
-        .neuron {
+        .living-neuron {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #8a2be2;
             border-radius: 50%;
-            box-shadow: 0 0 10px #8a2be2;
-            animation: float 20s infinite linear;
+            animation: neuronFloat 20s infinite ease-in-out;
         }
 
-        @keyframes float {
-            from {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
+        @keyframes neuronFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.4;
             }
-            10% {
-                opacity: 1;
+            25% {
+                transform: translate(50px, -30px) scale(1.2);
+                opacity: 0.7;
             }
-            90% {
-                opacity: 1;
+            50% {
+                transform: translate(-30px, 50px) scale(1.1);
+                opacity: 0.5;
             }
-            to {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
+            75% {
+                transform: translate(30px, 20px) scale(1.15);
+                opacity: 0.6;
             }
         }
 
         /* Header */
         .header {
-            background: rgba(138, 43, 226, 0.1);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
-            padding: 20px;
+            background: linear-gradient(180deg, 
+                rgba(10, 14, 39, 0.95) 0%, 
+                rgba(10, 14, 39, 0.85) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1.5rem 3rem;
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .header-content {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
         .logo {
-            font-size: 28px;
-            font-weight: bold;
-            background: linear-gradient(90deg, #8a2be2, #4b0082);
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            cursor: pointer;
         }
 
         .tier-badge {
-            background: rgba(138, 43, 226, 0.2);
-            padding: 8px 20px;
-            border-radius: 20px;
-            border: 1px solid #8a2be2;
-            font-size: 14px;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1));
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            border: 1px solid var(--vera-lavender);
+            font-size: 0.9rem;
+            color: var(--vera-lavender);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 0.1em;
         }
 
-        /* Main Container */
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .sessions-counter {
+            background: rgba(16, 185, 129, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            border: 1px solid var(--vera-emerald);
+            color: var(--vera-emerald);
+            font-weight: 500;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--vera-lavender), var(--vera-neural-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        /* Container */
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 2rem;
             display: grid;
-            grid-template-columns: 250px 1fr 300px;
-            gap: 30px;
+            grid-template-columns: 280px 1fr 320px;
+            gap: 2rem;
         }
 
         /* Sidebar */
         .sidebar {
-            background: rgba(138, 43, 226, 0.05);
-            border-radius: 20px;
-            padding: 30px 20px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.08) 0%, rgba(100, 181, 246, 0.05) 100%);
+            border-radius: 25px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
             height: fit-content;
             position: sticky;
             top: 100px;
         }
 
-        .vera-orb {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: radial-gradient(circle, #8a2be2, #4b0082);
+        .vera-orb-mini {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            background: radial-gradient(circle at 35% 35%,
+                rgba(248, 187, 208, 0.4) 0%,
+                rgba(155, 89, 182, 0.6) 20%,
+                rgba(100, 181, 246, 0.5) 40%,
+                rgba(177, 156, 217, 0.3) 70%,
+                transparent 90%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
-            font-weight: bold;
-            box-shadow: 0 0 40px rgba(138, 43, 226, 0.6);
-            animation: pulse 3s infinite;
+            font-size: 3rem;
+            font-weight: 100;
+            letter-spacing: 0.5em;
+            box-shadow: 0 0 100px rgba(155, 89, 182, 0.6);
+            animation: orbPulse 6s infinite;
+            cursor: pointer;
+            background-clip: text;
+            -webkit-background-clip: text;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(138, 43, 226, 0.6); }
-            50% { transform: scale(1.05); box-shadow: 0 0 60px rgba(138, 43, 226, 0.8); }
+        @keyframes orbPulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 100px rgba(155, 89, 182, 0.6);
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 0 150px rgba(155, 89, 182, 0.8);
+            }
+        }
+
+        .vera-orb-text {
+            background: linear-gradient(45deg,
+                #FFD700 0%,
+                #F8BBD0 20%,
+                #B19CD9 40%,
+                #9B59B6 60%,
+                #64B5F6 80%,
+                #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-left: 0.5em;
         }
 
         .menu-item {
-            display: block;
-            padding: 15px;
-            margin: 10px 0;
-            background: rgba(138, 43, 226, 0.1);
-            border-radius: 10px;
-            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            color: var(--text-soft);
             text-decoration: none;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .menu-item:hover {
-            background: rgba(138, 43, 226, 0.2);
+            background: rgba(155, 89, 182, 0.2);
             transform: translateX(5px);
+            color: var(--text-primary);
+        }
+
+        .menu-item.active {
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.3), rgba(100, 181, 246, 0.2));
+            border: 1px solid var(--vera-lavender);
+            color: var(--text-primary);
         }
 
         /* Main Content */
         .main-content {
-            background: rgba(30, 10, 50, 0.5);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(138, 43, 226, 0.1);
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.05) 0%, rgba(100, 181, 246, 0.03) 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 1px solid var(--glass-border);
         }
 
         .welcome-section {
-            margin-bottom: 40px;
+            margin-bottom: 3rem;
         }
 
         .welcome-section h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #8a2be2, #da70d6);
+            font-size: 3rem;
+            font-weight: 200;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, white 0%, var(--vera-lavender) 50%, var(--vera-neural-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -174,94 +270,180 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .stat-card {
-            background: rgba(138, 43, 226, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            transition: transform 0.3s;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(100, 181, 246, 0.05));
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
         }
 
         .stat-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.3);
         }
 
         .stat-value {
-            font-size: 32px;
-            font-weight: bold;
-            color: #8a2be2;
-            margin-bottom: 5px;
+            font-size: 2.5rem;
+            font-weight: 300;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            font-size: 14px;
-            color: #999;
+            font-size: 0.9rem;
+            color: var(--text-muted);
             text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         /* Session Area */
         .session-area {
-            background: rgba(138, 43, 226, 0.05);
-            border-radius: 15px;
-            padding: 30px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
+            background: linear-gradient(135deg, rgba(100, 181, 246, 0.1) 0%, rgba(155, 89, 182, 0.08) 100%);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 2rem;
         }
 
         .session-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
         }
 
         .start-button {
-            background: linear-gradient(135deg, #8a2be2, #4b0082);
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
             color: white;
             border: none;
-            padding: 15px 40px;
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: bold;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.1em;
         }
 
         .start-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(155, 89, 182, 0.4);
+        }
+
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .exercise-card {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--glass-border);
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+            background: rgba(155, 89, 182, 0.2);
+        }
+
+        .exercise-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Chat Interface */
+        .chat-interface {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 1.5rem;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .vera-message {
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1));
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            color: var(--text-soft);
         }
 
         /* Right Panel */
         .right-panel {
-            background: rgba(138, 43, 226, 0.05);
-            border-radius: 20px;
-            padding: 30px 20px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(155, 89, 182, 0.05) 100%);
+            border-radius: 25px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
             height: fit-content;
         }
 
-        .activity-feed {
-            margin-top: 20px;
+        .activity-item {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+            border-left: 3px solid var(--vera-lavender);
         }
 
-        .activity-item {
-            padding: 15px;
-            background: rgba(138, 43, 226, 0.1);
-            border-radius: 10px;
-            margin-bottom: 10px;
-            font-size: 14px;
+        .activity-item:hover {
+            background: rgba(155, 89, 182, 0.1);
+            transform: translateX(5px);
         }
 
         .time-badge {
-            color: #8a2be2;
-            font-size: 12px;
+            color: var(--vera-neural-blue);
+            font-size: 0.8rem;
             text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Progress Chart */
+        .progress-chart {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .progress-bar {
+            height: 40px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--vera-lavender), var(--vera-neural-blue));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            color: white;
+            font-weight: 500;
+            animation: progressGrow 2s ease-out;
+        }
+
+        @keyframes progressGrow {
+            from { width: 0; }
         }
 
         /* Responsive */
@@ -276,36 +458,65 @@
     </style>
 </head>
 <body>
-    <!-- Neural Background -->
-    <div class="neural-bg" id="neuralBg"></div>
+    <!-- Neural Universe Background -->
+    <div class="neural-universe" id="neuralUniverse"></div>
 
     <!-- Header -->
-    <div class="header">
+    <header class="header">
         <div class="header-content">
-            <div class="logo">VERA Portal</div>
-            <div class="tier-badge">Sanctuary Tier - $19/month</div>
+            <div class="logo-section">
+                <div class="logo" onclick="window.location.href='index.html'">VERA</div>
+                <div class="tier-badge">Explorer • $19/month</div>
+            </div>
+            <div class="user-menu">
+                <div class="sessions-counter">7/10 Sessions</div>
+                <div class="user-avatar">👤</div>
+            </div>
         </div>
-    </div>
+    </header>
 
     <!-- Main Container -->
     <div class="container">
         <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="vera-orb">V</div>
+        <aside class="sidebar">
+            <div class="vera-orb-mini">
+                <span class="vera-orb-text">VERA</span>
+            </div>
             <nav>
-                <a href="#" class="menu-item">🏠 Dashboard</a>
-                <a href="#" class="menu-item">🧘 Begin Session</a>
-                <a href="#" class="menu-item">📊 Progress</a>
-                <a href="#" class="menu-item">💭 Journal</a>
-                <a href="#" class="menu-item">⚙️ Settings</a>
+                <div class="menu-item active">
+                    <span>🏠</span>
+                    <span>Dashboard</span>
+                </div>
+                <div class="menu-item">
+                    <span>🌊</span>
+                    <span>Begin Session</span>
+                </div>
+                <div class="menu-item">
+                    <span>📊</span>
+                    <span>Your Progress</span>
+                </div>
+                <div class="menu-item">
+                    <span>💭</span>
+                    <span>Journal</span>
+                </div>
+                <div class="menu-item">
+                    <span>🎯</span>
+                    <span>Goals</span>
+                </div>
+                <div class="menu-item">
+                    <span>⚙️</span>
+                    <span>Settings</span>
+                </div>
             </nav>
-        </div>
+        </aside>
 
         <!-- Main Content -->
-        <div class="main-content">
+        <main class="main-content">
             <div class="welcome-section">
                 <h1>Welcome to Your Sanctuary</h1>
-                <p style="color: #aaa; font-size: 18px;">Your personal space for neural wellness and consciousness exploration</p>
+                <p style="color: var(--text-soft); font-size: 1.2rem;">
+                    Your nervous system is speaking. I'm here to translate.
+                </p>
             </div>
 
             <div class="stats-grid">
@@ -314,15 +525,15 @@
                     <div class="stat-label">Sessions This Week</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">42m</div>
-                    <div class="stat-label">Avg Session Time</div>
+                    <div class="stat-value">23m</div>
+                    <div class="stat-label">Today's Practice</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">85%</div>
+                    <div class="stat-value">72%</div>
                     <div class="stat-label">Coherence Score</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">23</div>
+                    <div class="stat-value">14</div>
                     <div class="stat-label">Day Streak</div>
                 </div>
             </div>
@@ -330,60 +541,163 @@
             <div class="session-area">
                 <div class="session-header">
                     <div>
-                        <h2 style="font-size: 24px; margin-bottom: 10px;">Ready for Your Session?</h2>
-                        <p style="color: #999;">VERA is standing by to guide your journey</p>
+                        <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--vera-lavender);">
+                            Ready for Today's Session?
+                        </h2>
+                        <p style="color: var(--text-soft);">
+                            VERA is here to guide your nervous system home
+                        </p>
                     </div>
-                    <button class="start-button">Start Session</button>
+                    <button class="start-button" onclick="startSession()">Start Session</button>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px;">
-                    <div style="padding: 20px; background: rgba(138, 43, 226, 0.1); border-radius: 10px; text-align: center;">
-                        <div style="font-size: 24px; margin-bottom: 10px;">🎯</div>
-                        <div style="font-size: 14px;">Focus Training</div>
+                <div class="exercise-grid">
+                    <div class="exercise-card" onclick="selectExercise('breathing')">
+                        <div class="exercise-icon">🌬️</div>
+                        <div>Breathing</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                            Regulate & Reset
+                        </div>
                     </div>
-                    <div style="padding: 20px; background: rgba(138, 43, 226, 0.1); border-radius: 10px; text-align: center;">
-                        <div style="font-size: 24px; margin-bottom: 10px;">😌</div>
-                        <div style="font-size: 14px;">Stress Relief</div>
+                    <div class="exercise-card" onclick="selectExercise('grounding')">
+                        <div class="exercise-icon">🌍</div>
+                        <div>Grounding</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                            5-4-3-2-1 Technique
+                        </div>
                     </div>
-                    <div style="padding: 20px; background: rgba(138, 43, 226, 0.1); border-radius: 10px; text-align: center;">
-                        <div style="font-size: 24px; margin-bottom: 10px;">🌙</div>
-                        <div style="font-size: 14px;">Sleep Protocol</div>
+                    <div class="exercise-card" onclick="selectExercise('swaying')">
+                        <div class="exercise-icon">🌊</div>
+                        <div>Swaying</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                            Gentle Movement
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <!-- VERA Chat -->
+            <div style="background: rgba(155, 89, 182, 0.05); border-radius: 25px; padding: 2rem; border: 1px solid var(--glass-border);">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--vera-lavender);">
+                    Talk with VERA
+                </h3>
+                <div class="chat-interface" id="chatMessages">
+                    <div class="vera-message">
+                        "Hello, beautiful soul. I can feel you're here. What's alive in your nervous system right now? Take a moment to scan your body..."
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <input type="text" id="chatInput" placeholder="Tell VERA what you're feeling..." 
+                           style="flex: 1; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 50px; color: white;"
+                           onkeypress="if(event.key === 'Enter') sendMessage()">
+                    <button onclick="sendMessage()" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </main>
 
         <!-- Right Panel -->
-        <div class="right-panel">
-            <h3 style="font-size: 18px; margin-bottom: 20px;">Recent Activity</h3>
+        <aside class="right-panel">
+            <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--vera-lavender);">
+                Your Journey
+            </h3>
+            
             <div class="activity-feed">
                 <div class="activity-item">
                     <div class="time-badge">2 hours ago</div>
-                    <div style="margin-top: 5px;">Completed Focus Session</div>
+                    <div style="margin-top: 0.5rem;">Completed morning breathing session</div>
                 </div>
                 <div class="activity-item">
                     <div class="time-badge">Yesterday</div>
-                    <div style="margin-top: 5px;">Achievement: 20 Day Streak!</div>
+                    <div style="margin-top: 0.5rem;">Achievement: 2 Week Streak! 🎉</div>
                 </div>
                 <div class="activity-item">
                     <div class="time-badge">2 days ago</div>
-                    <div style="margin-top: 5px;">New Personal Best: 92% Coherence</div>
+                    <div style="margin-top: 0.5rem;">New coherence milestone: 70%</div>
                 </div>
             </div>
-        </div>
+
+            <div class="progress-chart">
+                <h4 style="color: var(--vera-neural-blue); margin-bottom: 0.5rem;">Monthly Progress</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 70%;">
+                        70% to next level
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(155, 89, 182, 0.1)); border-radius: 20px; text-align: center;">
+                <div style="font-size: 0.9rem; color: var(--vera-soft-gold); margin-bottom: 1rem;">
+                    Upgrade to Regulator
+                </div>
+                <button onclick="window.location.href='index.html#pricing'" style="width: 100%; padding: 0.8rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 25px; color: white; cursor: pointer;">
+                    Unlock Unlimited Sessions
+                </button>
+            </div>
+        </aside>
     </div>
 
     <script>
-        // Create neural background
-        const neuralBg = document.getElementById('neuralBg');
-        for (let i = 0; i < 50; i++) {
-            const neuron = document.createElement('div');
-            neuron.className = 'neuron';
-            neuron.style.left = Math.random() * 100 + '%';
-            neuron.style.animationDelay = Math.random() * 20 + 's';
-            neuron.style.animationDuration = (15 + Math.random() * 10) + 's';
-            neuralBg.appendChild(neuron);
+        // Create Neural Universe
+        function createNeuralUniverse() {
+            const universe = document.getElementById('neuralUniverse');
+            
+            for (let i = 0; i < 100; i++) {
+                const neuron = document.createElement('div');
+                neuron.className = 'living-neuron';
+                neuron.style.width = (2 + Math.random() * 6) + 'px';
+                neuron.style.height = neuron.style.width;
+                neuron.style.left = Math.random() * 100 + '%';
+                neuron.style.top = Math.random() * 100 + '%';
+                neuron.style.animationDelay = Math.random() * 20 + 's';
+                
+                const colors = ['var(--vera-purple)', 'var(--vera-neural-blue)', 'var(--vera-lavender)', 'var(--vera-glow-pink)'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                neuron.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+                
+                universe.appendChild(neuron);
+            }
         }
+
+        // Chat functionality
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
+            const userText = input.value.trim();
+            
+            if (!userText) return;
+            
+            messages.innerHTML += `
+                <div style="text-align: right; margin: 1rem 0;">
+                    <div style="display: inline-block; background: rgba(100, 181, 246, 0.15); padding: 1rem; border-radius: 15px; max-width: 70%;">
+                        ${userText}
+                    </div>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                messages.innerHTML += `
+                    <div class="vera-message">
+                        "I hear you. Your nervous system is communicating beautifully. Let's explore this sensation together..."
+                    </div>
+                `;
+                messages.scrollTop = messages.scrollHeight;
+            }, 1000);
+            
+            input.value = '';
+        }
+
+        function startSession() {
+            alert('Starting your VERA session... (This would open the full session interface)');
+        }
+
+        function selectExercise(type) {
+            alert(`Opening ${type} exercise...`);
+        }
+
+        // Initialize
+        createNeuralUniverse();
     </script>
 </body>
 </html>
