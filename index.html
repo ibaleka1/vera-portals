@@ -1,3 +1,4 @@
+<!-- SAVE THIS AS: index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -258,7 +259,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: nameShimmer 4s infinite linear;
-            padding-left: 1em; /* Center the text properly */
+            padding-left: 1em;
         }
 
         @keyframes nameShimmer {
@@ -475,6 +476,52 @@
                 rgba(155, 89, 182, 0.15) 100%);
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.95), rgba(21, 24, 50, 0.95));
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 500px;
+            border: 2px solid var(--vera-lavender);
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .portal-option {
+            padding: 1.2rem;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1));
+            border: 1px solid var(--vera-lavender);
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .portal-option:hover {
+            transform: translateX(5px);
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.3), rgba(100, 181, 246, 0.2));
+        }
+
         /* Platform Features */
         .feature-item {
             padding: 0.5rem;
@@ -522,7 +569,7 @@
             <a href="#methodology" class="nav-link">Methodology</a>
             <a href="#pricing" class="nav-link">Pricing</a>
             <a href="#experience" class="nav-link">Experience VERA</a>
-            <button class="nav-cta" onclick="showSignup()">Sign In</button>
+            <button class="nav-cta" onclick="showSignin()">Sign In</button>
         </div>
     </nav>
 
@@ -701,7 +748,7 @@
             <div class="pricing-card">
                 <h3 style="color: var(--vera-lavender); font-size: 1.5rem; margin-bottom: 1rem;">EXPLORER</h3>
                 <div style="font-size: 3rem; color: white; margin-bottom: 1rem;">$19<sup style="font-size: 1.5rem;">/mo</sup></div>
-                <button style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                <button onclick="window.location.href='portal-explorer.html'" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
                     Start Exploring
                 </button>
             </div>
@@ -710,7 +757,7 @@
             <div class="pricing-card featured">
                 <h3 style="color: var(--vera-lavender); font-size: 1.5rem; margin-bottom: 1rem;">REGULATOR</h3>
                 <div style="font-size: 3rem; color: white; margin-bottom: 1rem;">$39<sup style="font-size: 1.5rem;">/mo</sup></div>
-                <button style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                <button onclick="window.location.href='portal-regulator.html'" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
                     Get Regulated
                 </button>
             </div>
@@ -719,7 +766,7 @@
             <div class="pricing-card">
                 <h3 style="color: var(--vera-lavender); font-size: 1.5rem; margin-bottom: 1rem;">INTEGRATOR</h3>
                 <div style="font-size: 3rem; color: white; margin-bottom: 1rem;">$79<sup style="font-size: 1.5rem;">/mo</sup></div>
-                <button style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                <button onclick="window.location.href='portal-integrator.html'" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
                     Full Integration
                 </button>
             </div>
@@ -728,14 +775,14 @@
             <div class="pricing-card">
                 <h3 style="color: var(--vera-lavender); font-size: 1.5rem; margin-bottom: 1rem;">ENTERPRISE</h3>
                 <div style="font-size: 2.5rem; color: white; margin-bottom: 1rem;">Custom</div>
-                <button style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                <button onclick="window.location.href='portal-enterprise.html'" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 50px; color: white; cursor: pointer;">
                     Contact Sales
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- VERA Intelligence -->
+    <!-- VERA Intelligence Section -->
     <section style="padding: 6rem 2rem; background: linear-gradient(180deg, transparent 0%, rgba(155, 89, 182, 0.05) 100%);">
         <h2 style="font-size: 3rem; font-weight: 200; text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             VERA's Nervous System Intelligence
@@ -904,6 +951,43 @@
             }
         }
 
+        // Sign In Modal
+        function showSignin() {
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+            modal.id = 'signinModal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h2 style="color: white; margin-bottom: 2rem; text-align: center; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2rem;">
+                        Enter Your Portal
+                    </h2>
+                    <div style="display: grid; gap: 1rem;">
+                        <div class="portal-option" onclick="window.location.href='portal-explorer.html'">
+                            <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">Explorer Portal</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">$19/month • 10 Sessions</div>
+                        </div>
+                        <div class="portal-option" onclick="window.location.href='portal-regulator.html'">
+                            <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">Regulator Portal</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">$39/month • Unlimited</div>
+                        </div>
+                        <div class="portal-option" onclick="window.location.href='portal-integrator.html'">
+                            <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">Integrator Portal</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">$79/month • Full Access</div>
+                        </div>
+                        <div class="portal-option" onclick="window.location.href='portal-enterprise.html'" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(155, 89, 182, 0.1)); border-color: var(--vera-soft-gold);">
+                            <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">Enterprise Portal</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">Custom Solutions</div>
+                        </div>
+                    </div>
+                    <button onclick="document.getElementById('signinModal').remove()" 
+                            style="margin-top: 1.5rem; width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--glass-border); border-radius: 25px; color: var(--text-soft); cursor: pointer;">
+                        Close
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
         // Live Chat Functionality
         let voiceActive = false;
         
@@ -1007,10 +1091,6 @@
             const btn = document.getElementById('groundVoiceBtn');
             btn.classList.add('active');
             speakText("Let's ground together. Notice five things you can see. Four things you can touch. Three things you can hear. Two things you can smell. One thing you can taste. You're here. You're safe.");
-        }
-
-        function showSignup() {
-            document.getElementById('signup').scrollIntoView({behavior: 'smooth'});
         }
 
         // Initialize on load
