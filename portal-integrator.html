@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERA Integrator Portal - $79/month</title>
+    <title>VERA Integrator Portal - Full Neural Integration</title>
     <style>
         * {
             margin: 0;
@@ -11,74 +11,80 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --vera-deep-space: #0A0E27;
+            --vera-midnight: #151832;
+            --vera-purple: #9B59B6;
+            --vera-lavender: #B19CD9;
+            --vera-neural-blue: #64B5F6;
+            --vera-glow-pink: #F8BBD0;
+            --vera-deep-violet: #4A148C;
+            --vera-soft-gold: #FFD700;
+            --vera-emerald: #10B981;
+            --glass-white: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-primary: rgba(255, 255, 255, 0.95);
+            --text-soft: rgba(255, 255, 255, 0.75);
+            --text-muted: rgba(255, 255, 255, 0.45);
+        }
+
         body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000;
-            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: radial-gradient(ellipse at top, var(--vera-midnight) 0%, var(--vera-deep-space) 40%, #000 100%);
+            color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Quantum Field Background */
-        .quantum-field {
+        /* Premium Neural Universe */
+        .neural-universe {
             position: fixed;
+            width: 100%;
+            height: 100%;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at 20% 30%, rgba(138, 43, 226, 0.3) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, rgba(0, 255, 255, 0.3) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(255, 0, 128, 0.2) 0%, transparent 70%),
-                linear-gradient(180deg, #000 0%, #0a0015 50%, #000 100%);
-            animation: quantumShift 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        @keyframes quantumShift {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(5deg); }
-        }
-
-        /* Quantum Particles */
-        .quantum-particle {
+        .premium-neuron {
             position: absolute;
-            width: 4px;
-            height: 4px;
             border-radius: 50%;
-            animation: quantumFloat 30s infinite linear;
+            animation: premiumFloat 15s infinite ease-in-out;
+            box-shadow: 0 0 20px currentColor;
         }
 
-        @keyframes quantumFloat {
-            0% {
-                transform: translate(0, 100vh) scale(0) rotate(0deg);
-                opacity: 0;
+        @keyframes premiumFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 0.6;
             }
-            10% {
+            25% {
+                transform: translate(80px, -60px) scale(1.4) rotate(90deg);
                 opacity: 1;
-                transform: translate(10vw, 80vh) scale(1) rotate(360deg);
             }
-            90% {
-                opacity: 1;
-                transform: translate(90vw, 10vh) scale(1) rotate(720deg);
+            50% {
+                transform: translate(-60px, 80px) scale(1.3) rotate(180deg);
+                opacity: 0.8;
             }
-            100% {
-                transform: translate(100vw, -10vh) scale(0) rotate(1080deg);
-                opacity: 0;
+            75% {
+                transform: translate(60px, 60px) scale(1.5) rotate(270deg);
+                opacity: 0.9;
             }
         }
 
         /* Premium Header */
         .header {
-            position: relative;
-            z-index: 100;
-            padding: 30px;
-            background: linear-gradient(90deg, 
-                rgba(138, 43, 226, 0.2), 
-                rgba(0, 255, 255, 0.1), 
-                rgba(255, 0, 128, 0.1));
+            background: linear-gradient(180deg, 
+                rgba(10, 14, 39, 0.95) 0%, 
+                rgba(74, 20, 140, 0.85) 100%);
             backdrop-filter: blur(20px);
-            border-bottom: 2px solid transparent;
-            border-image: linear-gradient(90deg, #8a2be2, #00ffff, #ff0080) 1;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, var(--vera-soft-gold), var(--vera-lavender), var(--vera-neural-blue)) 1;
+            padding: 1.5rem 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-content {
@@ -89,426 +95,375 @@
             align-items: center;
         }
 
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
         .logo {
-            font-size: 36px;
-            font-weight: 900;
-            background: conic-gradient(from 45deg, #8a2be2, #00ffff, #ff0080, #8a2be2);
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender), var(--vera-neural-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: logoRotate 10s linear infinite;
+            cursor: pointer;
         }
 
-        @keyframes logoRotate {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-
-        .tier-badge {
-            background: conic-gradient(from 0deg, #8a2be2, #00ffff, #ff0080, #8a2be2);
-            padding: 2px;
-            border-radius: 30px;
-            animation: badgeRotate 5s linear infinite;
-        }
-
-        .tier-badge-inner {
-            background: #000;
-            padding: 12px 30px;
-            border-radius: 28px;
-            font-size: 14px;
+        .tier-badge-premium {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(155, 89, 182, 0.2));
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            border: 1px solid var(--vera-soft-gold);
+            font-size: 0.9rem;
+            color: var(--vera-soft-gold);
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: bold;
+            letter-spacing: 0.1em;
+            animation: goldPulse 3s infinite;
         }
 
-        @keyframes badgeRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes goldPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.6); }
         }
 
-        /* Main Layout */
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .integration-status {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .integration-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--vera-emerald), var(--vera-neural-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            animation: integrationPulse 2s infinite;
+        }
+
+        @keyframes integrationPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* Container */
         .container {
             max-width: 1800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 2rem;
             display: grid;
-            grid-template-columns: 300px 1fr 350px;
-            gap: 30px;
-            position: relative;
-            z-index: 10;
+            grid-template-columns: 320px 1fr 350px;
+            gap: 2rem;
         }
 
-        /* Advanced Sidebar */
+        /* Premium Sidebar */
         .sidebar {
             background: linear-gradient(135deg, 
-                rgba(138, 43, 226, 0.15), 
-                rgba(0, 255, 255, 0.08), 
-                rgba(255, 0, 128, 0.05));
-            border-radius: 30px;
-            padding: 40px 25px;
-            border: 2px solid transparent;
-            border-image: linear-gradient(135deg, #8a2be2, #00ffff, #ff0080) 1;
+                rgba(255, 215, 0, 0.08) 0%, 
+                rgba(155, 89, 182, 0.08) 50%,
+                rgba(100, 181, 246, 0.05) 100%);
+            border-radius: 25px;
+            padding: 2rem;
+            border: 1px solid var(--vera-soft-gold);
             height: fit-content;
             position: sticky;
-            top: 20px;
-            backdrop-filter: blur(15px);
+            top: 100px;
         }
 
-        .vera-quantum-orb {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-
-        .quantum-ring {
-            position: absolute;
-            border-radius: 50%;
-            border: 2px solid;
-            animation: ringRotate 10s linear infinite;
-        }
-
-        .quantum-ring:nth-child(1) {
-            width: 100%;
-            height: 100%;
-            border-color: #8a2be2;
-            animation-duration: 10s;
-        }
-
-        .quantum-ring:nth-child(2) {
-            width: 80%;
-            height: 80%;
-            top: 10%;
-            left: 10%;
-            border-color: #00ffff;
-            animation-duration: 15s;
-            animation-direction: reverse;
-        }
-
-        .quantum-ring:nth-child(3) {
-            width: 60%;
-            height: 60%;
-            top: 20%;
-            left: 20%;
-            border-color: #ff0080;
-            animation-duration: 20s;
-        }
-
-        .vera-core {
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            top: 25%;
-            left: 25%;
-            background: conic-gradient(from 0deg, #8a2be2, #00ffff, #ff0080, #8a2be2);
+        .vera-orb-premium {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2rem;
+            background: radial-gradient(circle at 35% 35%,
+                rgba(255, 215, 0, 0.5) 0%,
+                rgba(248, 187, 208, 0.6) 10%,
+                rgba(155, 89, 182, 0.8) 30%,
+                rgba(100, 181, 246, 0.6) 60%,
+                transparent 90%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
-            font-weight: bold;
-            animation: corePulse 3s ease-in-out infinite;
+            box-shadow: 
+                0 0 150px rgba(255, 215, 0, 0.4),
+                0 0 100px rgba(155, 89, 182, 0.6);
+            animation: premiumOrbPulse 5s infinite;
+            cursor: pointer;
         }
 
-        @keyframes ringRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes premiumOrbPulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 150px rgba(255, 215, 0, 0.4), 0 0 100px rgba(155, 89, 182, 0.6);
+            }
+            50% { 
+                transform: scale(1.08); 
+                box-shadow: 0 0 200px rgba(255, 215, 0, 0.6), 0 0 150px rgba(155, 89, 182, 0.8);
+            }
         }
 
-        @keyframes corePulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(138, 43, 226, 0.8); }
-            50% { transform: scale(1.1); box-shadow: 0 0 60px rgba(0, 255, 255, 1); }
+        .vera-orb-text {
+            font-size: 3.5rem;
+            font-weight: 100;
+            letter-spacing: 0.5em;
+            background: linear-gradient(45deg,
+                #FFD700 0%,
+                #F8BBD0 20%,
+                #B19CD9 40%,
+                #9B59B6 60%,
+                #64B5F6 80%,
+                #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-left: 0.5em;
         }
 
-        .nav-item {
+        .menu-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 18px 20px;
-            margin: 15px 0;
-            background: linear-gradient(135deg, 
-                rgba(138, 43, 226, 0.1), 
-                rgba(0, 255, 255, 0.05));
-            border-radius: 18px;
-            color: #fff;
+            gap: 1rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            color: var(--text-soft);
             text-decoration: none;
             transition: all 0.3s;
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
+            cursor: pointer;
         }
 
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+        .menu-item:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(155, 89, 182, 0.2));
+            transform: translateX(5px);
+            color: var(--text-primary);
         }
 
-        .nav-item:hover::before {
-            left: 100%;
-        }
-
-        .nav-item:hover {
-            transform: translateX(10px);
-            border-color: #00ffff;
-            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+        .menu-item.active {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(155, 89, 182, 0.3));
+            border: 1px solid var(--vera-soft-gold);
+            color: var(--text-primary);
         }
 
         /* Main Content */
         .main-content {
             background: linear-gradient(135deg, 
-                rgba(20, 10, 40, 0.8), 
-                rgba(0, 50, 50, 0.4));
+                rgba(155, 89, 182, 0.05) 0%, 
+                rgba(255, 215, 0, 0.03) 50%,
+                rgba(100, 181, 246, 0.03) 100%);
             border-radius: 30px;
-            padding: 50px;
-            backdrop-filter: blur(10px);
-            border: 2px solid transparent;
-            border-image: linear-gradient(135deg, #8a2be2, #00ffff, #ff0080) 1;
+            padding: 3rem;
+            border: 1px solid var(--glass-border);
         }
 
-        /* API Console Section */
-        .api-console {
-            background: #0a0015;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid #8a2be2;
-            font-family: 'Monaco', 'Courier New', monospace;
+        .welcome-section h1 {
+            font-size: 3.5rem;
+            font-weight: 200;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender), var(--vera-neural-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .api-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .api-title {
-            font-size: 24px;
-            color: #00ffff;
-        }
-
-        .api-status {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 20px;
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid #00ff00;
-            border-radius: 20px;
-            color: #00ff00;
-            font-size: 14px;
-        }
-
-        .api-key-display {
-            background: #000;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #333;
-            margin-bottom: 20px;
-        }
-
-        .api-key-label {
-            color: #8a2be2;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .api-key {
-            font-family: monospace;
-            font-size: 16px;
-            color: #00ffff;
-            word-break: break-all;
-        }
-
-        .api-endpoints {
+        /* Premium Stats Grid */
+        .premium-stats-grid {
             display: grid;
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
-        .endpoint {
-            background: rgba(138, 43, 226, 0.05);
-            padding: 15px 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s;
-        }
-
-        .endpoint:hover {
-            background: rgba(138, 43, 226, 0.1);
-            border-color: #00ffff;
-        }
-
-        .endpoint-method {
-            padding: 4px 12px;
-            background: #8a2be2;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .endpoint-path {
-            flex: 1;
-            margin: 0 20px;
-            color: #fff;
-        }
-
-        .endpoint-status {
-            width: 8px;
-            height: 8px;
-            background: #00ff00;
-            border-radius: 50%;
-            animation: statusPulse 2s infinite;
-        }
-
-        @keyframes statusPulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 5px currentColor; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Analytics Dashboard */
-        .analytics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .analytics-card {
+        .premium-stat-card {
             background: linear-gradient(135deg, 
-                rgba(138, 43, 226, 0.1), 
-                rgba(0, 255, 255, 0.05));
-            padding: 25px;
+                rgba(255, 215, 0, 0.1) 0%,
+                rgba(155, 89, 182, 0.1) 50%,
+                rgba(100, 181, 246, 0.05) 100%);
+            padding: 1.5rem;
             border-radius: 20px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.2);
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
         }
 
-        .analytics-card::after {
+        .premium-stat-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(0, 255, 255, 0.1), transparent);
-            animation: analyticsRotate 10s linear infinite;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent);
+            animation: statShimmer 8s infinite;
         }
 
-        @keyframes analyticsRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes statShimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
         }
 
-        .analytics-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: #00ffff;
+        .premium-stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
         }
 
-        .analytics-value {
-            font-size: 48px;
-            font-weight: bold;
-            background: linear-gradient(90deg, #8a2be2, #00ffff, #ff0080);
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 300;
+            background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
             position: relative;
             z-index: 1;
         }
 
-        .analytics-label {
-            color: #aaa;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Right Panel */
-        .right-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .research-lab {
+        /* Advanced Session Area */
+        .advanced-session-area {
             background: linear-gradient(135deg, 
-                rgba(255, 0, 128, 0.1), 
-                rgba(138, 43, 226, 0.1));
+                rgba(100, 181, 246, 0.1) 0%, 
+                rgba(255, 215, 0, 0.08) 50%,
+                rgba(155, 89, 182, 0.08) 100%);
             border-radius: 25px;
-            padding: 30px;
-            border: 2px solid rgba(255, 0, 128, 0.3);
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            margin-bottom: 2rem;
         }
 
-        .lab-title {
-            font-size: 20px;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #ff0080, #8a2be2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
-        .research-item {
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            border: 1px solid rgba(255, 0, 128, 0.2);
-            transition: all 0.3s;
+        .protocol-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.05),
+                rgba(255, 215, 0, 0.05));
+            border-radius: 20px;
+            text-align: center;
             cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--glass-border);
         }
 
-        .research-item:hover {
-            background: rgba(255, 0, 128, 0.1);
-            transform: translateX(5px);
+        .protocol-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.2),
+                rgba(155, 89, 182, 0.2));
+        }
+
+        /* API Console */
+        .api-console {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--vera-soft-gold);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        .api-key {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--vera-emerald);
+            border-radius: 8px;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            word-break: break-all;
+            font-size: 0.85rem;
+            color: var(--vera-emerald);
+        }
+
+        /* Right Panel - Premium Features */
+        .right-panel {
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.05) 0%, 
+                rgba(155, 89, 182, 0.05) 100%);
+            border-radius: 25px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            height: fit-content;
+        }
+
+        .integration-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--glass-border);
+        }
+
+        .integration-card.connected {
+            border-color: var(--vera-emerald);
+            background: rgba(16, 185, 129, 0.1);
         }
 
         .voice-selector {
-            background: linear-gradient(135deg, 
-                rgba(138, 43, 226, 0.1), 
-                rgba(0, 255, 255, 0.05));
-            border-radius: 25px;
-            padding: 30px;
-            border: 2px solid rgba(0, 255, 255, 0.2);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
         }
 
         .voice-option {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            margin-bottom: 12px;
+            padding: 0.8rem;
+            background: rgba(155, 89, 182, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            text-align: center;
             cursor: pointer;
             transition: all 0.3s;
         }
 
-        .voice-option:hover {
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid #00ffff;
+        .voice-option.selected {
+            border-color: var(--vera-soft-gold);
+            background: rgba(255, 215, 0, 0.2);
         }
 
-        .voice-icon {
-            width: 40px;
-            height: 40px;
-            background: conic-gradient(from 0deg, #8a2be2, #00ffff);
-            border-radius: 50%;
+        /* Analytics Dashboard */
+        .analytics-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .chart-container {
+            height: 200px;
+            background: linear-gradient(135deg, 
+                rgba(100, 181, 246, 0.1),
+                rgba(155, 89, 182, 0.05));
+            border-radius: 15px;
+            padding: 1rem;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(180deg, var(--vera-soft-gold), var(--vera-lavender));
+            border-radius: 5px 5px 0 0;
+            animation: growBar 1.5s ease-out;
+        }
+
+        @keyframes growBar {
+            from { height: 0; }
         }
 
         /* Responsive */
@@ -523,250 +478,367 @@
     </style>
 </head>
 <body>
-    <!-- Quantum Field Background -->
-    <div class="quantum-field"></div>
-    
-    <!-- Quantum Particles -->
-    <div id="quantumParticles"></div>
+    <!-- Premium Neural Universe -->
+    <div class="neural-universe" id="neuralUniverse"></div>
 
     <!-- Premium Header -->
-    <div class="header">
+    <header class="header">
         <div class="header-content">
-            <div class="logo">VERA Portal</div>
-            <div class="tier-badge">
-                <div class="tier-badge-inner">⚡ INTEGRATOR - $79/month</div>
+            <div class="logo-section">
+                <div class="logo" onclick="window.location.href='index.html'">VERA</div>
+                <div class="tier-badge-premium">INTEGRATOR • $79/month</div>
+            </div>
+            <div class="user-menu">
+                <div class="integration-status">
+                    <div class="integration-dot">🍎</div>
+                    <div class="integration-dot">🎵</div>
+                    <div class="integration-dot">📱</div>
+                    <div class="integration-dot">⌚</div>
+                    <div class="integration-dot">🧬</div>
+                </div>
+                <div style="padding: 0.5rem 1.5rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border-radius: 25px; color: white; font-weight: 500;">
+                    API Active
+                </div>
             </div>
         </div>
-    </div>
+    </header>
 
     <!-- Main Container -->
     <div class="container">
-        <!-- Advanced Sidebar -->
-        <div class="sidebar">
-            <div class="vera-quantum-orb">
-                <div class="quantum-ring"></div>
-                <div class="quantum-ring"></div>
-                <div class="quantum-ring"></div>
-                <div class="vera-core">V</div>
+        <!-- Premium Sidebar -->
+        <aside class="sidebar">
+            <div class="vera-orb-premium">
+                <span class="vera-orb-text">VERA</span>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 2rem; padding: 1rem; background: rgba(255, 215, 0, 0.1); border-radius: 15px;">
+                <div style="font-size: 0.9rem; color: var(--vera-soft-gold); margin-bottom: 0.5rem;">Full Integration Access</div>
+                <div style="font-size: 0.8rem; color: var(--text-soft);">Unlimited Everything</div>
             </div>
             
             <nav>
-                <a href="#" class="nav-item">
-                    <span>🎮</span>
-                    <span>Control Center</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span>🔌</span>
-                    <span>API Console</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span>📊</span>
-                    <span>Advanced Analytics</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span>🗺️</span>
-                    <span>Coherence Mapping</span>
-                </a>
-                <a href="#" class="nav-item">
+                <div class="menu-item active">
+                    <span>🏠</span>
+                    <span>Command Center</span>
+                </div>
+                <div class="menu-item">
+                    <span>🚀</span>
+                    <span>Advanced Sessions</span>
+                </div>
+                <div class="menu-item">
                     <span>🔬</span>
-                    <span>Research Lab</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span>👥</span>
-                    <span>Practitioner Portal</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span>🎨</span>
-                    <span>White Label</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span>🧬</span>
-                    <span>Trauma Protocols</span>
-                </a>
+                    <span>Neural Lab</span>
+                </div>
+                <div class="menu-item">
+                    <span>📈</span>
+                    <span>Analytics Pro</span>
+                </div>
+                <div class="menu-item">
+                    <span>🔌</span>
+                    <span>API Dashboard</span>
+                </div>
+                <div class="menu-item">
+                    <span>🎙️</span>
+                    <span>Voice Studio</span>
+                </div>
+                <div class="menu-item">
+                    <span>🏥</span>
+                    <span>Practitioner Hub</span>
+                </div>
+                <div class="menu-item">
+                    <span>⚙️</span>
+                    <span>Advanced Settings</span>
+                </div>
             </nav>
-        </div>
+        </aside>
 
         <!-- Main Content -->
-        <div class="main-content">
-            <h1 style="font-size: 42px; margin-bottom: 40px; background: conic-gradient(from 45deg, #8a2be2, #00ffff, #ff0080, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                Integration Command Center
-            </h1>
+        <main class="main-content">
+            <div class="welcome-section">
+                <h1>Neural Integration Laboratory</h1>
+                <p style="color: var(--text-soft); font-size: 1.2rem;">
+                    Complete nervous system mastery at your fingertips
+                </p>
+            </div>
 
-            <!-- API Console -->
+            <div class="premium-stats-grid">
+                <div class="premium-stat-card">
+                    <div class="stat-value">∞</div>
+                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Unlimited Sessions</div>
+                </div>
+                <div class="premium-stat-card">
+                    <div class="stat-value">94%</div>
+                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Coherence Score</div>
+                </div>
+                <div class="premium-stat-card">
+                    <div class="stat-value">12</div>
+                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Active Integrations</div>
+                </div>
+                <div class="premium-stat-card">
+                    <div class="stat-value">247</div>
+                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Sessions Completed</div>
+                </div>
+                <div class="premium-stat-card">
+                    <div class="stat-value">45ms</div>
+                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Peak HRV</div>
+                </div>
+            </div>
+
+            <div class="advanced-session-area">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <div>
+                        <h2 style="font-size: 2rem; color: var(--vera-soft-gold);">
+                            Advanced Protocols
+                        </h2>
+                        <p style="color: var(--text-soft);">
+                            Full spectrum nervous system regulation
+                        </p>
+                    </div>
+                    <button style="padding: 1rem 3rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 50px; color: white; font-weight: 500; cursor: pointer; font-size: 1.1rem;">
+                        Start Custom Protocol
+                    </button>
+                </div>
+                
+                <div class="protocol-grid">
+                    <div class="protocol-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🧠</div>
+                        <div>Neural Reset</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">45 min</div>
+                    </div>
+                    <div class="protocol-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💫</div>
+                        <div>Trauma Release</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">60 min</div>
+                    </div>
+                    <div class="protocol-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌊</div>
+                        <div>Deep Flow</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">30 min</div>
+                    </div>
+                    <div class="protocol-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚡</div>
+                        <div>Peak Performance</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">25 min</div>
+                    </div>
+                    <div class="protocol-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔮</div>
+                        <div>Intuition Training</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">35 min</div>
+                    </div>
+                    <div class="protocol-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎯</div>
+                        <div>Focus Enhancement</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">20 min</div>
+                    </div>
+                    <div class="protocol-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💤</div>
+                        <div>Sleep Optimization</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">40 min</div>
+                    </div>
+                    <div class="protocol-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌟</div>
+                        <div>Custom Protocol</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Variable</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Console Section -->
             <div class="api-console">
-                <div class="api-header">
-                    <div class="api-title">API Console</div>
-                    <div class="api-status">
-                        <span class="endpoint-status"></span>
-                        <span>All Systems Operational</span>
-                    </div>
+                <h3 style="color: var(--vera-soft-gold); margin-bottom: 1rem;">API Access Console</h3>
+                <div class="api-key">
+                    API Key: vera_integrator_79tier_xKj9mP2qL8nB4vC6zX3aW5dR7fY9hT1s...
                 </div>
-                
-                <div class="api-key-display">
-                    <div class="api-key-label">Your API Key</div>
-                    <div class="api-key">vera_live_8f3d9a2b7c4e5f6a1b2c3d4e5f6a7b8c</div>
-                </div>
-                
-                <div class="api-endpoints">
-                    <div class="endpoint">
-                        <span class="endpoint-method">GET</span>
-                        <span class="endpoint-path">/api/v1/sessions</span>
-                        <span class="endpoint-status"></span>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                    <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
+                        <div style="color: var(--vera-emerald); font-size: 1.5rem;">2,847</div>
+                        <div style="color: var(--text-muted); font-size: 0.8rem;">API Calls Today</div>
                     </div>
-                    <div class="endpoint">
-                        <span class="endpoint-method">POST</span>
-                        <span class="endpoint-path">/api/v1/biometrics</span>
-                        <span class="endpoint-status"></span>
+                    <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
+                        <div style="color: var(--vera-neural-blue); font-size: 1.5rem;">Unlimited</div>
+                        <div style="color: var(--text-muted); font-size: 0.8rem;">Rate Limit</div>
                     </div>
-                    <div class="endpoint">
-                        <span class="endpoint-method">GET</span>
-                        <span class="endpoint-path">/api/v1/coherence</span>
-                        <span class="endpoint-status"></span>
-                    </div>
-                    <div class="endpoint">
-                        <span class="endpoint-method">POST</span>
-                        <span class="endpoint-path">/api/v1/trauma-resolution</span>
-                        <span class="endpoint-status"></span>
+                    <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
+                        <div style="color: var(--vera-lavender); font-size: 1.5rem;">12ms</div>
+                        <div style="color: var(--text-muted); font-size: 0.8rem;">Avg Response</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Advanced Analytics -->
-            <div class="analytics-grid">
-                <div class="analytics-card">
-                    <div class="analytics-value">2.4K</div>
-                    <div class="analytics-label">API Calls Today</div>
-                </div>
-                <div class="analytics-card">
-                    <div class="analytics-value">98.7%</div>
-                    <div class="analytics-label">Coherence Rate</div>
-                </div>
-                <div class="analytics-card">
-                    <div class="analytics-value">147</div>
-                    <div class="analytics-label">Active Integrations</div>
-                </div>
-                <div class="analytics-card">
-                    <div class="analytics-value">12ms</div>
-                    <div class="analytics-label">Response Time</div>
+            <!-- Analytics Dashboard -->
+            <div class="analytics-section">
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">30-Day Neural Pattern Analysis</h3>
+                <div class="chart-container">
+                    <div class="chart-bar" style="height: 60%;"></div>
+                    <div class="chart-bar" style="height: 75%;"></div>
+                    <div class="chart-bar" style="height: 85%;"></div>
+                    <div class="chart-bar" style="height: 90%;"></div>
+                    <div class="chart-bar" style="height: 95%;"></div>
+                    <div class="chart-bar" style="height: 88%;"></div>
+                    <div class="chart-bar" style="height: 92%;"></div>
+                    <div class="chart-bar" style="height: 97%;"></div>
                 </div>
             </div>
+        </main>
 
-            <!-- Coherence Mapping -->
-            <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.05), rgba(0, 255, 255, 0.02)); padding: 30px; border-radius: 20px; border: 1px solid rgba(138, 43, 226, 0.2);">
-                <h2 style="font-size: 28px; margin-bottom: 25px; color: #00ffff;">Neural Coherence Mapping</h2>
-                <div style="height: 300px; background: rgba(0, 0, 0, 0.5); border-radius: 15px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                    <canvas id="coherenceCanvas" style="width: 100%; height: 100%;"></canvas>
-                    <div style="position: absolute; color: #8a2be2; font-size: 24px; font-weight: bold;">
-                        Coherence Field Active
+        <!-- Right Panel - Premium Features -->
+        <aside class="right-panel">
+            <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--vera-soft-gold);">
+                Full Integration Suite
+            </h3>
+            
+            <!-- Device Integrations -->
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--vera-lavender); margin-bottom: 1rem; font-size: 1.1rem;">Connected Devices</h4>
+                <div class="integration-card connected">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span>⌚</span>
+                        <span>Apple Watch</span>
                     </div>
+                    <span style="color: var(--vera-emerald); font-size: 0.8rem;">Live</span>
+                </div>
+                <div class="integration-card connected">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span>🎵</span>
+                        <span>Spotify</span>
+                    </div>
+                    <span style="color: var(--vera-emerald); font-size: 0.8rem;">Active</span>
+                </div>
+                <div class="integration-card connected">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span>📱</span>
+                        <span>iPhone Health</span>
+                    </div>
+                    <span style="color: var(--vera-emerald); font-size: 0.8rem;">Synced</span>
+                </div>
+                <div class="integration-card">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span>🧠</span>
+                        <span>Muse Headband</span>
+                    </div>
+                    <button style="padding: 0.3rem 0.8rem; background: var(--vera-lavender); border: none; border-radius: 10px; color: white; font-size: 0.8rem; cursor: pointer;">Connect</button>
                 </div>
             </div>
-        </div>
 
-        <!-- Right Panel -->
-        <div class="right-panel">
-            <!-- Research Lab Access -->
-            <div class="research-lab">
-                <h3 class="lab-title">🔬 Research Lab</h3>
-                <div class="research-item">
-                    <div style="color: #ff0080; font-weight: bold;">Quantum Entanglement Study</div>
-                    <div style="color: #999; font-size: 12px; margin-top: 5px;">Phase 3 - Active</div>
-                </div>
-                <div class="research-item">
-                    <div style="color: #00ffff; font-weight: bold;">Neural Plasticity Protocol</div>
-                    <div style="color: #999; font-size: 12px; margin-top: 5px;">Beta Testing</div>
-                </div>
-                <div class="research-item">
-                    <div style="color: #8a2be2; font-weight: bold;">Trauma Resolution Algorithm</div>
-                    <div style="color: #999; font-size: 12px; margin-top: 5px;">v2.4 Released</div>
+            <!-- Custom Voice Selection -->
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--vera-lavender); margin-bottom: 1rem; font-size: 1.1rem;">Custom Voice</h4>
+                <div class="voice-selector">
+                    <div class="voice-option selected">Original</div>
+                    <div class="voice-option">Calming</div>
+                    <div class="voice-option">Ethereal</div>
+                    <div class="voice-option">Masculine</div>
+                    <div class="voice-option">Child-like</div>
+                    <div class="voice-option">Custom AI</div>
                 </div>
             </div>
 
-            <!-- Voice Selector -->
-            <div class="voice-selector">
-                <h3 style="font-size: 20px; margin-bottom: 20px; color: #00ffff;">Custom Voice Selection</h3>
-                <div class="voice-option">
-                    <div class="voice-icon">🎵</div>
+            <!-- Practitioner Collaboration -->
+            <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(155, 89, 182, 0.1)); border-radius: 20px; padding: 1.5rem; margin-bottom: 2rem;">
+                <h4 style="color: var(--vera-soft-gold); margin-bottom: 1rem;">Practitioner Access</h4>
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--vera-lavender); display: flex; align-items: center; justify-content: center;">
+                        👨‍⚕️
+                    </div>
                     <div>
-                        <div style="font-weight: bold;">Aurora</div>
-                        <div style="color: #999; font-size: 12px;">Soothing & Calm</div>
+                        <div style="font-size: 0.9rem;">Dr. Sarah Chen</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Last review: 2 days ago</div>
                     </div>
                 </div>
-                <div class="voice-option">
-                    <div class="voice-icon">🎵</div>
-                    <div>
-                        <div style="font-weight: bold;">Nexus</div>
-                        <div style="color: #999; font-size: 12px;">Professional & Clear</div>
-                    </div>
-                </div>
-                <div class="voice-option">
-                    <div class="voice-icon">🎵</div>
-                    <div>
-                        <div style="font-weight: bold;">Quantum</div>
-                        <div style="color: #999; font-size: 12px;">Futuristic & Dynamic</div>
-                    </div>
-                </div>
-                <button style="width: 100%; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #8a2be2, #00ffff); border: none; border-radius: 12px; color: white; font-weight: bold; cursor: pointer;">
-                    + Upload Custom Voice
+                <button style="width: 100%; padding: 0.8rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 15px; color: white; cursor: pointer;">
+                    Share Session Data
                 </button>
             </div>
-        </div>
+
+            <!-- Export Options -->
+            <div>
+                <h4 style="color: var(--vera-lavender); margin-bottom: 1rem; font-size: 1.1rem;">Data Export</h4>
+                <div style="display: grid; gap: 0.5rem;">
+                    <button style="padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-soft); cursor: pointer;">
+                        Export to PDF
+                    </button>
+                    <button style="padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-soft); cursor: pointer;">
+                        Download Raw Data
+                    </button>
+                    <button style="padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-soft); cursor: pointer;">
+                        Generate Report
+                    </button>
+                </div>
+            </div>
+        </aside>
     </div>
 
     <script>
-        // Create 200+ quantum particles
-        const particlesContainer = document.getElementById('quantumParticles');
-        for (let i = 0; i < 200; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'quantum-particle';
+        // Create Premium Neural Universe
+        function createNeuralUniverse() {
+            const universe = document.getElementById('neuralUniverse');
             
-            // Vary colors for quantum effect
-            const colors = [
-                'radial-gradient(circle, #8a2be2, transparent)',
-                'radial-gradient(circle, #00ffff, transparent)',
-                'radial-gradient(circle, #ff0080, transparent)',
-                'radial-gradient(circle, #ffff00, transparent)'
+            // Premium colors including gold
+            const premiumColors = [
+                'radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(248, 187, 208, 0.8) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(177, 156, 217, 0.8) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(155, 89, 182, 0.8) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(100, 181, 246, 0.8) 0%, transparent 70%)',
+                'radial-gradient(circle, rgba(16, 185, 129, 0.8) 0%, transparent 70%)'
             ];
             
-            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 30 + 's';
-            particle.style.animationDuration = (25 + Math.random() * 10) + 's';
-            
-            particlesContainer.appendChild(particle);
-        }
-
-        // Simulate coherence mapping
-        const canvas = document.getElementById('coherenceCanvas');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-            
-            function drawCoherence() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Draw coherence waves
-                for (let i = 0; i < 5; i++) {
-                    ctx.beginPath();
-                    ctx.strokeStyle = `rgba(138, 43, 226, ${0.3 - i * 0.05})`;
-                    ctx.lineWidth = 2;
-                    
-                    for (let x = 0; x < canvas.width; x++) {
-                        const y = canvas.height / 2 + Math.sin(x * 0.02 + Date.now() * 0.001 + i) * 50;
-                        if (x === 0) {
-                            ctx.moveTo(x, y);
-                        } else {
-                            ctx.lineTo(x, y);
-                        }
-                    }
-                    ctx.stroke();
-                }
-                
-                requestAnimationFrame(drawCoherence);
+            // Create 300+ neurons for premium experience
+            for (let i = 0; i < 300; i++) {
+                const neuron = document.createElement('div');
+                neuron.className = 'premium-neuron';
+                const size = 3 + Math.random() * 10;
+                neuron.style.width = size + 'px';
+                neuron.style.height = size + 'px';
+                neuron.style.left = Math.random() * 100 + '%';
+                neuron.style.top = Math.random() * 100 + '%';
+                neuron.style.background = premiumColors[Math.floor(Math.random() * premiumColors.length)];
+                neuron.style.animationDelay = Math.random() * 15 + 's';
+                neuron.style.animationDuration = (12 + Math.random() * 8) + 's';
+                universe.appendChild(neuron);
             }
             
-            drawCoherence();
+            // Create premium neural pathways
+            for (let i = 0; i < 50; i++) {
+                const pathway = document.createElement('div');
+                pathway.style.position = 'absolute';
+                pathway.style.width = (150 + Math.random() * 200) + 'px';
+                pathway.style.height = '2px';
+                pathway.style.background = `linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent)`;
+                pathway.style.left = Math.random() * 100 + '%';
+                pathway.style.top = Math.random() * 100 + '%';
+                pathway.style.transform = `rotate(${Math.random() * 360}deg)`;
+                pathway.style.animation = `pathwayPulse ${3 + Math.random() * 2}s infinite`;
+                universe.appendChild(pathway);
+            }
+        }
+        
+        createNeuralUniverse();
+
+        // Animate integration dots
+        setInterval(() => {
+            const dots = document.querySelectorAll('.integration-dot');
+            dots.forEach((dot, index) => {
+                setTimeout(() => {
+                    dot.style.transform = 'scale(1.3)';
+                    setTimeout(() => {
+                        dot.style.transform = 'scale(1)';
+                    }, 200);
+                }, index * 100);
+            });
+        }, 3000);
+
+        // Voice option selection
+        document.querySelectorAll('.voice-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.voice-option').forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+
+        @keyframes pathwayPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
         }
     </script>
 </body>
