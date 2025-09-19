@@ -320,6 +320,10 @@
             animation: growBar 2s ease-out;
         }
 
+        @keyframes growBar {
+            from { height: 0; }
+        }
+
         /* HIPAA Compliance Badge */
         .compliance-section {
             background: linear-gradient(135deg, 
@@ -421,9 +425,56 @@
             font-size: 1.1rem;
         }
 
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(229, 228, 226, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1920px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--vera-platinum);
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: var(--text-soft);
+            text-decoration: none;
+            display: block;
+            padding: 0.3rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: var(--vera-soft-gold);
+        }
+
         /* Responsive */
         @media (max-width: 1400px) {
             .department-grid, .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .org-title {
+                font-size: 2rem;
+            }
+            
+            .org-stats-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -566,4 +617,323 @@
                 </div>
 
                 <div class="department-card">
-                    <div class="department-header
+                    <div class="department-header">
+                        <div class="department-name">Marketing</div>
+                        <div class="department-status">Active</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">Users</div>
+                            <div style="font-size: 1.5rem; color: var(--vera-neural-blue);">783</div>
+                        </div>
+                        <div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">Avg Coherence</div>
+                            <div style="font-size: 1.5rem; color: var(--vera-emerald);">91%</div>
+                        </div>
+                    </div>
+                    <button style="width: 100%; margin-top: 1rem; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 15px; color: var(--text-soft); cursor: pointer;">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Controls -->
+        <section class="admin-controls">
+            <h2 style="font-size: 2rem; color: var(--vera-platinum); margin-bottom: 1rem;">Administrative Controls</h2>
+            <p style="color: var(--text-soft); margin-bottom: 2rem;">Manage your organization's VERA deployment</p>
+            
+            <div class="control-grid">
+                <div class="control-button">
+                    <div class="control-icon">👥</div>
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">User Management</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">Add, remove, and manage users</div>
+                </div>
+                
+                <div class="control-button">
+                    <div class="control-icon">📊</div>
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Analytics</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">Deep insights and reports</div>
+                </div>
+                
+                <div class="control-button">
+                    <div class="control-icon">⚙️</div>
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Settings</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">Configure platform settings</div>
+                </div>
+                
+                <div class="control-button">
+                    <div class="control-icon">🔐</div>
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Security</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">Manage access and permissions</div>
+                </div>
+                
+                <div class="control-button">
+                    <div class="control-icon">🔄</div>
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Integrations</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">Connect with other tools</div>
+                </div>
+                
+                <div class="control-button">
+                    <div class="control-icon">📝</div>
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Content Library</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">Manage protocols and content</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Dashboard -->
+        <section class="analytics-dashboard">
+            <h2 style="font-size: 2rem; color: var(--vera-platinum); margin-bottom: 2rem;">Organization Wellness Trends</h2>
+            <div class="chart-container">
+                <div class="chart-bar" style="height: 75%"></div>
+                <div class="chart-bar" style="height: 85%"></div>
+                <div class="chart-bar" style="height: 65%"></div>
+                <div class="chart-bar" style="height: 90%"></div>
+                <div class="chart-bar" style="height: 88%"></div>
+                <div class="chart-bar" style="height: 92%"></div>
+                <div class="chart-bar" style="height: 78%"></div>
+            </div>
+            <div style="display: flex; justify-content: space-around; margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+            </div>
+        </section>
+
+        <!-- HIPAA Compliance Section -->
+        <section class="compliance-section">
+            <h2 style="font-size: 2rem; color: var(--vera-platinum); margin-bottom: 1rem;">Enterprise Security & Compliance</h2>
+            <p style="color: var(--text-soft); margin-bottom: 2rem;">
+                VERA Enterprise meets the highest standards for data security and regulatory compliance
+            </p>
+            
+            <div class="compliance-badges">
+                <div class="compliance-badge">
+                    <span style="font-size: 1.5rem;">🔒</span>
+                    <span style="font-weight: 600;">HIPAA Compliant</span>
+                </div>
+                <div class="compliance-badge">
+                    <span style="font-size: 1.5rem;">🛡️</span>
+                    <span style="font-weight: 600;">SOC 2 Type II</span>
+                </div>
+                <div class="compliance-badge">
+                    <span style="font-size: 1.5rem;">🔐</span>
+                    <span style="font-weight: 600;">ISO 27001</span>
+                </div>
+                <div class="compliance-badge">
+                    <span style="font-size: 1.5rem;">✓</span>
+                    <span style="font-weight: 600;">GDPR Ready</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Solutions -->
+        <section style="margin: 3rem 0;">
+            <h2 style="font-size: 2.5rem; color: var(--vera-platinum); margin-bottom: 1rem; text-align: center;">
+                Tailored Enterprise Solutions
+            </h2>
+            <p style="text-align: center; color: var(--text-soft); margin-bottom: 3rem; font-size: 1.1rem;">
+                Scalable, customizable wellness programs designed for your organization's unique needs
+            </p>
+            
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🎯</div>
+                    <div class="solution-title">Executive Wellness Program</div>
+                    <p style="color: var(--text-soft);">
+                        Specialized protocols for leadership teams focused on stress resilience, decision-making clarity, and sustained peak performance
+                    </p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">🏥</div>
+                    <div class="solution-title">Healthcare Integration</div>
+                    <p style="color: var(--text-soft);">
+                        Seamless integration with existing wellness programs, EAPs, and healthcare benefits for comprehensive employee support
+                    </p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">📈</div>
+                    <div class="solution-title">Performance Optimization</div>
+                    <p style="color: var(--text-soft);">
+                        Data-driven insights to enhance team productivity, reduce burnout, and improve organizational resilience
+                    </p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">🌍</div>
+                    <div class="solution-title">Global Deployment</div>
+                    <p style="color: var(--text-soft);">
+                        Multi-language support and culturally adapted content for organizations with international teams
+                    </p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">🔧</div>
+                    <div class="solution-title">Custom API Access</div>
+                    <p style="color: var(--text-soft);">
+                        Full API access for integration with your existing HR systems, wellness platforms, and data analytics tools
+                    </p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">🎓</div>
+                    <div class="solution-title">Training & Certification</div>
+                    <p style="color: var(--text-soft);">
+                        Comprehensive onboarding and certification programs for wellness champions and HR teams
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section class="support-section">
+            <h2 style="font-size: 2rem; color: var(--vera-platinum); margin-bottom: 1rem;">Enterprise Support</h2>
+            <p style="color: var(--text-soft); margin-bottom: 2rem;">
+                24/7 dedicated support for your organization
+            </p>
+            
+            <div class="support-contact">
+                <div class="contact-card">
+                    <div class="contact-title">Technical Support</div>
+                    <div class="contact-info">enterprise@vera.ai</div>
+                    <div style="color: var(--text-muted); margin-top: 0.5rem;">24/7 Priority Response</div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-title">Account Manager</div>
+                    <div class="contact-info">1-800-VERA-ENT</div>
+                    <div style="color: var(--text-muted); margin-top: 0.5rem;">Direct Line Support</div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-title">Implementation Team</div>
+                    <div class="contact-info">deploy@vera.ai</div>
+                    <div style="color: var(--text-muted); margin-top: 0.5rem;">Onboarding Assistance</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Platform</h3>
+                <a href="#" class="footer-link">Features</a>
+                <a href="#" class="footer-link">Integrations</a>
+                <a href="#" class="footer-link">API Documentation</a>
+                <a href="#" class="footer-link">Security</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Solutions</h3>
+                <a href="#" class="footer-link">Healthcare</a>
+                <a href="#" class="footer-link">Corporate Wellness</a>
+                <a href="#" class="footer-link">Government</a>
+                <a href="#" class="footer-link">Education</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="#" class="footer-link">Research Papers</a>
+                <a href="#" class="footer-link">Case Studies</a>
+                <a href="#" class="footer-link">ROI Calculator</a>
+                <a href="#" class="footer-link">Implementation Guide</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="#" class="footer-link">About VERA</a>
+                <a href="#" class="footer-link">Careers</a>
+                <a href="#" class="footer-link">Partners</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+            <p style="color: var(--text-muted);">© 2024 VERA Enterprise. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        // Create enterprise neural network animation
+        function createEnterpriseUniverse() {
+            const universe = document.getElementById('enterpriseUniverse');
+            const colors = ['#E5E4E2', '#FFD700', '#64B5F6', '#B19CD9', '#10B981'];
+            
+            for (let i = 0; i < 15; i++) {
+                const neuron = document.createElement('div');
+                neuron.className = 'enterprise-neuron';
+                
+                const size = Math.random() * 100 + 50;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                neuron.style.width = size + 'px';
+                neuron.style.height = size + 'px';
+                neuron.style.left = Math.random() * 100 + '%';
+                neuron.style.top = Math.random() * 100 + '%';
+                neuron.style.background = `radial-gradient(circle at 30% 30%, ${color}33, ${color}11, transparent)`;
+                neuron.style.border = `1px solid ${color}44`;
+                neuron.style.animationDelay = Math.random() * 20 + 's';
+                neuron.style.animationDuration = (Math.random() * 20 + 20) + 's';
+                
+                universe.appendChild(neuron);
+            }
+        }
+
+        // Animate stat cards on scroll
+        function animateOnScroll() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.org-stat-card, .department-card, .solution-card').forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // Add fade in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            createEnterpriseUniverse();
+            animateOnScroll();
+        });
+
+        // Add interactive hover effects to buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
