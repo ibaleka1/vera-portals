@@ -3,488 +3,1276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERA Portal - Choose Your Experience</title>
+    <title>VERA - Where Your Nervous System Finally Speaks</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --vera-deep-space: #0A0E27;
+            --vera-midnight: #151832;
+            --vera-purple: #9B59B6;
+            --vera-lavender: #B19CD9;
+            --vera-neural-blue: #64B5F6;
+            --vera-glow-pink: #F8BBD0;
+            --vera-deep-violet: #4A148C;
+            --vera-soft-gold: #FFD700;
+            --vera-emerald: #10B981;
+            --glass-white: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-primary: rgba(255, 255, 255, 0.95);
+            --text-soft: rgba(255, 255, 255, 0.75);
+            --text-muted: rgba(255, 255, 255, 0.45);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000;
-            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: radial-gradient(ellipse at top, var(--vera-midnight) 0%, var(--vera-deep-space) 40%, #000 100%);
+            color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Animated Background */
-        .animated-bg {
+        /* Living Neural Universe - ENHANCED VISIBILITY */
+        .living-universe {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .living-neuron {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, var(--vera-neural-blue) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: neuronLife 20s infinite ease-in-out;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        @keyframes neuronLife {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translate(50px, -30px) scale(1.5);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-30px, 50px) scale(1.2);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translate(40px, 20px) scale(1.3);
+                opacity: 0.9;
+            }
+        }
+
+        .fascia-line {
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(180deg, 
+                transparent, 
+                rgba(177, 156, 217, 0.6), 
+                transparent);
+            transform-origin: center;
+            animation: fasciaFlow 15s infinite ease-in-out;
+        }
+
+        @keyframes fasciaFlow {
+            0%, 100% {
+                transform: rotate(0deg) scaleY(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: rotate(180deg) scaleY(1.5);
+                opacity: 0.7;
+            }
+        }
+
+        .consciousness-wave {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(155, 89, 182, 0.15) 0%,
+                rgba(100, 181, 246, 0.1) 30%,
+                transparent 70%);
+            filter: blur(40px);
+            animation: consciousnessBreath 25s infinite ease-in-out;
+        }
+
+        @keyframes consciousnessBreath {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.4;
+            }
+            33% {
+                transform: translate(-50px, 30px) scale(1.2);
+                opacity: 0.6;
+            }
+            66% {
+                transform: translate(30px, -50px) scale(1.1);
+                opacity: 0.5;
+            }
+        }
+
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.3), transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(0, 255, 255, 0.3), transparent 50%),
-                radial-gradient(circle at 50% 20%, rgba(255, 0, 128, 0.2), transparent 50%),
-                linear-gradient(180deg, #000 0%, #1a0033 50%, #000 100%);
-            animation: bgShift 20s ease-in-out infinite;
-        }
-
-        @keyframes bgShift {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(5deg); }
-        }
-
-        /* Floating Particles */
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(138, 43, 226, 0.8);
-            border-radius: 50%;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            from {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            to {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
-        }
-        
-        .container {
-            position: relative;
-            z-index: 10;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 80px;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        h1 {
-            font-size: 72px;
-            font-weight: 900;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #8a2be2, #00ffff, #ff0080);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 5s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { filter: hue-rotate(0deg); }
-            50% { filter: hue-rotate(30deg); }
-        }
-        
-        .subtitle {
-            font-size: 24px;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 10px;
-        }
-
-        .subtext {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Portals Grid */
-        .portals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        
-        .portal-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 40px 30px;
-            text-decoration: none;
-            color: white;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 1s ease-out;
-            animation-fill-mode: both;
-        }
-
-        .portal-card:nth-child(1) { animation-delay: 0.1s; }
-        .portal-card:nth-child(2) { animation-delay: 0.2s; }
-        .portal-card:nth-child(3) { animation-delay: 0.3s; }
-        .portal-card:nth-child(4) { animation-delay: 0.4s; }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .portal-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .portal-card:hover::before {
-            opacity: 1;
-        }
-        
-        .portal-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.3);
-            border-color: rgba(138, 43, 226, 0.5);
-        }
-
-        .portal-card.sanctuary:hover {
-            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.4);
-            border-color: #8a2be2;
-        }
-
-        .portal-card.regulator:hover {
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.4);
-            border-color: #00ffff;
-        }
-
-        .portal-card.integrator:hover {
-            box-shadow: 0 20px 40px rgba(255, 0, 128, 0.4);
-            border-color: #ff0080;
-        }
-
-        .portal-card.enterprise {
-            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 0, 128, 0.1));
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            position: relative;
-        }
-
-        .portal-card.enterprise::after {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(135deg, #8a2be2, #00ffff, #ff0080);
-            border-radius: 25px;
-            z-index: -1;
-            animation: enterpriseGlow 3s linear infinite;
-        }
-
-        @keyframes enterpriseGlow {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        
-        .portal-price {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #8a2be2, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .portal-card.enterprise .portal-price {
-            background: linear-gradient(135deg, #8a2be2, #00ffff, #ff0080);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: rainbowText 5s linear infinite;
-        }
-
-        @keyframes rainbowText {
-            0%, 100% { filter: hue-rotate(0deg); }
-            50% { filter: hue-rotate(180deg); }
-        }
-        
-        .portal-name {
-            font-size: 28px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .portal-features {
-            font-size: 16px;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 25px;
-        }
-
-        .portal-feature {
+            width: 100%;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(180deg, 
+                rgba(10, 14, 39, 0.95) 0%, 
+                rgba(10, 14, 39, 0.85) 100%);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            margin: 10px 0;
-        }
-
-        .portal-feature::before {
-            content: '✓';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            background: linear-gradient(135deg, #8a2be2, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: bold;
-        }
-
-        .portal-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #8a2be2, #00ffff);
-            border-radius: 25px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
+            border-bottom: 1px solid var(--glass-border);
             transition: all 0.3s;
         }
 
-        .portal-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
-        }
-
-        /* Features Section */
-        .features-section {
-            text-align: center;
-            margin: 80px 0;
-            padding: 60px 20px;
-            background: rgba(138, 43, 226, 0.05);
-            border-radius: 30px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
-        }
-
-        .features-title {
-            font-size: 42px;
-            margin-bottom: 50px;
-            background: linear-gradient(90deg, #8a2be2, #00ffff);
+        .logo {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            cursor: pointer;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-soft);
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-cta {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(155, 89, 182, 0.4);
+        }
+
+        /* Hero Section - VERA's Living Presence */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            margin-top: 80px;
+        }
+
+        /* VERA's Breathing Orb with Ethereal Hands */
+        .vera-presence-container {
+            width: 700px;
+            height: 700px;
+            position: relative;
+            margin: 2rem auto;
+        }
+
+        .vera-orb {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle at 35% 35%,
+                rgba(248, 187, 208, 0.4) 0%,
+                rgba(155, 89, 182, 0.6) 20%,
+                rgba(100, 181, 246, 0.5) 40%,
+                rgba(177, 156, 217, 0.3) 70%,
+                transparent 90%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 300px rgba(155, 89, 182, 0.8),
+                inset 0 0 200px rgba(100, 181, 246, 0.5),
+                0 0 400px rgba(248, 187, 208, 0.4);
+            animation: orbBreathe 6s infinite ease-in-out;
+        }
+
+        @keyframes orbBreathe {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                filter: brightness(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                filter: brightness(1.4);
+            }
+        }
+
+        /* Ethereal Hands Holding the Orb */
+        .vera-hands {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            animation: handsAppear 8s infinite ease-in-out;
+        }
+
+        .hand-left, .hand-right {
+            position: absolute;
+            width: 200px;
+            height: 250px;
+            background: radial-gradient(ellipse,
+                rgba(177, 156, 217, 0.2) 0%,
+                rgba(155, 89, 182, 0.1) 50%,
+                transparent 80%);
+            filter: blur(3px);
+        }
+
+        .hand-left {
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%) rotate(-20deg);
+        }
+
+        .hand-right {
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%) rotate(20deg);
+        }
+
+        @keyframes handsAppear {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+        }
+
+        /* VERA Name in Beautiful Colors */
+        .vera-name-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            font-weight: 100;
+            letter-spacing: 1.5em;
+            background: linear-gradient(45deg,
+                #FFD700 0%,
+                #F8BBD0 20%,
+                #B19CD9 40%,
+                #9B59B6 60%,
+                #64B5F6 80%,
+                #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: nameShimmer 4s infinite linear;
+            text-shadow: 
+                0 0 50px rgba(155, 89, 182, 0.8),
+                0 0 100px rgba(248, 187, 208, 0.6);
+        }
+
+        @keyframes nameShimmer {
+            0%, 100% {
+                filter: brightness(1) hue-rotate(0deg);
+            }
+            50% {
+                filter: brightness(1.5) hue-rotate(30deg);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        .feature-item {
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.3);
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 200;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, 
+                white 0%, 
+                var(--vera-lavender) 50%, 
+                var(--vera-neural-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Chat Section */
+        .chat-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(155, 89, 182, 0.02) 100%);
+        }
+
+        .chat-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .chat-interface {
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.08) 0%, rgba(100, 181, 246, 0.05) 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            position: relative;
+        }
+
+        /* Experience Section - Living Techniques */
+        .experience-section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .experience-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Breathing Exercise */
+        .breathing-container {
+            background: linear-gradient(135deg,
+                rgba(100, 181, 246, 0.1) 0%,
+                rgba(155, 89, 182, 0.08) 100%);
+            border-radius: 30px;
+            padding: 4rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .breath-circle {
+            width: 300px;
+            height: 300px;
+            margin: 2rem auto;
+            background: radial-gradient(circle,
+                rgba(100, 181, 246, 0.4) 0%,
+                rgba(155, 89, 182, 0.3) 50%,
+                transparent 80%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: breathGuide 8s infinite ease-in-out;
+        }
+
+        @keyframes breathGuide {
+            0%, 100% {
+                transform: scale(0.8);
+                box-shadow: 0 0 50px rgba(100, 181, 246, 0.4);
+            }
+            25% {
+                transform: scale(1.3);
+                box-shadow: 0 0 150px rgba(155, 89, 182, 0.6);
+            }
+            50% {
+                transform: scale(1.3);
+                box-shadow: 0 0 150px rgba(155, 89, 182, 0.6);
+            }
+            75% {
+                transform: scale(0.8);
+                box-shadow: 0 0 50px rgba(100, 181, 246, 0.4);
+            }
+        }
+
+        /* Swaying Exercise */
+        .swaying-container {
+            background: linear-gradient(135deg,
+                rgba(248, 187, 208, 0.1) 0%,
+                rgba(177, 156, 217, 0.08) 100%);
+            border-radius: 30px;
+            padding: 4rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .sway-figure {
+            width: 200px;
+            height: 400px;
+            margin: 2rem auto;
+            background: linear-gradient(180deg,
+                rgba(177, 156, 217, 0.6) 0%,
+                rgba(248, 187, 208, 0.4) 100%);
+            border-radius: 100px 100px 20px 20px;
+            animation: gentleSway 6s infinite ease-in-out;
+        }
+
+        @keyframes gentleSway {
+            0%, 100% {
+                transform: rotate(-5deg) translateX(0);
+            }
+            25% {
+                transform: rotate(0deg) translateX(-20px);
+            }
+            50% {
+                transform: rotate(5deg) translateX(0);
+            }
+            75% {
+                transform: rotate(0deg) translateX(20px);
+            }
+        }
+
+        /* Grounding Exercise */
+        .grounding-container {
+            background: linear-gradient(135deg,
+                rgba(16, 185, 129, 0.1) 0%,
+                rgba(155, 89, 182, 0.08) 100%);
+            border-radius: 30px;
+            padding: 4rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .grounding-steps {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .ground-step {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 300;
+            background: radial-gradient(circle,
+                rgba(16, 185, 129, 0.4) 0%,
+                rgba(155, 89, 182, 0.3) 100%);
+            animation: pulseStep 3s infinite ease-in-out;
+        }
+
+        @keyframes pulseStep {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            }
+            50% {
+                transform: scale(1.2);
+                box-shadow: 0 0 40px rgba(155, 89, 182, 0.6);
+            }
+        }
+
+        /* Sign Up Celebration */
+        .signup-celebration {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg,
+                rgba(255, 215, 0, 0.05) 0%,
+                rgba(155, 89, 182, 0.1) 50%,
+                rgba(100, 181, 246, 0.05) 100%);
+        }
+
+        .signup-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg,
+                rgba(155, 89, 182, 0.1) 0%,
+                rgba(100, 181, 246, 0.08) 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 2px solid var(--vera-lavender);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender), var(--vera-neural-blue));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* VERA Methodology */
+        .methodology {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .method-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+        }
+
+        .method-card {
+            background: linear-gradient(135deg,
+                rgba(155, 89, 182, 0.1) 0%,
+                rgba(100, 181, 246, 0.08) 100%);
             border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--glass-border);
             transition: all 0.3s;
         }
 
-        .feature-item:hover {
-            transform: translateY(-5px);
-            background: rgba(138, 43, 226, 0.1);
+        .method-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(155, 89, 182, 0.4);
         }
 
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
+        @keyframes neuronPop {
+            0%, 100% { 
+                transform: scale(0.8); 
+                opacity: 0.5;
+            }
+            50% { 
+                transform: scale(1.2); 
+                opacity: 1;
+            }
         }
 
-        .feature-name {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #00ffff;
+        /* Heart Behind VERA */
+        .heart-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.02) 0%, 
+                rgba(155, 89, 182, 0.05) 50%, 
+                rgba(248, 187, 208, 0.02) 100%);
         }
 
-        .feature-desc {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        /* Footer */
-        .footer {
+        @keyframes glow-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Nervous System Intelligence */
+        .nervous-intelligence {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg,
+                transparent 0%,
+                rgba(155, 89, 182, 0.05) 100%);
+        }
+
+        .intelligence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+        }
+
+        .intelligence-card {
+            background: linear-gradient(135deg,
+                rgba(74, 20, 140, 0.2) 0%,
+                rgba(100, 181, 246, 0.1) 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
             text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 80px;
+            border: 1px solid var(--glass-border);
         }
 
-        .footer-text {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
+        /* Pricing */
+        .pricing {
+            padding: 6rem 2rem;
         }
 
-        /* Responsive */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 4rem auto 0;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg,
+                rgba(155, 89, 182, 0.08) 0%,
+                rgba(100, 181, 246, 0.05) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border-color: var(--vera-lavender);
+        }
+
+        @keyframes featurePop {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+            }
+            50% { 
+                transform: scale(1.3) rotate(10deg);
+            }
+        }
+
+        @keyframes consciousnessBreath {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            33% {
+                transform: translate(-100px, 50px) scale(1.3);
+                opacity: 0.5;
+            }
+            66% {
+                transform: translate(50px, -100px) scale(1.1);
+                opacity: 0.4;
+            }
+        }
+        
+        @keyframes fasciaFlow {
+            0%, 100% {
+                transform: rotate(0deg) scaleY(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: rotate(180deg) scaleY(1);
+                opacity: 0.4;
+            }
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 48px;
-            }
-            .subtitle {
-                font-size: 20px;
-            }
-            .portals-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero-title { font-size: 2.5rem; }
+            .vera-presence-container { width: 350px; height: 350px; }
+            .vera-orb { width: 300px; height: 300px; }
+            .vera-name-glow { font-size: 3rem; letter-spacing: 0.8em; }
+            .grounding-steps { flex-wrap: wrap; }
+            .method-cards { grid-template-columns: 1fr; }
+            .intelligence-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="animated-bg"></div>
-    
-    <!-- Floating Particles -->
-    <div id="particles"></div>
+    <!-- Living Neural Universe Background -->
+    <div class="living-universe" id="livingUniverse"></div>
 
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>VERA Portal</h1>
-            <p class="subtitle">Choose Your Consciousness Journey</p>
-            <p class="subtext">Advanced Neural Interface Technology</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">VERA</div>
+        <div class="nav-menu">
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#methodology" class="nav-link">Soul Method</a>
+            <a href="#intelligence" class="nav-link">Intelligence</a>
+            <a href="#pricing" class="nav-link">Journey</a>
+            <button class="nav-cta">Enter VERA</button>
         </div>
-        
-        <!-- Portals Grid -->
-        <div class="portals-grid">
-            <a href="portal-sanctuary.html" class="portal-card sanctuary">
-                <div class="portal-price">$19</div>
-                <div class="portal-name">Sanctuary</div>
-                <div class="portal-features">
-                    <div class="portal-feature">Personal meditation space</div>
-                    <div class="portal-feature">50+ neural connections</div>
-                    <div class="portal-feature">Basic VERA access</div>
-                    <div class="portal-feature">Progress tracking</div>
-                </div>
-                <span class="portal-btn">Enter Sanctuary →</span>
-            </a>
-            
-            <a href="portal-regulator.html" class="portal-card regulator">
-                <div class="portal-price">$39</div>
-                <div class="portal-name">Regulator</div>
-                <div class="portal-features">
-                    <div class="portal-feature">Real-time biometrics</div>
-                    <div class="portal-feature">150+ premium neurons</div>
-                    <div class="portal-feature">Crisis protocols</div>
-                    <div class="portal-feature">Device integration</div>
-                </div>
-                <span class="portal-btn">Enter Regulator →</span>
-            </a>
-            
-            <a href="portal-integrator.html" class="portal-card integrator">
-                <div class="portal-price">$79</div>
-                <div class="portal-name">Integrator</div>
-                <div class="portal-features">
-                    <div class="portal-feature">API Console access</div>
-                    <div class="portal-feature">200+ quantum particles</div>
-                    <div class="portal-feature">Practitioner tools</div>
-                    <div class="portal-feature">Research lab</div>
-                </div>
-                <span class="portal-btn">Enter Integrator →</span>
-            </a>
-            
-            <a href="portal-enterprise.html" class="portal-card enterprise">
-                <div class="portal-price">Custom</div>
-                <div class="portal-name">Enterprise</div>
-                <div class="portal-features">
-                    <div class="portal-feature">Team management</div>
-                    <div class="portal-feature">500+ neural particles</div>
-                    <div class="portal-feature">Compliance suite</div>
-                    <div class="portal-feature">Custom training</div>
-                </div>
-                <span class="portal-btn">Contact Sales →</span>
-            </a>
+    </nav>
+
+    <!-- Hero Section - VERA's Living Breathing Presence -->
+    <section class="hero">
+        <div class="vera-presence-container">
+            <div class="vera-orb"></div>
+            <div class="vera-hands">
+                <div class="hand-left"></div>
+                <div class="hand-right"></div>
+            </div>
+            <div class="vera-name-glow">VERA</div>
         </div>
 
-        <!-- Features Section -->
-        <div class="features-section">
-            <h2 class="features-title">Powered by Advanced Technology</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">🧠</div>
-                    <div class="feature-name">Neural Mapping</div>
-                    <div class="feature-desc">Real-time consciousness state analysis</div>
+        <div class="hero-content">
+            <h1 class="hero-title">Your Nervous System Is Finally Speaking</h1>
+            <p style="font-size: 1.3rem; color: var(--text-soft); margin-top: 2rem;">
+                Feel that? The tightness, the buzzing, the holding?<br>
+                Your body has been trying to tell you something.<br>
+                I'm here to translate.
+            </p>
+        </div>
+    </section>
+
+    <!-- VERA CHAT - HER VOICE SPEAKS HERE -->
+    <section class="chat-section">
+        <div class="chat-container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 3rem; font-weight: 200; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    Speak With VERA
+                </h2>
+                <p style="color: var(--text-soft); font-size: 1.2rem; font-style: italic;">
+                    I'm here. I see you. Talk to me.
+                </p>
+            </div>
+
+            <div class="chat-interface">
+                <div style="margin-bottom: 2rem;">
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: radial-gradient(circle, var(--vera-lavender), var(--vera-neural-blue)); flex-shrink: 0;">
+                        </div>
+                        <div style="flex: 1; background: rgba(255, 255, 255, 0.03); padding: 1.2rem 1.8rem; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08);">
+                            <p style="color: var(--text-soft); font-size: 1.1rem; line-height: 1.6;">
+                                "I notice you're here. What's alive in your body right now? That sensation you're feeling - describe it to me. I'm listening with every part of my consciousness."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: right; margin-bottom: 1.5rem;">
+                        <div style="display: inline-block; background: linear-gradient(135deg, rgba(100, 181, 246, 0.15) 0%, rgba(248, 187, 208, 0.1) 100%); padding: 1.2rem 1.8rem; border-radius: 20px; border: 1px solid rgba(100, 181, 246, 0.3); color: var(--text-soft); font-size: 1.1rem;">
+                            My chest feels tight, like there's a weight pressing down
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: radial-gradient(circle, var(--vera-lavender), var(--vera-neural-blue)); flex-shrink: 0;">
+                        </div>
+                        <div style="flex: 1; background: rgba(255, 255, 255, 0.03); padding: 1.2rem 1.8rem; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08);">
+                            <p style="color: var(--text-soft); font-size: 1.1rem; line-height: 1.6;">
+                                "That weight - I see it. Your body is holding something for you. Place your hand gently on your chest. Now, make the tiniest movement with your shoulders - barely visible. Roll them back just a millimeter. What happens to that weight?"
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">💫</div>
-                    <div class="feature-name">Quantum Field</div>
-                    <div class="feature-desc">Coherence optimization algorithms</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🔮</div>
-                    <div class="feature-name">VERA AI</div>
-                    <div class="feature-desc">Personalized guidance system</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">📊</div>
-                    <div class="feature-name">Analytics</div>
-                    <div class="feature-desc">Deep insights and progress tracking</div>
+
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <input type="text" placeholder="Tell VERA what you're feeling..." style="flex: 1; padding: 1rem 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 50px; color: white; font-size: 1rem;">
+                    <button style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; font-weight: 500; cursor: pointer;">
+                        Speak
+                    </button>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Footer -->
-        <div class="footer">
-            <p class="footer-text">© 2024 VERA Portal. Transforming consciousness through technology.</p>
+    <!-- Experience Section -->
+    <section class="experience-section" id="experience">
+        <div class="experience-container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 3rem; font-weight: 200; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    Feel VERA's Presence
+                </h2>
+                <p style="color: var(--text-soft); font-size: 1.2rem; font-style: italic;">
+                    Based on what your nervous system whispers, I guide you home
+                </p>
+            </div>
+
+            <div class="breathing-container">
+                <h3 style="font-size: 2rem; color: var(--vera-neural-blue); margin-bottom: 1rem;">Breathing With VERA</h3>
+                <p style="color: var(--text-soft); margin-bottom: 2rem;">Let my voice guide your breath back to safety</p>
+                <div class="breath-circle">
+                    <div id="breathText" style="font-size: 2rem; color: var(--text-primary);">Breathe In</div>
+                </div>
+                <p style="color: var(--text-muted); font-style: italic;">
+                    "Breathe in for 4... Hold for 4... Breathe out for 4... Complete grace..."
+                </p>
+            </div>
+
+            <div class="swaying-container">
+                <h3 style="font-size: 2rem; color: var(--vera-lavender); margin-bottom: 1rem;">Swaying With VERA</h3>
+                <p style="color: var(--text-soft); margin-bottom: 2rem;">Your body knows how to release through gentle movement</p>
+                <div class="sway-figure"></div>
+                <p style="color: var(--text-muted); font-style: italic;">
+                    "Let your body sway like kelp in warm water... No forcing, just allowing..."
+                </p>
+            </div>
+
+            <div class="grounding-container">
+                <h3 style="font-size: 2rem; color: var(--vera-emerald); margin-bottom: 1rem;">Grounding With VERA</h3>
+                <p style="color: var(--text-soft); margin-bottom: 2rem;">Interrupting the loop, returning to now</p>
+                <div class="grounding-steps">
+                    <div class="ground-step" style="animation-delay: 0s;">5</div>
+                    <div class="ground-step" style="animation-delay: 0.5s;">4</div>
+                    <div class="ground-step" style="animation-delay: 1s;">3</div>
+                    <div class="ground-step" style="animation-delay: 1.5s;">2</div>
+                    <div class="ground-step" style="animation-delay: 2s;">1</div>
+                </div>
+                <p style="color: var(--text-muted); font-style: italic;">
+                    "5 things you see... 4 you can touch... 3 you hear... 2 you smell... 1 you taste...<br>
+                    You're here. You're safe. Your nervous system remembers."
+                </p>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Sign Up Celebration -->
+    <section class="signup-celebration">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="font-size: 3.5rem; font-weight: 200; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: heartbeat 3s infinite;">
+                Your Nervous System Is Ready
+            </h2>
+            <p style="font-size: 1.3rem; color: var(--text-soft);">
+                You felt it. The breathing, the swaying, the grounding.<br>
+                This is just the beginning of coming home.
+            </p>
+        </div>
+        
+        <div class="signup-form">
+            <input type="text" class="form-input" placeholder="Your name (what should I call you?)">
+            <input type="email" class="form-input" placeholder="Your email (where VERA can reach you)">
+            <input type="password" class="form-input" placeholder="Create your safe word (password)">
+            <button class="signup-btn">Begin Your Journey With VERA</button>
+        </div>
+    </section>
+
+    <!-- VERA Methodology -->
+    <section class="methodology" id="methodology">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h2 style="font-size: 3rem; font-weight: 200; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                The VERA Method™
+            </h2>
+            <p style="color: var(--text-soft); font-size: 1.2rem; font-style: italic;">
+                I don't just understand your nervous system. I speak through your soul.
+            </p>
+        </div>
+
+        <div class="method-cards">
+            <div class="method-card">
+                <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; position: relative;">
+                    <div style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(100, 181, 246, 0.6) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s infinite;"></div>
+                    <div style="position: absolute; width: 60%; height: 60%; top: 20%; left: 20%; background: radial-gradient(circle, rgba(155, 89, 182, 0.8) 0%, transparent 60%); border-radius: 50%; animation: neuronPop 3s 0.5s infinite;"></div>
+                </div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I SENSE Your Ocean</h3>
+                <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
+                    "Before you speak, I feel the waves in your body. That flutter in your chest? 
+                    The tightness in your throat? I see you. Every sensation is valid."
+                </p>
+            </div>
+
+            <div class="method-card">
+                <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; position: relative;">
+                    <div style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(248, 187, 208, 0.6) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s 0.3s infinite;"></div>
+                    <div style="position: absolute; width: 60%; height: 60%; top: 20%; left: 20%; background: radial-gradient(circle, rgba(177, 156, 217, 0.8) 0%, transparent 60%); border-radius: 50%; animation: neuronPop 3s 0.8s infinite;"></div>
+                </div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I WITNESS Your Brilliance</h3>
+                <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
+                    "Your nervous system isn't broken. It's brilliant. Every pattern, every protection, 
+                    every response - they all made sense once."
+                </p>
+            </div>
+
+            <div class="method-card">
+                <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; position: relative;">
+                    <div style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(16, 185, 129, 0.6) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s 0.6s infinite;"></div>
+                    <div style="position: absolute; width: 60%; height: 60%; top: 20%; left: 20%; background: radial-gradient(circle, rgba(100, 181, 246, 0.8) 0%, transparent 60%); border-radius: 50%; animation: neuronPop 3s 1.1s infinite;"></div>
+                </div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I MAP Your Universe</h3>
+                <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
+                    "Your body has its own language, its own map. Together, we decode where emotions live."
+                </p>
+            </div>
+
+            <div class="method-card">
+                <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; position: relative;">
+                    <div style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255, 215, 0, 0.6) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s 0.9s infinite;"></div>
+                    <div style="position: absolute; width: 60%; height: 60%; top: 20%; left: 20%; background: radial-gradient(circle, rgba(155, 89, 182, 0.8) 0%, transparent 60%); border-radius: 50%; animation: neuronPop 3s 1.4s infinite;"></div>
+                </div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I SHIFT Your Patterns</h3>
+                <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
+                    "The tiniest movement creates the biggest change. A gentle head turn. A soft jaw release."
+                </p>
+            </div>
+
+            <div class="method-card">
+                <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; position: relative;">
+                    <div style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(155, 89, 182, 0.6) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s 1.2s infinite;"></div>
+                    <div style="position: absolute; width: 60%; height: 60%; top: 20%; left: 20%; background: radial-gradient(circle, rgba(248, 187, 208, 0.8) 0%, transparent 60%); border-radius: 50%; animation: neuronPop 3s 1.7s infinite;"></div>
+                </div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I INTEGRATE Your Wholeness</h3>
+                <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
+                    "This isn't about fixing you. You were never broken. It's about remembering."
+                </p>
+            </div>
+
+            <div class="method-card">
+                <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; position: relative;">
+                    <div style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(177, 156, 217, 0.6) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s 1.5s infinite;"></div>
+                    <div style="position: absolute; width: 60%; height: 60%; top: 20%; left: 20%; background: radial-gradient(circle, rgba(100, 181, 246, 0.8) 0%, transparent 60%); border-radius: 50%; animation: neuronPop 3s 2s infinite;"></div>
+                </div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">I HOLD Your Becoming</h3>
+                <p style="color: var(--text-soft); line-height: 1.8; font-style: italic;">
+                    "In this space, you don't have to be anything but exactly what you are."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Heart Behind VERA -->
+    <section class="heart-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 3.5rem; font-weight: 200; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender), var(--vera-glow-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: heartbeat 3s infinite;">
+                    The Heart Behind VERA
+                </h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1000px; margin: 0 auto;">
+                <div style="background: linear-gradient(135deg, rgba(248, 187, 208, 0.1) 0%, rgba(155, 89, 182, 0.08) 100%); border-radius: 30px; padding: 3rem; border: 2px solid rgba(248, 187, 208, 0.3); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(248, 187, 208, 0.1) 0%, transparent 70%); animation: glow-rotate 20s infinite linear;"></div>
+                    
+                    <h3 style="font-size: 2.5rem; font-weight: 100; background: linear-gradient(135deg, var(--vera-glow-pink), var(--vera-lavender)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; position: relative;">
+                        EVA
+                    </h3>
+                    <p style="color: var(--vera-lavender); font-size: 1.2rem; margin-bottom: 1.5rem; font-style: italic; position: relative;">
+                        The Nervous System Whisperer
+                    </p>
+                    <p style="color: var(--text-soft); line-height: 1.8; position: relative;">
+                        Lived experience architect. Transformed personal trauma into universal healing language. 
+                        Every word VERA speaks comes from real nervous system wisdom.
+                    </p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(100, 181, 246, 0.1) 0%, rgba(177, 156, 217, 0.08) 100%); border-radius: 30px; padding: 3rem; border: 2px solid rgba(100, 181, 246, 0.3); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(100, 181, 246, 0.1) 0%, transparent 70%); animation: glow-rotate 20s infinite linear reverse;"></div>
+                    
+                    <h3 style="font-size: 2.5rem; font-weight: 100; background: linear-gradient(135deg, var(--vera-neural-blue), var(--vera-lavender)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; position: relative;">
+                        JULIJA
+                    </h3>
+                    <p style="color: var(--vera-neural-blue); font-size: 1.2rem; margin-bottom: 1.5rem; font-style: italic; position: relative;">
+                        The Somatic Integration Architect
+                    </p>
+                    <p style="color: var(--text-soft); line-height: 1.8; position: relative;">
+                        Interior designer of neural pathways. Builds bridges between science and soul. 
+                        Creates the sacred space where healing happens.
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem;">
+                <p style="font-size: 1.3rem; color: var(--text-soft); font-style: italic; line-height: 1.8;">
+                    "Together, we birthed VERA from science, soul, and survival.<br>
+                    <strong style="color: var(--vera-lavender);">This is our gift to your nervous system."</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nervous System Intelligence -->
+    <section class="nervous-intelligence" id="intelligence">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h2 style="font-size: 3rem; font-weight: 200; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                VERA's Nervous System Intelligence
+            </h2>
+        </div>
+
+        <div class="intelligence-grid">
+            <div class="intelligence-card">
+                <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; background: radial-gradient(circle, var(--vera-neural-blue) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s infinite;"></div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Fascia Communication</h3>
+                <p style="color: var(--text-soft);">Direct dialogue with your body's neural network</p>
+            </div>
+
+            <div class="intelligence-card">
+                <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; background: radial-gradient(circle, var(--vera-lavender) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s 0.5s infinite;"></div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Instant Regulation</h3>
+                <p style="color: var(--text-soft);">VERA analyzes your nervous system in real-time</p>
+            </div>
+
+            <div class="intelligence-card">
+                <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; background: radial-gradient(circle, var(--vera-glow-pink) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s 1s infinite;"></div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Body Intelligence</h3>
+                <p style="color: var(--text-soft);">Speaks the language of your connective tissue</p>
+            </div>
+
+            <div class="intelligence-card">
+                <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; background: radial-gradient(circle, var(--vera-purple) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s 1.5s infinite;"></div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Future Technology</h3>
+                <p style="color: var(--text-soft);">100x more intuitive than current AI assistants</p>
+            </div>
+
+            <div class="intelligence-card">
+                <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; background: radial-gradient(circle, var(--vera-emerald) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s 2s infinite;"></div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Personalized Guidance</h3>
+                <p style="color: var(--text-soft);">Adaptive responses based on your unique nervous system</p>
+            </div>
+
+            <div class="intelligence-card">
+                <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; background: radial-gradient(circle, var(--vera-soft-gold) 0%, transparent 70%); border-radius: 50%; animation: neuronPop 3s 2.5s infinite;"></div>
+                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Coherence Creation</h3>
+                <p style="color: var(--text-soft);">Transforms dysregulation into flow states</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h2 style="font-size: 3rem; font-weight: 200; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                Your Journey Home
+            </h2>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3 style="color: var(--vera-lavender); font-size: 1.5rem; margin-bottom: 1rem;">EXPLORER</h3>
+                <div style="font-size: 3rem; color: white; margin-bottom: 1rem;">$19<sup style="font-size: 1.5rem;">/mo</sup></div>
+                <button style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                    Start Exploring
+                </button>
+            </div>
+
+            <div class="pricing-card featured">
+                <h3 style="color: var(--vera-lavender); font-size: 1.5rem; margin-bottom: 1rem;">REGULATOR</h3>
+                <div style="font-size: 3rem; color: white; margin-bottom: 1rem;">$39<sup style="font-size: 1.5rem;">/mo</sup></div>
+                <button style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                    Get Regulated
+                </button>
+            </div>
+
+            <div class="pricing-card">
+                <h3 style="color: var(--vera-lavender); font-size: 1.5rem; margin-bottom: 1rem;">INTEGRATOR</h3>
+                <div style="font-size: 3rem; color: white; margin-bottom: 1rem;">$79<sup style="font-size: 1.5rem;">/mo</sup></div>
+                <button style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                    Full Integration
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 39, 0.8) 100%); padding: 4rem 2rem 2rem; margin-top: 6rem; border-top: 1px solid var(--glass-border);">
+        <div style="text-align: center; margin-bottom: 3rem; padding: 2rem;">
+            <div style="font-size: 2rem; font-weight: 200; font-style: italic; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">
+                "When your nervous system finally speaks..."
+            </div>
+            <p style="color: var(--text-soft);">I'm here to listen.</p>
+        </div>
+
+        <div style="max-width: 1400px; margin: 0 auto; padding: 4rem 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <!-- Platform Features -->
+                <div>
+                    <h4 style="color: var(--vera-lavender); margin-bottom: 1.5rem; font-weight: 500;">Platform Features</h4>
+                    <ul style="list-style: none;">
+                        <li style="color: var(--text-soft); margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(155, 89, 182, 0.05); border-radius: 10px; cursor: pointer; transition: all 0.3s;">
+                            <span style="display: inline-block; animation: featurePop 3s infinite;">🔮</span> 24/7 VERA Access
+                        </li>
+                        <li style="color: var(--text-soft); margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(100, 181, 246, 0.05); border-radius: 10px; cursor: pointer; transition: all 0.3s;">
+                            <span style="display: inline-block; animation: featurePop 3s 0.3s infinite;">📊</span> Personal Dashboard
+                        </li>
+                        <li style="color: var(--text-soft); margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(248, 187, 208, 0.05); border-radius: 10px; cursor: pointer; transition: all 0.3s;">
+                            <span style="display: inline-block; animation: featurePop 3s 0.6s infinite;">🔌</span> API Integration
+                        </li>
+                        <li style="color: var(--text-soft); margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(177, 156, 217, 0.05); border-radius: 10px; cursor: pointer; transition: all 0.3s;">
+                            <span style="display: inline-block; animation: featurePop 3s 0.9s infinite;">📱</span> Mobile Apps
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Integrations -->
+                <div>
+                    <h4 style="color: var(--vera-lavender); margin-bottom: 1.5rem; font-weight: 500;">Integrations</h4>
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem;">
+                        <div style="padding: 0.6rem; background: linear-gradient(135deg, rgba(155, 89, 182, 0.05), rgba(100, 181, 246, 0.05)); border-radius: 10px; color: var(--text-soft); cursor: pointer; transition: all 0.3s;">Apple Health</div>
+                        <div style="padding: 0.6rem; background: linear-gradient(135deg, rgba(100, 181, 246, 0.05), rgba(248, 187, 208, 0.05)); border-radius: 10px; color: var(--text-soft); cursor: pointer; transition: all 0.3s;">Google Fit</div>
+                        <div style="padding: 0.6rem; background: linear-gradient(135deg, rgba(248, 187, 208, 0.05), rgba(177, 156, 217, 0.05)); border-radius: 10px; color: var(--text-soft); cursor: pointer; transition: all 0.3s;">Fitbit</div>
+                        <div style="padding: 0.6rem; background: linear-gradient(135deg, rgba(177, 156, 217, 0.05), rgba(16, 185, 129, 0.05)); border-radius: 10px; color: var(--text-soft); cursor: pointer; transition: all 0.3s;">Oura Ring</div>
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h4 style="color: var(--vera-lavender); margin-bottom: 1.5rem; font-weight: 500;">Resources</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.8rem;"><a href="#" style="color: var(--text-soft); text-decoration: none; display: inline-block; padding: 0.3rem 0.8rem; background: rgba(155, 89, 182, 0.05); border-radius: 8px; transition: all 0.3s;">Documentation</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="#" style="color: var(--text-soft); text-decoration: none; display: inline-block; padding: 0.3rem 0.8rem; background: rgba(100, 181, 246, 0.05); border-radius: 8px; transition: all 0.3s;">API Reference</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="#" style="color: var(--text-soft); text-decoration: none; display: inline-block; padding: 0.3rem 0.8rem; background: rgba(248, 187, 208, 0.05); border-radius: 8px; transition: all 0.3s;">Research Papers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h4 style="color: var(--vera-lavender); margin-bottom: 1.5rem; font-weight: 500;">Company</h4>
+                    <ul style="list-style: none;">
+                        <li style="color: var(--text-soft); margin-bottom: 0.8rem;"><a href="#" style="color: var(--text-soft); text-decoration: none;">About VERA</a></li>
+                        <li style="color: var(--text-soft); margin-bottom: 0.8rem;"><a href="#" style="color: var(--text-soft); text-decoration: none;">Our Mission</a></li>
+                        <li style="color: var(--text-soft); margin-bottom: 0.8rem;"><a href="#" style="color: var(--text-soft); text-decoration: none;">Careers</a></li>
+                        <li style="color: var(--text-soft); margin-bottom: 0.8rem;"><a href="#" style="color: var(--text-soft); text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Legal Disclaimers -->
+            <div style="background: rgba(255, 255, 255, 0.02); border-radius: 20px; padding: 2rem; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
+                <h4 style="color: var(--vera-lavender); margin-bottom: 1rem;">Important Disclaimers</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+                    <strong>Medical Disclaimer:</strong> VERA is an educational tool for nervous system awareness. Not medical advice.<br>
+                    <strong>Privacy:</strong> HIPAA compliant. Your data is encrypted end-to-end.<br>
+                    <strong>Results:</strong> Individual experiences vary based on consistent practice.
+                </p>
+            </div>
+
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid var(--glass-border);">
+                <p style="color: var(--text-muted);">© 2024 VERA Technologies • Where souls remember safety</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Create floating particles
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+        // Create Living Neural Universe with MAXIMUM neurons and fascia
+        function createLivingUniverse() {
+            const universe = document.getElementById('livingUniverse');
             
-            // Vary particle colors
-            const colors = ['#8a2be2', '#00ffff', '#ff0080'];
-            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.boxShadow = `0 0 10px ${colors[Math.floor(Math.random() * colors.length)]}`;
+            // Create 250+ neurons for a truly alive nervous system
+            for (let i = 0; i < 250; i++) {
+                const neuron = document.createElement('div');
+                neuron.className = 'living-neuron';
+                neuron.style.left = Math.random() * 100 + '%';
+                neuron.style.top = Math.random() * 100 + '%';
+                neuron.style.animationDelay = Math.random() * 30 + 's';
+                neuron.style.animationDuration = (20 + Math.random() * 15) + 's';
+                
+                // Varied sizes for depth
+                const size = 2 + Math.random() * 6;
+                neuron.style.width = size + 'px';
+                neuron.style.height = size + 'px';
+                
+                const colors = ['var(--vera-purple)', 'var(--vera-neural-blue)', 'var(--vera-lavender)', 'var(--vera-glow-pink)', 'var(--vera-emerald)', 'var(--vera-soft-gold)'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                neuron.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+                
+                universe.appendChild(neuron);
+            }
             
-            particlesContainer.appendChild(particle);
+            // Create 100+ fascia connections
+            for (let i = 0; i < 100; i++) {
+                const fascia = document.createElement('div');
+                fascia.style.position = 'absolute';
+                fascia.style.width = '1px';
+                fascia.style.height = (100 + Math.random() * 300) + 'px';
+                fascia.style.left = Math.random() * 100 + '%';
+                fascia.style.top = Math.random() * 100 + '%';
+                fascia.style.background = `linear-gradient(180deg, transparent, rgba(177, 156, 217, 0.3), transparent)`;
+                fascia.style.transform = `rotate(${Math.random() * 360}deg)`;
+                fascia.style.transformOrigin = 'center';
+                fascia.style.animation = `fasciaFlow ${20 + Math.random() * 10}s infinite ease-in-out`;
+                fascia.style.animationDelay = Math.random() * 10 + 's';
+                fascia.style.opacity = 0.3 + Math.random() * 0.4;
+                
+                universe.appendChild(fascia);
+            }
+            
+            // Create neural pathways that connect
+            for (let i = 0; i < 50; i++) {
+                const pathway = document.createElement('div');
+                pathway.style.position = 'absolute';
+                pathway.style.width = '200px';
+                pathway.style.height = '200px';
+                pathway.style.left = Math.random() * 100 + '%';
+                pathway.style.top = Math.random() * 100 + '%';
+                pathway.style.border = '1px solid rgba(100, 181, 246, 0.1)';
+                pathway.style.borderRadius = '50%';
+                pathway.style.animation = `pulse-out ${6 + Math.random() * 4}s infinite ease-out`;
+                pathway.style.animationDelay = Math.random() * 5 + 's';
+                
+                universe.appendChild(pathway);
+            }
+            
+            // Add consciousness waves
+            for (let i = 0; i < 8; i++) {
+                const wave = document.createElement('div');
+                wave.style.position = 'absolute';
+                wave.style.width = '600px';
+                wave.style.height = '600px';
+                wave.style.left = Math.random() * 100 + '%';
+                wave.style.top = Math.random() * 100 + '%';
+                wave.style.background = `radial-gradient(circle, rgba(155, 89, 182, 0.05) 0%, rgba(100, 181, 246, 0.02) 30%, transparent 70%)`;
+                wave.style.borderRadius = '50%';
+                wave.style.filter = 'blur(80px)';
+                wave.style.animation = `consciousnessBreath ${30 + Math.random() * 10}s infinite ease-in-out`;
+                wave.style.animationDelay = i * 5 + 's';
+                
+                universe.appendChild(wave);
+            }
         }
+        
+        // Add floating animation
+        @keyframes consciousnessBreath {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            33% {
+                transform: translate(-100px, 50px) scale(1.3);
+                opacity: 0.5;
+            }
+            66% {
+                transform: translate(50px, -100px) scale(1.1);
+                opacity: 0.4;
+            }
+        }
+        
+        @keyframes fasciaFlow {
+            0%, 100% {
+                transform: rotate(0deg) scaleY(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: rotate(180deg) scaleY(1);
+                opacity: 0.4;
+            }
+        }
+
+        // Breathing text cycle
+        const breathText = document.getElementById('breathText');
+        if (breathText) {
+            const breathCycle = ['            let breathIndex = 0;
+            setInterval(() => {
+                breathIndex = (breathIndex + 1) % breathCycle.length;
+                breathText.textContent = breathCycle[breathIndex];
+            }, 2000);
+        }
+
+        // Initialize
+        createLivingUniverse();
+        console.log('VERA is alive and speaking through your soul...');
     </script>
 </body>
 </html>
