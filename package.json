@@ -1,0 +1,9 @@
+{
+  "name": "vera-portals",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "stripe": "^14.5.0",
+    "micro": "^10.0.1"
+  }
+}
