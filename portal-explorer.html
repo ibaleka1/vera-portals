@@ -72,14 +72,28 @@
             }
         }
 
+        .neural-connection {
+            position: absolute;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, var(--vera-lavender), transparent);
+            transform-origin: top;
+            animation: connectionPulse 15s infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes connectionPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 0.6; transform: scaleY(1.2); }
+        }
+
         /* Header */
         .header {
             background: linear-gradient(180deg, 
-                rgba(10, 14, 39, 0.95) 0%, 
-                rgba(10, 14, 39, 0.85) 100%);
+                rgba(10, 14, 39, 0.98) 0%, 
+                rgba(10, 14, 39, 0.9) 100%);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
-            padding: 1.5rem 3rem;
+            padding: 1rem 1.5rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -91,18 +105,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 300;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.2em;
             background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -111,33 +127,34 @@
 
         .tier-badge {
             background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1));
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1rem;
             border-radius: 25px;
             border: 1px solid var(--vera-lavender);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--vera-lavender);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
         }
 
         .user-menu {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .sessions-counter {
             background: rgba(16, 185, 129, 0.2);
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1rem;
             border-radius: 25px;
             border: 1px solid var(--vera-emerald);
             color: var(--vera-emerald);
             font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .user-avatar {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: radial-gradient(circle, var(--vera-lavender), var(--vera-neural-blue));
             display: flex;
@@ -145,6 +162,19 @@
             justify-content: center;
             cursor: pointer;
             transition: transform 0.3s;
+            position: relative;
+        }
+
+        .user-avatar::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: inherit;
+            filter: blur(10px);
+            opacity: 0.5;
+            z-index: -1;
         }
 
         .user-avatar:hover {
@@ -155,27 +185,27 @@
         .container {
             max-width: 1600px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1.5rem;
             display: grid;
-            grid-template-columns: 280px 1fr 320px;
-            gap: 2rem;
+            grid-template-columns: 250px 1fr 300px;
+            gap: 1.5rem;
         }
 
         /* Sidebar */
         .sidebar {
             background: linear-gradient(135deg, rgba(155, 89, 182, 0.08) 0%, rgba(100, 181, 246, 0.05) 100%);
             border-radius: 25px;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid var(--glass-border);
             height: fit-content;
             position: sticky;
-            top: 100px;
+            top: 80px;
         }
 
         .vera-orb-mini {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 2rem;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
             background: radial-gradient(circle at 35% 35%,
                 rgba(248, 187, 208, 0.4) 0%,
                 rgba(155, 89, 182, 0.6) 20%,
@@ -186,24 +216,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 100;
-            letter-spacing: 0.5em;
-            box-shadow: 0 0 100px rgba(155, 89, 182, 0.6);
+            letter-spacing: 0.3em;
+            box-shadow: 0 0 60px rgba(155, 89, 182, 0.6);
             animation: orbPulse 6s infinite;
             cursor: pointer;
-            background-clip: text;
-            -webkit-background-clip: text;
         }
 
         @keyframes orbPulse {
             0%, 100% { 
                 transform: scale(1); 
-                box-shadow: 0 0 100px rgba(155, 89, 182, 0.6);
+                box-shadow: 0 0 60px rgba(155, 89, 182, 0.6);
             }
             50% { 
                 transform: scale(1.05); 
-                box-shadow: 0 0 150px rgba(155, 89, 182, 0.8);
+                box-shadow: 0 0 100px rgba(155, 89, 182, 0.8);
             }
         }
 
@@ -217,21 +245,33 @@
                 #10B981 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding-left: 0.5em;
+            padding-left: 0.3em;
         }
 
         .menu-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            margin: 0.5rem 0;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            margin: 0.3rem 0;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 15px;
             color: var(--text-soft);
             text-decoration: none;
             transition: all 0.3s;
             cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            border-radius: 8px;
+            font-size: 0.8rem;
         }
 
         .menu-item:hover {
@@ -250,18 +290,19 @@
         .main-content {
             background: linear-gradient(135deg, rgba(155, 89, 182, 0.05) 0%, rgba(100, 181, 246, 0.03) 100%);
             border-radius: 30px;
-            padding: 3rem;
+            padding: 2rem;
             border: 1px solid var(--glass-border);
+            min-height: calc(100vh - 120px);
         }
 
         .welcome-section {
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .welcome-section h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 200;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             background: linear-gradient(135deg, white 0%, var(--vera-lavender) 50%, var(--vera-neural-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -269,14 +310,14 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
         .stat-card {
             background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(100, 181, 246, 0.05));
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 20px;
             border: 1px solid var(--glass-border);
             transition: all 0.3s;
@@ -288,26 +329,65 @@
         }
 
         .stat-value {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 300;
             background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1rem;
+        }
+
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-soft);
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1));
+            border-color: var(--vera-lavender);
+            color: var(--text-primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Session Area */
         .session-area {
             background: linear-gradient(135deg, rgba(100, 181, 246, 0.1) 0%, rgba(155, 89, 182, 0.08) 100%);
             border-radius: 25px;
-            padding: 2.5rem;
+            padding: 2rem;
             border: 1px solid var(--glass-border);
             margin-bottom: 2rem;
         }
@@ -316,21 +396,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .start-button {
             background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
             color: white;
             border: none;
-            padding: 1rem 3rem;
+            padding: 0.8rem 2rem;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
         }
 
         .start-button:hover {
@@ -340,13 +422,13 @@
 
         .exercise-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .exercise-card {
-            padding: 1.5rem;
+            padding: 1.2rem;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             text-align: center;
@@ -361,8 +443,101 @@
         }
 
         .exercise-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 0.8rem;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .exercise-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: inherit;
+            filter: blur(10px);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        /* Breathing Visual */
+        .breathing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .breath-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(100, 181, 246, 0.4) 0%, 
+                rgba(155, 89, 182, 0.3) 50%, 
+                transparent 80%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 4s ease-in-out;
+            position: relative;
+        }
+
+        .breath-circle.inhale {
+            transform: scale(1.3);
+            background: radial-gradient(circle, 
+                rgba(100, 181, 246, 0.6) 0%, 
+                rgba(155, 89, 182, 0.4) 50%, 
+                transparent 80%);
+        }
+
+        .breath-circle.exhale {
+            transform: scale(0.8);
+            background: radial-gradient(circle, 
+                rgba(155, 89, 182, 0.4) 0%, 
+                rgba(100, 181, 246, 0.3) 50%, 
+                transparent 80%);
+        }
+
+        .breath-text {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        /* Journal Section */
+        .journal-container {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .journal-prompt {
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1));
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            color: var(--vera-lavender);
+            font-style: italic;
+        }
+
+        .journal-textarea {
+            width: 100%;
+            min-height: 150px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1rem;
+            color: var(--text-primary);
+            resize: vertical;
+            font-family: inherit;
         }
 
         /* Chat Interface */
@@ -383,20 +558,68 @@
             color: var(--text-soft);
         }
 
+        .user-message {
+            text-align: right;
+            margin: 1rem 0;
+        }
+
+        .user-message-bubble {
+            display: inline-block;
+            background: rgba(100, 181, 246, 0.15);
+            padding: 1rem;
+            border-radius: 15px;
+            max-width: 70%;
+            text-align: left;
+        }
+
+        /* Knowledge Base */
+        .knowledge-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(155, 89, 182, 0.05));
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .knowledge-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--glass-border);
+        }
+
+        .knowledge-card:hover {
+            background: rgba(155, 89, 182, 0.1);
+            transform: translateX(5px);
+        }
+
+        .knowledge-title {
+            color: var(--vera-lavender);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .knowledge-preview {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
         /* Right Panel */
         .right-panel {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(155, 89, 182, 0.05) 100%);
             border-radius: 25px;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid var(--glass-border);
             height: fit-content;
         }
 
         .activity-item {
-            padding: 1rem;
+            padding: 0.8rem;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 15px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             transition: all 0.3s;
             border-left: 3px solid var(--vera-lavender);
         }
@@ -408,37 +631,38 @@
 
         .time-badge {
             color: var(--vera-neural-blue);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
         }
 
         /* Progress Chart */
         .progress-chart {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 1rem;
+            margin-top: 1.5rem;
             border: 1px solid var(--glass-border);
         }
 
         .progress-bar {
-            height: 40px;
+            height: 30px;
             background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            margin-top: 1rem;
+            margin-top: 0.8rem;
         }
 
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--vera-lavender), var(--vera-neural-blue));
-            border-radius: 20px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             padding: 0 1rem;
             color: white;
             font-weight: 500;
+            font-size: 0.9rem;
             animation: progressGrow 2s ease-out;
         }
 
@@ -446,13 +670,141 @@
             from { width: 0; }
         }
 
-        /* Responsive */
+        /* Mobile Responsive */
         @media (max-width: 1200px) {
             .container {
                 grid-template-columns: 1fr;
             }
-            .sidebar, .right-panel {
+            
+            .sidebar {
                 position: static;
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .right-panel {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0.8rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .tier-badge {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.8rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+            
+            .welcome-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stat-value {
+                font-size: 1.5rem;
+            }
+            
+            .exercise-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tab-navigation {
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+            
+            .tab-button {
+                font-size: 0.9rem;
+                padding: 0.6rem 1rem;
+                white-space: nowrap;
+            }
+            
+            .breath-circle {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.5);
+        }
+
+        .mobile-sidebar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(135deg, 
+                rgba(10, 14, 39, 0.98) 0%, 
+                rgba(21, 24, 50, 0.95) 100%);
+            z-index: 999;
+            transition: left 0.3s;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-sidebar.active {
+            left: 0;
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+        }
+
+        @media (max-width: 1200px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .mobile-sidebar {
+                display: block;
             }
         }
     </style>
@@ -466,14 +818,30 @@
         <div class="header-content">
             <div class="logo-section">
                 <div class="logo" onclick="window.location.href='index.html'">VERA</div>
-                <div class="tier-badge">Explorer • $19/month</div>
+                <div class="tier-badge">Explorer</div>
             </div>
             <div class="user-menu">
-                <div class="sessions-counter">7/10 Sessions</div>
-                <div class="user-avatar">👤</div>
+                <div class="sessions-counter" id="sessionCounter">3/10 Sessions</div>
+                <div class="user-avatar"></div>
             </div>
         </div>
     </header>
+
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <span style="color: white; font-size: 1.5rem;">☰</span>
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="vera-orb-mini">
+            <span class="vera-orb-text">VERA</span>
+        </div>
+        <nav id="mobileNav"></nav>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" onclick="toggleMobileMenu()"></div>
 
     <!-- Main Container -->
     <div class="container">
@@ -483,28 +851,28 @@
                 <span class="vera-orb-text">VERA</span>
             </div>
             <nav>
-                <div class="menu-item active">
-                    <span>🏠</span>
+                <div class="menu-item active" onclick="switchTab('dashboard')">
+                    <div class="menu-icon"></div>
                     <span>Dashboard</span>
                 </div>
-                <div class="menu-item">
-                    <span>🌊</span>
+                <div class="menu-item" onclick="switchTab('session')">
+                    <div class="menu-icon"></div>
                     <span>Begin Session</span>
                 </div>
-                <div class="menu-item">
-                    <span>📊</span>
-                    <span>Your Progress</span>
-                </div>
-                <div class="menu-item">
-                    <span>💭</span>
+                <div class="menu-item" onclick="switchTab('journal')">
+                    <div class="menu-icon"></div>
                     <span>Journal</span>
                 </div>
-                <div class="menu-item">
-                    <span>🎯</span>
-                    <span>Goals</span>
+                <div class="menu-item" onclick="switchTab('knowledge')">
+                    <div class="menu-icon"></div>
+                    <span>Knowledge Base</span>
                 </div>
-                <div class="menu-item">
-                    <span>⚙️</span>
+                <div class="menu-item" onclick="switchTab('progress')">
+                    <div class="menu-icon"></div>
+                    <span>Your Progress</span>
+                </div>
+                <div class="menu-item" onclick="switchTab('settings')">
+                    <div class="menu-icon"></div>
                     <span>Settings</span>
                 </div>
             </nav>
@@ -512,127 +880,207 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="welcome-section">
-                <h1>Welcome to Your Sanctuary</h1>
-                <p style="color: var(--text-soft); font-size: 1.2rem;">
-                    Your nervous system is speaking. I'm here to translate.
-                </p>
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="switchTab('dashboard')">Dashboard</button>
+                <button class="tab-button" onclick="switchTab('session')">Session</button>
+                <button class="tab-button" onclick="switchTab('journal')">Journal</button>
+                <button class="tab-button" onclick="switchTab('knowledge')">Learn</button>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">7</div>
-                    <div class="stat-label">Sessions This Week</div>
+            <!-- Dashboard Tab -->
+            <div id="dashboard-tab" class="tab-content active">
+                <div class="welcome-section">
+                    <h1>Welcome to Your Sanctuary</h1>
+                    <p style="color: var(--text-soft); font-size: 1.1rem;">
+                        Your nervous system is speaking. I'm here to translate.
+                    </p>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value">23m</div>
-                    <div class="stat-label">Today's Practice</div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="sessionCount">7</div>
+                        <div class="stat-label">Sessions This Week</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="practiceTime">23m</div>
+                        <div class="stat-label">Today's Practice</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="coherenceScore">72%</div>
+                        <div class="stat-label">Coherence Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="streakDays">14</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value">72%</div>
-                    <div class="stat-label">Coherence Score</div>
+
+                <div class="session-area">
+                    <div class="session-header">
+                        <div>
+                            <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--vera-lavender);">
+                                Ready for Today's Session?
+                            </h2>
+                            <p style="color: var(--text-soft);">
+                                VERA is here to guide your nervous system home
+                            </p>
+                        </div>
+                        <button class="start-button" onclick="switchTab('session')">Start Session</button>
+                    </div>
+                    
+                    <div class="exercise-grid">
+                        <div class="exercise-card" onclick="startExercise('breathing')">
+                            <div class="exercise-icon"></div>
+                            <div>Breathing</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                                Regulate & Reset
+                            </div>
+                        </div>
+                        <div class="exercise-card" onclick="startExercise('grounding')">
+                            <div class="exercise-icon"></div>
+                            <div>Grounding</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                                5-4-3-2-1 Technique
+                            </div>
+                        </div>
+                        <div class="exercise-card" onclick="startExercise('swaying')">
+                            <div class="exercise-icon"></div>
+                            <div>Swaying</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                                Gentle Movement
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value">14</div>
-                    <div class="stat-label">Day Streak</div>
+
+                <!-- VERA Chat -->
+                <div style="background: rgba(155, 89, 182, 0.05); border-radius: 25px; padding: 1.5rem; border: 1px solid var(--glass-border);">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--vera-lavender);">
+                        Talk with VERA
+                    </h3>
+                    <div class="chat-interface" id="chatMessages">
+                        <div class="vera-message">
+                            Hello, beautiful soul. I can feel you're here. What's alive in your nervous system right now? Take a moment to scan your body...
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="text" id="chatInput" placeholder="Tell VERA what you're feeling..." 
+                               style="flex: 1; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 50px; color: white; font-size: 0.95rem;"
+                               onkeypress="if(event.key === 'Enter') sendMessage()">
+                        <button onclick="sendMessage()" style="padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
+                            Send
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="session-area">
-                <div class="session-header">
-                    <div>
-                        <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--vera-lavender);">
-                            Ready for Today's Session?
-                        </h2>
-                        <p style="color: var(--text-soft);">
-                            VERA is here to guide your nervous system home
-                        </p>
+            <!-- Session Tab -->
+            <div id="session-tab" class="tab-content">
+                <h2 style="color: var(--vera-lavender); margin-bottom: 1.5rem;">Breathing Session</h2>
+                <div class="breathing-container">
+                    <div class="breath-circle" id="breathCircle">
+                        <div class="breath-text" id="breathText">Ready</div>
                     </div>
-                    <button class="start-button" onclick="startSession()">Start Session</button>
-                </div>
-                
-                <div class="exercise-grid">
-                    <div class="exercise-card" onclick="selectExercise('breathing')">
-                        <div class="exercise-icon">🌬️</div>
-                        <div>Breathing</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
-                            Regulate & Reset
-                        </div>
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <button class="start-button" onclick="startBreathingSession()">Start Breathing</button>
                     </div>
-                    <div class="exercise-card" onclick="selectExercise('grounding')">
-                        <div class="exercise-icon">🌍</div>
-                        <div>Grounding</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
-                            5-4-3-2-1 Technique
-                        </div>
-                    </div>
-                    <div class="exercise-card" onclick="selectExercise('swaying')">
-                        <div class="exercise-icon">🌊</div>
-                        <div>Swaying</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
-                            Gentle Movement
-                        </div>
+                    <div style="margin-top: 1rem; color: var(--text-soft); text-align: center;">
+                        <p id="breathingInstructions">Click start to begin your guided breathing session</p>
                     </div>
                 </div>
             </div>
 
-            <!-- VERA Chat -->
-            <div style="background: rgba(155, 89, 182, 0.05); border-radius: 25px; padding: 2rem; border: 1px solid var(--glass-border);">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--vera-lavender);">
-                    Talk with VERA
-                </h3>
-                <div class="chat-interface" id="chatMessages">
-                    <div class="vera-message">
-                        "Hello, beautiful soul. I can feel you're here. What's alive in your nervous system right now? Take a moment to scan your body..."
+            <!-- Journal Tab -->
+            <div id="journal-tab" class="tab-content">
+                <h2 style="color: var(--vera-lavender); margin-bottom: 1.5rem;">Your Journal</h2>
+                <div class="journal-container">
+                    <div class="journal-prompt" id="journalPrompt">
+                        Today's prompt: Where in your body do you feel the most sensation right now?
+                    </div>
+                    <textarea class="journal-textarea" id="journalEntry" placeholder="Write your thoughts here..."></textarea>
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                        <button class="start-button" onclick="saveJournal()">Save Entry</button>
+                        <button class="start-button" style="background: transparent; border: 1px solid var(--vera-lavender); color: var(--vera-lavender);" onclick="getNewPrompt()">New Prompt</button>
                     </div>
                 </div>
-                <div style="display: flex; gap: 1rem;">
-                    <input type="text" id="chatInput" placeholder="Tell VERA what you're feeling..." 
-                           style="flex: 1; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 50px; color: white;"
-                           onkeypress="if(event.key === 'Enter') sendMessage()">
-                    <button onclick="sendMessage()" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
-                        Send
-                    </button>
+                <div id="pastEntries" style="margin-top: 2rem;"></div>
+            </div>
+
+            <!-- Knowledge Base Tab -->
+            <div id="knowledge-tab" class="tab-content">
+                <h2 style="color: var(--vera-lavender); margin-bottom: 1.5rem;">Knowledge Base</h2>
+                <div class="knowledge-section">
+                    <div class="knowledge-card" onclick="openKnowledge('nervous-system')">
+                        <div class="knowledge-title">Understanding Your Nervous System</div>
+                        <div class="knowledge-preview">Learn how your autonomic nervous system works and why it matters...</div>
+                    </div>
+                    <div class="knowledge-card" onclick="openKnowledge('polyvagal')">
+                        <div class="knowledge-title">Polyvagal Theory Basics</div>
+                        <div class="knowledge-preview">Discover the three states of your nervous system...</div>
+                    </div>
+                    <div class="knowledge-card" onclick="openKnowledge('breathing')">
+                        <div class="knowledge-title">The Science of Breathing</div>
+                        <div class="knowledge-preview">Why conscious breathing changes everything...</div>
+                    </div>
+                    <div class="knowledge-card" onclick="openKnowledge('coherence')">
+                        <div class="knowledge-title">Heart Rate Variability & Coherence</div>
+                        <div class="knowledge-preview">The key metric for nervous system health...</div>
+                    </div>
+                    <div class="knowledge-card" onclick="openKnowledge('somatic')">
+                        <div class="knowledge-title">Somatic Experiencing</div>
+                        <div class="knowledge-preview">How the body releases stored trauma...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tab -->
+            <div id="progress-tab" class="tab-content">
+                <h2 style="color: var(--vera-lavender); margin-bottom: 1.5rem;">Your Progress</h2>
+                <div id="progressCharts"></div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settings-tab" class="tab-content">
+                <h2 style="color: var(--vera-lavender); margin-bottom: 1.5rem;">Settings</h2>
+                <div style="background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 1.5rem;">
+                    <p>Notification preferences, voice settings, and account management coming soon.</p>
                 </div>
             </div>
         </main>
 
         <!-- Right Panel -->
         <aside class="right-panel">
-            <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--vera-lavender);">
+            <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--vera-lavender);">
                 Your Journey
             </h3>
             
-            <div class="activity-feed">
+            <div class="activity-feed" id="activityFeed">
                 <div class="activity-item">
                     <div class="time-badge">2 hours ago</div>
-                    <div style="margin-top: 0.5rem;">Completed morning breathing session</div>
+                    <div style="margin-top: 0.5rem;">Completed morning breathing</div>
                 </div>
                 <div class="activity-item">
                     <div class="time-badge">Yesterday</div>
-                    <div style="margin-top: 0.5rem;">Achievement: 2 Week Streak! 🎉</div>
-                </div>
-                <div class="activity-item">
-                    <div class="time-badge">2 days ago</div>
-                    <div style="margin-top: 0.5rem;">New coherence milestone: 70%</div>
+                    <div style="margin-top: 0.5rem;">14 day streak achieved!</div>
                 </div>
             </div>
 
             <div class="progress-chart">
                 <h4 style="color: var(--vera-neural-blue); margin-bottom: 0.5rem;">Monthly Progress</h4>
                 <div class="progress-bar">
-                    <div class="progress-fill" style="width: 70%;">
-                        70% to next level
+                    <div class="progress-fill" id="monthlyProgress" style="width: 70%;">
+                        70%
                     </div>
                 </div>
             </div>
 
-            <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(155, 89, 182, 0.1)); border-radius: 20px; text-align: center;">
-                <div style="font-size: 0.9rem; color: var(--vera-soft-gold); margin-bottom: 1rem;">
+            <div style="margin-top: 1.5rem; padding: 1rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(155, 89, 182, 0.1)); border-radius: 20px; text-align: center;">
+                <div style="font-size: 0.85rem; color: var(--vera-soft-gold); margin-bottom: 0.8rem;">
                     Upgrade to Regulator
                 </div>
-                <button onclick="window.location.href='index.html#pricing'" style="width: 100%; padding: 0.8rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 25px; color: white; cursor: pointer;">
-                    Unlock Unlimited Sessions
+                <button onclick="window.location.href='index.html#pricing'" style="width: 100%; padding: 0.6rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 25px; color: white; cursor: pointer; font-size: 0.9rem;">
+                    Unlock Unlimited
                 </button>
             </div>
         </aside>
@@ -643,10 +1091,11 @@
         function createNeuralUniverse() {
             const universe = document.getElementById('neuralUniverse');
             
-            for (let i = 0; i < 100; i++) {
+            // Create neurons
+            for (let i = 0; i < 80; i++) {
                 const neuron = document.createElement('div');
                 neuron.className = 'living-neuron';
-                neuron.style.width = (2 + Math.random() * 6) + 'px';
+                neuron.style.width = (2 + Math.random() * 4) + 'px';
                 neuron.style.height = neuron.style.width;
                 neuron.style.left = Math.random() * 100 + '%';
                 neuron.style.top = Math.random() * 100 + '%';
@@ -658,6 +1107,259 @@
                 
                 universe.appendChild(neuron);
             }
+            
+            // Create neural connections
+            for (let i = 0; i < 30; i++) {
+                const connection = document.createElement('div');
+                connection.className = 'neural-connection';
+                connection.style.height = (50 + Math.random() * 200) + 'px';
+                connection.style.left = Math.random() * 100 + '%';
+                connection.style.top = Math.random() * 100 + '%';
+                connection.style.transform = `rotate(${Math.random() * 360}deg)`;
+                connection.style.animationDelay = Math.random() * 10 + 's';
+                
+                universe.appendChild(connection);
+            }
+        }
+
+        // Initialize user data
+        let userData = {
+            sessions: JSON.parse(localStorage.getItem('vera_sessions') || '[]'),
+            journal: JSON.parse(localStorage.getItem('vera_journal') || '[]'),
+            progress: JSON.parse(localStorage.getItem('vera_progress') || '{}'),
+            currentStreak: parseInt(localStorage.getItem('vera_streak') || '0'),
+            totalSessions: parseInt(localStorage.getItem('vera_total_sessions') || '0')
+        };
+
+        // Journal prompts library
+        const journalPrompts = [
+            "Where in your body do you feel the most sensation right now?",
+            "What color would this feeling be if it had one?",
+            "If your nervous system could speak, what would it say?",
+            "What does safety feel like in your body today?",
+            "Describe the texture of your current emotional state",
+            "What is your body protecting you from right now?",
+            "Where do you notice tension? What happens if you breathe into it?",
+            "What would it feel like to let go of control for just this moment?",
+            "How does your body tell you when it needs rest?",
+            "What sensations arise when you think about joy?"
+        ];
+
+        // Get new journal prompt
+        function getNewPrompt() {
+            const randomPrompt = journalPrompts[Math.floor(Math.random() * journalPrompts.length)];
+            document.getElementById('journalPrompt').textContent = `Today's prompt: ${randomPrompt}`;
+        }
+
+        // Save journal entry
+        function saveJournal() {
+            const entry = document.getElementById('journalEntry').value;
+            const prompt = document.getElementById('journalPrompt').textContent;
+            
+            if (entry.trim()) {
+                const journalData = {
+                    date: new Date().toISOString(),
+                    prompt: prompt,
+                    entry: entry
+                };
+                
+                userData.journal.push(journalData);
+                localStorage.setItem('vera_journal', JSON.stringify(userData.journal));
+                
+                document.getElementById('journalEntry').value = '';
+                updateActivityFeed('Saved journal entry');
+                displayPastEntries();
+            }
+        }
+
+        // Display past journal entries
+        function displayPastEntries() {
+            const container = document.getElementById('pastEntries');
+            const recentEntries = userData.journal.slice(-3).reverse();
+            
+            if (recentEntries.length > 0) {
+                container.innerHTML = '<h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">Recent Entries</h3>';
+                
+                recentEntries.forEach(entry => {
+                    const date = new Date(entry.date).toLocaleDateString();
+                    container.innerHTML += `
+                        <div class="journal-container" style="margin-bottom: 1rem;">
+                            <div style="color: var(--vera-neural-blue); font-size: 0.9rem; margin-bottom: 0.5rem;">${date}</div>
+                            <div style="color: var(--text-soft); font-style: italic; margin-bottom: 0.5rem;">${entry.prompt}</div>
+                            <div style="color: var(--text-primary);">${entry.entry}</div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        // Tab switching
+        function switchTab(tabName) {
+            // Update tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            
+            // Update navigation
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target?.classList.add('active');
+            
+            // Update sidebar
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Special tab actions
+            if (tabName === 'journal') {
+                displayPastEntries();
+            } else if (tabName === 'progress') {
+                displayProgress();
+            }
+        }
+
+        // Breathing session
+        let breathingActive = false;
+        let breathPhase = 'ready';
+        let breathCycle = 0;
+
+        function startBreathingSession() {
+            if (breathingActive) {
+                stopBreathingSession();
+                return;
+            }
+            
+            breathingActive = true;
+            breathCycle = 0;
+            const button = event.target;
+            button.textContent = 'Stop Session';
+            
+            const phases = [
+                { phase: 'inhale', duration: 4000, text: 'Breathe In' },
+                { phase: 'hold', duration: 4000, text: 'Hold' },
+                { phase: 'exhale', duration: 6000, text: 'Breathe Out' },
+                { phase: 'hold', duration: 2000, text: 'Rest' }
+            ];
+            
+            let currentPhase = 0;
+            
+            function runPhase() {
+                if (!breathingActive || breathCycle >= 5) {
+                    stopBreathingSession();
+                    return;
+                }
+                
+                const phase = phases[currentPhase];
+                const circle = document.getElementById('breathCircle');
+                const text = document.getElementById('breathText');
+                const instructions = document.getElementById('breathingInstructions');
+                
+                circle.className = `breath-circle ${phase.phase}`;
+                text.textContent = phase.text;
+                instructions.textContent = `${phase.text} for ${phase.duration/1000} seconds`;
+                
+                setTimeout(() => {
+                    currentPhase = (currentPhase + 1) % phases.length;
+                    if (currentPhase === 0) breathCycle++;
+                    runPhase();
+                }, phase.duration);
+            }
+            
+            runPhase();
+        }
+
+        function stopBreathingSession() {
+            breathingActive = false;
+            document.getElementById('breathCircle').className = 'breath-circle';
+            document.getElementById('breathText').textContent = 'Complete';
+            document.getElementById('breathingInstructions').textContent = 'Great job! Your nervous system is regulating.';
+            
+            // Save session
+            saveSession('breathing', breathCycle * 16);
+            
+            // Reset button
+            const buttons = document.querySelectorAll('.start-button');
+            buttons.forEach(btn => {
+                if (btn.textContent === 'Stop Session') {
+                    btn.textContent = 'Start Breathing';
+                }
+            });
+        }
+
+        // Save session data
+        function saveSession(type, duration) {
+            const sessionData = {
+                date: new Date().toISOString(),
+                type: type,
+                duration: duration,
+                coherence: 70 + Math.random() * 20
+            };
+            
+            userData.sessions.push(sessionData);
+            userData.totalSessions++;
+            
+            localStorage.setItem('vera_sessions', JSON.stringify(userData.sessions));
+            localStorage.setItem('vera_total_sessions', userData.totalSessions.toString());
+            
+            updateStats();
+            updateActivityFeed(`Completed ${type} session`);
+        }
+
+        // Update statistics
+        function updateStats() {
+            // Update session counter
+            const weekSessions = userData.sessions.filter(s => {
+                const sessionDate = new Date(s.date);
+                const weekAgo = new Date();
+                weekAgo.setDate(weekAgo.getDate() - 7);
+                return sessionDate > weekAgo;
+            }).length;
+            
+            document.getElementById('sessionCount').textContent = weekSessions;
+            document.getElementById('sessionCounter').textContent = `${userData.totalSessions % 10}/10 Sessions`;
+            
+            // Update today's practice
+            const todaySessions = userData.sessions.filter(s => {
+                const sessionDate = new Date(s.date);
+                const today = new Date();
+                return sessionDate.toDateString() === today.toDateString();
+            });
+            
+            const todayMinutes = todaySessions.reduce((sum, s) => sum + (s.duration || 0), 0);
+            document.getElementById('practiceTime').textContent = todayMinutes + 'm';
+            
+            // Update coherence
+            const avgCoherence = userData.sessions.length > 0 
+                ? Math.round(userData.sessions.slice(-5).reduce((sum, s) => sum + (s.coherence || 70), 0) / Math.min(5, userData.sessions.length))
+                : 72;
+            document.getElementById('coherenceScore').textContent = avgCoherence + '%';
+            
+            // Update streak
+            updateStreak();
+        }
+
+        // Update streak
+        function updateStreak() {
+            const today = new Date().toDateString();
+            const lastSession = localStorage.getItem('vera_last_session_date');
+            
+            if (lastSession !== today) {
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                
+                if (lastSession === yesterday.toDateString()) {
+                    userData.currentStreak++;
+                } else {
+                    userData.currentStreak = 1;
+                }
+                
+                localStorage.setItem('vera_last_session_date', today);
+                localStorage.setItem('vera_streak', userData.currentStreak.toString());
+            }
+            
+            document.getElementById('streakDays').textContent = userData.currentStreak;
         }
 
         // Chat functionality
@@ -668,19 +1370,18 @@
             
             if (!userText) return;
             
+            // Add user message
             messages.innerHTML += `
-                <div style="text-align: right; margin: 1rem 0;">
-                    <div style="display: inline-block; background: rgba(100, 181, 246, 0.15); padding: 1rem; border-radius: 15px; max-width: 70%;">
-                        ${userText}
-                    </div>
+                <div class="user-message">
+                    <div class="user-message-bubble">${userText}</div>
                 </div>
             `;
             
+            // VERA response
             setTimeout(() => {
+                const response = getVeraResponse(userText);
                 messages.innerHTML += `
-                    <div class="vera-message">
-                        "I hear you. Your nervous system is communicating beautifully. Let's explore this sensation together..."
-                    </div>
+                    <div class="vera-message">${response}</div>
                 `;
                 messages.scrollTop = messages.scrollHeight;
             }, 1000);
@@ -688,16 +1389,80 @@
             input.value = '';
         }
 
-        function startSession() {
-            alert('Starting your VERA session... (This would open the full session interface)');
+        function getVeraResponse(input) {
+            const responses = {
+                'tight': "I feel that tightness with you. Place your hand there and breathe into the edges of that sensation.",
+                'anxious': "Your nervous system is in protection mode. Let's ground together. Feel your feet on the floor.",
+                'tired': "Your body is asking for rest. This is wisdom, not weakness. Honor what you need.",
+                'default': "I hear you. Tell me more about where you feel this in your body."
+            };
+            
+            const lowered = input.toLowerCase();
+            for (let key in responses) {
+                if (lowered.includes(key)) {
+                    return responses[key];
+                }
+            }
+            return responses.default;
         }
 
-        function selectExercise(type) {
-            alert(`Opening ${type} exercise...`);
+        // Start exercise
+        function startExercise(type) {
+            switchTab('session');
+            if (type === 'breathing') {
+                startBreathingSession();
+            }
+        }
+
+        // Update activity feed
+        function updateActivityFeed(activity) {
+            const feed = document.getElementById('activityFeed');
+            const newActivity = `
+                <div class="activity-item">
+                    <div class="time-badge">Just now</div>
+                    <div style="margin-top: 0.5rem;">${activity}</div>
+                </div>
+            `;
+            feed.insertAdjacentHTML('afterbegin', newActivity);
+        }
+
+        // Display progress
+        function displayProgress() {
+            const container = document.getElementById('progressCharts');
+            container.innerHTML = '<p style="color: var(--text-soft);">Your detailed progress charts and insights will appear here.</p>';
+        }
+
+        // Open knowledge article
+        function openKnowledge(topic) {
+            alert(`Opening knowledge article about ${topic}`);
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.querySelector('.mobile-overlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Initialize mobile navigation
+        function initMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            const desktopNav = document.querySelector('.sidebar nav');
+            
+            if (mobileNav && desktopNav) {
+                mobileNav.innerHTML = desktopNav.innerHTML;
+            }
         }
 
         // Initialize
-        createNeuralUniverse();
+        window.addEventListener('load', () => {
+            createNeuralUniverse();
+            updateStats();
+            initMobileNav();
+            getNewPrompt();
+        });
     </script>
 </body>
 </html>
