@@ -149,11 +149,40 @@
             justify-content: center;
             font-size: 0.8rem;
             animation: integrationPulse 2s infinite;
+            position: relative;
+        }
+
+        .integration-dot::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--vera-soft-gold);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         @keyframes integrationPulse {
             0%, 100% { transform: scale(1); opacity: 0.8; }
             50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender));
+            transition: all 0.3s;
         }
 
         /* Container */
@@ -240,6 +269,25 @@
             text-decoration: none;
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-icon::after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 3px;
         }
 
         .menu-item:hover {
@@ -327,6 +375,13 @@
             z-index: 1;
         }
 
+        .infinity-symbol {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         /* Advanced Session Area */
         .advanced-session-area {
             background: linear-gradient(135deg, 
@@ -341,7 +396,7 @@
 
         .protocol-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
             margin-top: 2rem;
         }
@@ -356,6 +411,27 @@
             cursor: pointer;
             transition: all 0.3s;
             border: 1px solid var(--glass-border);
+        }
+
+        .protocol-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender), var(--vera-neural-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .protocol-icon::after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            position: absolute;
         }
 
         .protocol-card:hover {
@@ -413,6 +489,24 @@
             background: rgba(16, 185, 129, 0.1);
         }
 
+        .integration-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--vera-neural-blue), var(--vera-emerald));
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .integration-icon::after {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+        }
+
         .voice-selector {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -466,13 +560,158 @@
             from { height: 0; }
         }
 
+        /* Tab System */
+        .tab-navigation {
+            display: none;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 0.5rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .tab-nav-item {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--text-soft);
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .tab-nav-item.active {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(155, 89, 182, 0.2));
+            color: var(--text-primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 39, 0.98);
+            z-index: 999;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-close::before,
+        .mobile-menu-close::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--vera-soft-gold);
+            top: 50%;
+            left: 0;
+        }
+
+        .mobile-menu-close::before {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-close::after {
+            transform: rotate(-45deg);
+        }
+
         /* Responsive */
         @media (max-width: 1400px) {
             .container {
+                grid-template-columns: 280px 1fr 300px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .container {
                 grid-template-columns: 1fr;
             }
-            .sidebar, .right-panel {
-                position: static;
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .right-panel {
+                display: none;
+            }
+
+            .tab-navigation {
+                display: flex;
+                gap: 0.5rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .header {
+                padding: 1rem 1.5rem;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .protocol-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .welcome-section h1 {
+                font-size: 2rem;
+            }
+
+            .premium-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .protocol-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .integration-status {
+                display: none;
+            }
+
+            .tier-badge-premium {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .premium-stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .voice-selector {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -490,24 +729,60 @@
             </div>
             <div class="user-menu">
                 <div class="integration-status">
-                    <div class="integration-dot">🍎</div>
-                    <div class="integration-dot">🎵</div>
-                    <div class="integration-dot">📱</div>
-                    <div class="integration-dot">⌚</div>
-                    <div class="integration-dot">🧬</div>
+                    <div class="integration-dot"></div>
+                    <div class="integration-dot"></div>
+                    <div class="integration-dot"></div>
+                    <div class="integration-dot"></div>
+                    <div class="integration-dot"></div>
                 </div>
                 <div style="padding: 0.5rem 1.5rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border-radius: 25px; color: white; font-weight: 500;">
                     API Active
+                </div>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-close" onclick="toggleMobileMenu()"></div>
+        <div style="margin-top: 4rem;">
+            <div class="menu-item active" onclick="switchMobileSection('dashboard')">
+                <div class="menu-icon"></div>
+                <span>Command Center</span>
+            </div>
+            <div class="menu-item" onclick="switchMobileSection('sessions')">
+                <div class="menu-icon"></div>
+                <span>Advanced Sessions</span>
+            </div>
+            <div class="menu-item" onclick="switchMobileSection('lab')">
+                <div class="menu-icon"></div>
+                <span>Neural Lab</span>
+            </div>
+            <div class="menu-item" onclick="switchMobileSection('analytics')">
+                <div class="menu-icon"></div>
+                <span>Analytics Pro</span>
+            </div>
+            <div class="menu-item" onclick="switchMobileSection('api')">
+                <div class="menu-icon"></div>
+                <span>API Dashboard</span>
+            </div>
+            <div class="menu-item" onclick="switchMobileSection('integrations')">
+                <div class="menu-icon"></div>
+                <span>Integrations</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Container -->
     <div class="container">
         <!-- Premium Sidebar -->
         <aside class="sidebar">
-            <div class="vera-orb-premium">
+            <div class="vera-orb-premium" onclick="startPremiumSession()">
                 <span class="vera-orb-text">VERA</span>
             </div>
             
@@ -517,36 +792,36 @@
             </div>
             
             <nav>
-                <div class="menu-item active">
-                    <span>🏠</span>
+                <div class="menu-item active" onclick="switchSection('dashboard')">
+                    <div class="menu-icon"></div>
                     <span>Command Center</span>
                 </div>
-                <div class="menu-item">
-                    <span>🚀</span>
+                <div class="menu-item" onclick="switchSection('sessions')">
+                    <div class="menu-icon"></div>
                     <span>Advanced Sessions</span>
                 </div>
-                <div class="menu-item">
-                    <span>🔬</span>
+                <div class="menu-item" onclick="switchSection('lab')">
+                    <div class="menu-icon"></div>
                     <span>Neural Lab</span>
                 </div>
-                <div class="menu-item">
-                    <span>📈</span>
+                <div class="menu-item" onclick="switchSection('analytics')">
+                    <div class="menu-icon"></div>
                     <span>Analytics Pro</span>
                 </div>
-                <div class="menu-item">
-                    <span>🔌</span>
+                <div class="menu-item" onclick="switchSection('api')">
+                    <div class="menu-icon"></div>
                     <span>API Dashboard</span>
                 </div>
-                <div class="menu-item">
-                    <span>🎙️</span>
+                <div class="menu-item" onclick="switchSection('voice')">
+                    <div class="menu-icon"></div>
                     <span>Voice Studio</span>
                 </div>
-                <div class="menu-item">
-                    <span>🏥</span>
+                <div class="menu-item" onclick="switchSection('practitioner')">
+                    <div class="menu-icon"></div>
                     <span>Practitioner Hub</span>
                 </div>
-                <div class="menu-item">
-                    <span>⚙️</span>
+                <div class="menu-item" onclick="switchSection('settings')">
+                    <div class="menu-icon"></div>
                     <span>Advanced Settings</span>
                 </div>
             </nav>
@@ -554,129 +829,147 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="welcome-section">
-                <h1>Neural Integration Laboratory</h1>
-                <p style="color: var(--text-soft); font-size: 1.2rem;">
-                    Complete nervous system mastery at your fingertips
-                </p>
+            <!-- Tab Navigation (Mobile) -->
+            <div class="tab-navigation">
+                <button class="tab-nav-item active" onclick="switchTab('overview')">Overview</button>
+                <button class="tab-nav-item" onclick="switchTab('protocols')">Protocols</button>
+                <button class="tab-nav-item" onclick="switchTab('api')">API</button>
+                <button class="tab-nav-item" onclick="switchTab('data')">Analytics</button>
             </div>
 
-            <div class="premium-stats-grid">
-                <div class="premium-stat-card">
-                    <div class="stat-value">∞</div>
-                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Unlimited Sessions</div>
+            <!-- Overview Tab -->
+            <div id="overview-tab" class="tab-content active">
+                <div class="welcome-section">
+                    <h1>Neural Integration Laboratory</h1>
+                    <p style="color: var(--text-soft); font-size: 1.2rem;">
+                        Complete nervous system mastery at your fingertips
+                    </p>
                 </div>
-                <div class="premium-stat-card">
-                    <div class="stat-value">94%</div>
-                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Coherence Score</div>
-                </div>
-                <div class="premium-stat-card">
-                    <div class="stat-value">12</div>
-                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Active Integrations</div>
-                </div>
-                <div class="premium-stat-card">
-                    <div class="stat-value">247</div>
-                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Sessions Completed</div>
-                </div>
-                <div class="premium-stat-card">
-                    <div class="stat-value">45ms</div>
-                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Peak HRV</div>
-                </div>
-            </div>
 
-            <div class="advanced-session-area">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                    <div>
-                        <h2 style="font-size: 2rem; color: var(--vera-soft-gold);">
-                            Advanced Protocols
-                        </h2>
-                        <p style="color: var(--text-soft);">
-                            Full spectrum nervous system regulation
-                        </p>
+                <div class="premium-stats-grid">
+                    <div class="premium-stat-card">
+                        <div class="stat-value infinity-symbol">∞</div>
+                        <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Unlimited Sessions</div>
                     </div>
-                    <button style="padding: 1rem 3rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 50px; color: white; font-weight: 500; cursor: pointer; font-size: 1.1rem;">
-                        Start Custom Protocol
-                    </button>
-                </div>
-                
-                <div class="protocol-grid">
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🧠</div>
-                        <div>Neural Reset</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">45 min</div>
+                    <div class="premium-stat-card">
+                        <div class="stat-value" id="coherenceScore">94%</div>
+                        <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Coherence Score</div>
                     </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💫</div>
-                        <div>Trauma Release</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">60 min</div>
+                    <div class="premium-stat-card">
+                        <div class="stat-value">12</div>
+                        <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Active Integrations</div>
                     </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌊</div>
-                        <div>Deep Flow</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">30 min</div>
+                    <div class="premium-stat-card">
+                        <div class="stat-value" id="sessionCount">247</div>
+                        <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Sessions Completed</div>
                     </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚡</div>
-                        <div>Peak Performance</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">25 min</div>
-                    </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔮</div>
-                        <div>Intuition Training</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">35 min</div>
-                    </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎯</div>
-                        <div>Focus Enhancement</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">20 min</div>
-                    </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💤</div>
-                        <div>Sleep Optimization</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">40 min</div>
-                    </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌟</div>
-                        <div>Custom Protocol</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Variable</div>
+                    <div class="premium-stat-card">
+                        <div class="stat-value" id="hrvValue">45ms</div>
+                        <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Peak HRV</div>
                     </div>
                 </div>
             </div>
 
-            <!-- API Console Section -->
-            <div class="api-console">
-                <h3 style="color: var(--vera-soft-gold); margin-bottom: 1rem;">API Access Console</h3>
-                <div class="api-key">
-                    API Key: vera_integrator_79tier_xKj9mP2qL8nB4vC6zX3aW5dR7fY9hT1s...
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
-                    <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                        <div style="color: var(--vera-emerald); font-size: 1.5rem;">2,847</div>
-                        <div style="color: var(--text-muted); font-size: 0.8rem;">API Calls Today</div>
+            <!-- Protocols Tab -->
+            <div id="protocols-tab" class="tab-content">
+                <div class="advanced-session-area">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <div>
+                            <h2 style="font-size: 2rem; color: var(--vera-soft-gold);">
+                                Advanced Protocols
+                            </h2>
+                            <p style="color: var(--text-soft);">
+                                Full spectrum nervous system regulation
+                            </p>
+                        </div>
+                        <button onclick="startCustomProtocol()" style="padding: 1rem 3rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 50px; color: white; font-weight: 500; cursor: pointer; font-size: 1.1rem;">
+                            Start Custom Protocol
+                        </button>
                     </div>
-                    <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                        <div style="color: var(--vera-neural-blue); font-size: 1.5rem;">Unlimited</div>
-                        <div style="color: var(--text-muted); font-size: 0.8rem;">Rate Limit</div>
-                    </div>
-                    <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-                        <div style="color: var(--vera-lavender); font-size: 1.5rem;">12ms</div>
-                        <div style="color: var(--text-muted); font-size: 0.8rem;">Avg Response</div>
+                    
+                    <div class="protocol-grid">
+                        <div class="protocol-card" onclick="startProtocol('neural-reset')">
+                            <div class="protocol-icon"></div>
+                            <div>Neural Reset</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">45 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('trauma-release')">
+                            <div class="protocol-icon"></div>
+                            <div>Trauma Release</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">60 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('deep-flow')">
+                            <div class="protocol-icon"></div>
+                            <div>Deep Flow</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">30 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('peak-performance')">
+                            <div class="protocol-icon"></div>
+                            <div>Peak Performance</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">25 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('intuition')">
+                            <div class="protocol-icon"></div>
+                            <div>Intuition Training</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">35 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('focus')">
+                            <div class="protocol-icon"></div>
+                            <div>Focus Enhancement</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">20 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('sleep')">
+                            <div class="protocol-icon"></div>
+                            <div>Sleep Optimization</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">40 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('custom')">
+                            <div class="protocol-icon"></div>
+                            <div>Custom Protocol</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Variable</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Analytics Dashboard -->
-            <div class="analytics-section">
-                <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">30-Day Neural Pattern Analysis</h3>
-                <div class="chart-container">
-                    <div class="chart-bar" style="height: 60%;"></div>
-                    <div class="chart-bar" style="height: 75%;"></div>
-                    <div class="chart-bar" style="height: 85%;"></div>
-                    <div class="chart-bar" style="height: 90%;"></div>
-                    <div class="chart-bar" style="height: 95%;"></div>
-                    <div class="chart-bar" style="height: 88%;"></div>
-                    <div class="chart-bar" style="height: 92%;"></div>
-                    <div class="chart-bar" style="height: 97%;"></div>
+            <!-- API Tab -->
+            <div id="api-tab" class="tab-content">
+                <div class="api-console">
+                    <h3 style="color: var(--vera-soft-gold); margin-bottom: 1rem;">API Access Console</h3>
+                    <div class="api-key" id="apiKey">
+                        API Key: vera_integrator_79tier_xKj9mP2qL8nB4vC6zX3aW5dR7fY9hT1s...
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
+                            <div style="color: var(--vera-emerald); font-size: 1.5rem;" id="apiCalls">2,847</div>
+                            <div style="color: var(--text-muted); font-size: 0.8rem;">API Calls Today</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
+                            <div style="color: var(--vera-neural-blue); font-size: 1.5rem;">Unlimited</div>
+                            <div style="color: var(--text-muted); font-size: 0.8rem;">Rate Limit</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
+                            <div style="color: var(--vera-lavender); font-size: 1.5rem;">12ms</div>
+                            <div style="color: var(--text-muted); font-size: 0.8rem;">Avg Response</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div id="data-tab" class="tab-content">
+                <div class="analytics-section">
+                    <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">30-Day Neural Pattern Analysis</h3>
+                    <div class="chart-container">
+                        <div class="chart-bar" style="height: 60%;"></div>
+                        <div class="chart-bar" style="height: 75%;"></div>
+                        <div class="chart-bar" style="height: 85%;"></div>
+                        <div class="chart-bar" style="height: 90%;"></div>
+                        <div class="chart-bar" style="height: 95%;"></div>
+                        <div class="chart-bar" style="height: 88%;"></div>
+                        <div class="chart-bar" style="height: 92%;"></div>
+                        <div class="chart-bar" style="height: 97%;"></div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -692,31 +985,31 @@
                 <h4 style="color: var(--vera-lavender); margin-bottom: 1rem; font-size: 1.1rem;">Connected Devices</h4>
                 <div class="integration-card connected">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span>⌚</span>
+                        <div class="integration-icon"></div>
                         <span>Apple Watch</span>
                     </div>
                     <span style="color: var(--vera-emerald); font-size: 0.8rem;">Live</span>
                 </div>
                 <div class="integration-card connected">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span>🎵</span>
+                        <div class="integration-icon"></div>
                         <span>Spotify</span>
                     </div>
                     <span style="color: var(--vera-emerald); font-size: 0.8rem;">Active</span>
                 </div>
                 <div class="integration-card connected">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span>📱</span>
+                        <div class="integration-icon"></div>
                         <span>iPhone Health</span>
                     </div>
                     <span style="color: var(--vera-emerald); font-size: 0.8rem;">Synced</span>
                 </div>
                 <div class="integration-card">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span>🧠</span>
+                        <div class="integration-icon"></div>
                         <span>Muse Headband</span>
                     </div>
-                    <button style="padding: 0.3rem 0.8rem; background: var(--vera-lavender); border: none; border-radius: 10px; color: white; font-size: 0.8rem; cursor: pointer;">Connect</button>
+                    <button onclick="connectDevice('muse')" style="padding: 0.3rem 0.8rem; background: var(--vera-lavender); border: none; border-radius: 10px; color: white; font-size: 0.8rem; cursor: pointer;">Connect</button>
                 </div>
             </div>
 
@@ -724,12 +1017,12 @@
             <div style="margin-bottom: 2rem;">
                 <h4 style="color: var(--vera-lavender); margin-bottom: 1rem; font-size: 1.1rem;">Custom Voice</h4>
                 <div class="voice-selector">
-                    <div class="voice-option selected">Original</div>
-                    <div class="voice-option">Calming</div>
-                    <div class="voice-option">Ethereal</div>
-                    <div class="voice-option">Masculine</div>
-                    <div class="voice-option">Child-like</div>
-                    <div class="voice-option">Custom AI</div>
+                    <div class="voice-option selected" onclick="selectVoice(this)">Original</div>
+                    <div class="voice-option" onclick="selectVoice(this)">Calming</div>
+                    <div class="voice-option" onclick="selectVoice(this)">Ethereal</div>
+                    <div class="voice-option" onclick="selectVoice(this)">Masculine</div>
+                    <div class="voice-option" onclick="selectVoice(this)">Child-like</div>
+                    <div class="voice-option" onclick="selectVoice(this)">Custom AI</div>
                 </div>
             </div>
 
@@ -737,15 +1030,15 @@
             <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(155, 89, 182, 0.1)); border-radius: 20px; padding: 1.5rem; margin-bottom: 2rem;">
                 <h4 style="color: var(--vera-soft-gold); margin-bottom: 1rem;">Practitioner Access</h4>
                 <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--vera-lavender); display: flex; align-items: center; justify-content: center;">
-                        👨‍⚕️
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 20px; height: 20px; background: rgba(255, 255, 255, 0.8); border-radius: 50%;"></div>
                     </div>
                     <div>
                         <div style="font-size: 0.9rem;">Dr. Sarah Chen</div>
                         <div style="font-size: 0.8rem; color: var(--text-muted);">Last review: 2 days ago</div>
                     </div>
                 </div>
-                <button style="width: 100%; padding: 0.8rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 15px; color: white; cursor: pointer;">
+                <button onclick="shareSessionData()" style="width: 100%; padding: 0.8rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 15px; color: white; cursor: pointer;">
                     Share Session Data
                 </button>
             </div>
@@ -754,13 +1047,13 @@
             <div>
                 <h4 style="color: var(--vera-lavender); margin-bottom: 1rem; font-size: 1.1rem;">Data Export</h4>
                 <div style="display: grid; gap: 0.5rem;">
-                    <button style="padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-soft); cursor: pointer;">
+                    <button onclick="exportData('pdf')" style="padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-soft); cursor: pointer; transition: all 0.3s;">
                         Export to PDF
                     </button>
-                    <button style="padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-soft); cursor: pointer;">
+                    <button onclick="exportData('raw')" style="padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-soft); cursor: pointer; transition: all 0.3s;">
                         Download Raw Data
                     </button>
-                    <button style="padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-soft); cursor: pointer;">
+                    <button onclick="generateReport()" style="padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-soft); cursor: pointer; transition: all 0.3s;">
                         Generate Report
                     </button>
                 </div>
@@ -769,6 +1062,18 @@
     </div>
 
     <script>
+        // Initialize Integrator Data
+        let integratorData = JSON.parse(localStorage.getItem('vera_integrator_data')) || {
+            sessionCount: 247,
+            coherenceScore: 94,
+            hrvPeak: 45,
+            apiCalls: 2847,
+            protocols: {},
+            voice: 'Original',
+            integrations: ['apple-watch', 'spotify', 'iphone-health'],
+            practitionerShares: 0
+        };
+
         // Create Premium Neural Universe
         function createNeuralUniverse() {
             const universe = document.getElementById('neuralUniverse');
@@ -799,6 +1104,15 @@
             }
             
             // Create premium neural pathways
+            const pathwayStyle = document.createElement('style');
+            pathwayStyle.textContent = `
+                @keyframes pathwayPulse {
+                    0%, 100% { opacity: 0.3; }
+                    50% { opacity: 0.8; }
+                }
+            `;
+            document.head.appendChild(pathwayStyle);
+            
             for (let i = 0; i < 50; i++) {
                 const pathway = document.createElement('div');
                 pathway.style.position = 'absolute';
@@ -815,6 +1129,144 @@
         
         createNeuralUniverse();
 
+        // Update display values
+        function updateDisplay() {
+            document.getElementById('sessionCount').textContent = integratorData.sessionCount;
+            document.getElementById('coherenceScore').textContent = integratorData.coherenceScore + '%';
+            document.getElementById('hrvValue').textContent = integratorData.hrvPeak + 'ms';
+            document.getElementById('apiCalls').textContent = integratorData.apiCalls.toLocaleString();
+        }
+
+        // Start Protocol
+        function startProtocol(type) {
+            integratorData.sessionCount++;
+            integratorData.apiCalls += Math.floor(Math.random() * 50) + 20;
+            
+            // Update coherence based on protocol type
+            if (type === 'neural-reset') {
+                integratorData.coherenceScore = Math.min(100, integratorData.coherenceScore + 2);
+            } else if (type === 'peak-performance') {
+                integratorData.hrvPeak = Math.min(60, integratorData.hrvPeak + 1);
+            }
+            
+            // Track protocol usage
+            integratorData.protocols[type] = (integratorData.protocols[type] || 0) + 1;
+            
+            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+            updateDisplay();
+            
+            alert(`Starting ${type.replace('-', ' ')} protocol...`);
+        }
+
+        // Start Custom Protocol
+        function startCustomProtocol() {
+            const duration = prompt('Enter custom protocol duration (minutes):', '30');
+            if (duration) {
+                startProtocol('custom');
+            }
+        }
+
+        // Start Premium Session
+        function startPremiumSession() {
+            integratorData.sessionCount++;
+            integratorData.apiCalls += 100;
+            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+            updateDisplay();
+            alert('Initializing premium neural integration session...');
+        }
+
+        // Voice Selection
+        function selectVoice(element) {
+            document.querySelectorAll('.voice-option').forEach(o => o.classList.remove('selected'));
+            element.classList.add('selected');
+            integratorData.voice = element.textContent;
+            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+        }
+
+        // Connect Device
+        function connectDevice(device) {
+            if (!integratorData.integrations.includes(device)) {
+                integratorData.integrations.push(device);
+                localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+                alert(`Connecting to ${device}...`);
+                setTimeout(() => {
+                    alert(`${device} connected successfully!`);
+                    location.reload();
+                }, 2000);
+            }
+        }
+
+        // Share Session Data
+        function shareSessionData() {
+            integratorData.practitionerShares++;
+            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+            alert('Session data shared with Dr. Sarah Chen');
+        }
+
+        // Export Data Functions
+        function exportData(format) {
+            const data = {
+                sessions: integratorData.sessionCount,
+                coherence: integratorData.coherenceScore,
+                hrv: integratorData.hrvPeak,
+                protocols: integratorData.protocols,
+                exportDate: new Date().toISOString()
+            };
+            
+            if (format === 'pdf') {
+                alert('Generating PDF report...');
+            } else if (format === 'raw') {
+                const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'vera_integrator_data.json';
+                a.click();
+            }
+        }
+
+        // Generate Report
+        function generateReport() {
+            alert('Generating comprehensive neural integration report...');
+        }
+
+        // Tab Switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Section Switching (Desktop)
+        function switchSection(section) {
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.closest('.menu-item').classList.add('active');
+            
+            // Here you would implement section content switching
+            console.log('Switching to section:', section);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Mobile Section Switching
+        function switchMobileSection(section) {
+            toggleMobileMenu();
+            // Implement mobile section switching
+            console.log('Mobile section:', section);
+        }
+
         // Animate integration dots
         setInterval(() => {
             const dots = document.querySelectorAll('.integration-dot');
@@ -828,18 +1280,39 @@
             });
         }, 3000);
 
-        // Voice option selection
-        document.querySelectorAll('.voice-option').forEach(option => {
-            option.addEventListener('click', () => {
-                document.querySelectorAll('.voice-option').forEach(o => o.classList.remove('selected'));
-                option.classList.add('selected');
-            });
-        });
+        // Simulate live API calls
+        setInterval(() => {
+            integratorData.apiCalls += Math.floor(Math.random() * 5) + 1;
+            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+            document.getElementById('apiCalls').textContent = integratorData.apiCalls.toLocaleString();
+        }, 5000);
 
-        @keyframes pathwayPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
+        // Initialize display
+        updateDisplay();
+
+        // Access Control Check
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const hasSession = localStorage.getItem('vera_session');
+            const isSuccess = urlParams.get('success') === 'true';
+            
+            // Save session if coming from payment
+            if (isSuccess) {
+                const sessionId = urlParams.get('session_id') || 'integrator_' + Date.now();
+                localStorage.setItem('vera_session', sessionId);
+                localStorage.setItem('vera_plan', 'integrator');
+            }
+            
+            // Check if user has access
+            const plan = localStorage.getItem('vera_plan');
+            if (!hasSession && !isSuccess) {
+                alert('Please sign up for Integrator access');
+                window.location.href = 'index.html#pricing';
+            } else if (plan && plan !== 'integrator' && !isSuccess) {
+                alert('Please upgrade to Integrator tier for full access');
+                window.location.href = 'index.html#pricing';
+            }
+        });
     </script>
 </body>
 </html>
