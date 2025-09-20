@@ -228,6 +228,26 @@
                 0 0 100px rgba(155, 89, 182, 0.6);
             animation: premiumOrbPulse 5s infinite;
             cursor: pointer;
+            position: relative;
+        }
+
+        .vera-speaking-indicator {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--vera-soft-gold);
+            animation: speakingPulse 1.5s infinite;
+            display: none;
+        }
+
+        .vera-orb-premium.speaking .vera-speaking-indicator {
+            display: block;
+        }
+
+        @keyframes speakingPulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.3); opacity: 0; }
         }
 
         @keyframes premiumOrbPulse {
@@ -313,6 +333,20 @@
             border: 1px solid var(--glass-border);
         }
 
+        .section-content {
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .welcome-section h1 {
             font-size: 3.5rem;
             font-weight: 200;
@@ -320,6 +354,81 @@
             background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender), var(--vera-neural-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* VERA Companion Section */
+        .vera-companion-section {
+            background: linear-gradient(135deg,
+                rgba(255, 215, 0, 0.1) 0%,
+                rgba(155, 89, 182, 0.1) 100%);
+            border-radius: 25px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .vera-voice-visualizer {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin: 2rem 0;
+        }
+
+        .voice-bar {
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(180deg, var(--vera-soft-gold), var(--vera-lavender));
+            border-radius: 2px;
+            animation: voiceWave 1s infinite ease-in-out;
+        }
+
+        .voice-bar:nth-child(2) { animation-delay: 0.1s; height: 30px; }
+        .voice-bar:nth-child(3) { animation-delay: 0.2s; height: 40px; }
+        .voice-bar:nth-child(4) { animation-delay: 0.3s; height: 35px; }
+        .voice-bar:nth-child(5) { animation-delay: 0.4s; height: 45px; }
+        .voice-bar:nth-child(6) { animation-delay: 0.5s; height: 35px; }
+        .voice-bar:nth-child(7) { animation-delay: 0.6s; height: 30px; }
+        .voice-bar:nth-child(8) { animation-delay: 0.7s; height: 20px; }
+
+        @keyframes voiceWave {
+            0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
+            50% { transform: scaleY(1); opacity: 1; }
+        }
+
+        .vera-status-text {
+            font-size: 1.2rem;
+            color: var(--vera-lavender);
+            margin-bottom: 1rem;
+        }
+
+        .vera-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .vera-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender));
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .vera-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .vera-btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--vera-lavender);
         }
 
         /* Premium Stats Grid */
@@ -341,6 +450,7 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .premium-stat-card::before {
@@ -441,6 +551,37 @@
                 rgba(155, 89, 182, 0.2));
         }
 
+        /* Knowledge Base */
+        .knowledge-base {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .knowledge-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .knowledge-card {
+            background: linear-gradient(135deg,
+                rgba(100, 181, 246, 0.1),
+                rgba(155, 89, 182, 0.1));
+            padding: 1.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--glass-border);
+        }
+
+        .knowledge-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--vera-soft-gold);
+        }
+
         /* API Console */
         .api-console {
             background: rgba(0, 0, 0, 0.4);
@@ -460,6 +601,61 @@
             word-break: break-all;
             font-size: 0.85rem;
             color: var(--vera-emerald);
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0.3rem 0.8rem;
+            background: var(--vera-emerald);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        /* Neural Lab Section */
+        .neural-lab {
+            background: linear-gradient(135deg,
+                rgba(255, 215, 0, 0.05),
+                rgba(100, 181, 246, 0.05));
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .lab-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .lab-control {
+            text-align: center;
+        }
+
+        .lab-slider {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+            margin: 1rem 0;
+        }
+
+        .lab-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender));
+            border-radius: 50%;
+            cursor: pointer;
         }
 
         /* Right Panel - Premium Features */
@@ -482,6 +678,13 @@
             justify-content: space-between;
             align-items: center;
             border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .integration-card:hover {
+            transform: translateX(5px);
+            border-color: var(--vera-soft-gold);
         }
 
         .integration-card.connected {
@@ -755,6 +958,10 @@
                 <div class="menu-icon"></div>
                 <span>Command Center</span>
             </div>
+            <div class="menu-item" onclick="switchMobileSection('vera')">
+                <div class="menu-icon"></div>
+                <span>VERA Companion</span>
+            </div>
             <div class="menu-item" onclick="switchMobileSection('sessions')">
                 <div class="menu-icon"></div>
                 <span>Advanced Sessions</span>
@@ -762,6 +969,10 @@
             <div class="menu-item" onclick="switchMobileSection('lab')">
                 <div class="menu-icon"></div>
                 <span>Neural Lab</span>
+            </div>
+            <div class="menu-item" onclick="switchMobileSection('knowledge')">
+                <div class="menu-icon"></div>
+                <span>Knowledge Base</span>
             </div>
             <div class="menu-item" onclick="switchMobileSection('analytics')">
                 <div class="menu-icon"></div>
@@ -782,8 +993,9 @@
     <div class="container">
         <!-- Premium Sidebar -->
         <aside class="sidebar">
-            <div class="vera-orb-premium" onclick="startPremiumSession()">
+            <div class="vera-orb-premium" id="veraOrb" onclick="activateVERA()">
                 <span class="vera-orb-text">VERA</span>
+                <div class="vera-speaking-indicator"></div>
             </div>
             
             <div style="text-align: center; margin-bottom: 2rem; padding: 1rem; background: rgba(255, 215, 0, 0.1); border-radius: 15px;">
@@ -796,6 +1008,10 @@
                     <div class="menu-icon"></div>
                     <span>Command Center</span>
                 </div>
+                <div class="menu-item" onclick="switchSection('vera')">
+                    <div class="menu-icon"></div>
+                    <span>VERA Companion</span>
+                </div>
                 <div class="menu-item" onclick="switchSection('sessions')">
                     <div class="menu-icon"></div>
                     <span>Advanced Sessions</span>
@@ -803,6 +1019,10 @@
                 <div class="menu-item" onclick="switchSection('lab')">
                     <div class="menu-icon"></div>
                     <span>Neural Lab</span>
+                </div>
+                <div class="menu-item" onclick="switchSection('knowledge')">
+                    <div class="menu-icon"></div>
+                    <span>Knowledge Base</span>
                 </div>
                 <div class="menu-item" onclick="switchSection('analytics')">
                     <div class="menu-icon"></div>
@@ -829,16 +1049,8 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Tab Navigation (Mobile) -->
-            <div class="tab-navigation">
-                <button class="tab-nav-item active" onclick="switchTab('overview')">Overview</button>
-                <button class="tab-nav-item" onclick="switchTab('protocols')">Protocols</button>
-                <button class="tab-nav-item" onclick="switchTab('api')">API</button>
-                <button class="tab-nav-item" onclick="switchTab('data')">Analytics</button>
-            </div>
-
-            <!-- Overview Tab -->
-            <div id="overview-tab" class="tab-content active">
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="section-content active">
                 <div class="welcome-section">
                     <h1>Neural Integration Laboratory</h1>
                     <p style="color: var(--text-soft); font-size: 1.2rem;">
@@ -847,31 +1059,84 @@
                 </div>
 
                 <div class="premium-stats-grid">
-                    <div class="premium-stat-card">
+                    <div class="premium-stat-card" onclick="viewStatDetails('sessions')">
                         <div class="stat-value infinity-symbol">∞</div>
                         <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Unlimited Sessions</div>
                     </div>
-                    <div class="premium-stat-card">
+                    <div class="premium-stat-card" onclick="viewStatDetails('coherence')">
                         <div class="stat-value" id="coherenceScore">94%</div>
                         <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Coherence Score</div>
                     </div>
-                    <div class="premium-stat-card">
+                    <div class="premium-stat-card" onclick="viewStatDetails('integrations')">
                         <div class="stat-value">12</div>
                         <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Active Integrations</div>
                     </div>
-                    <div class="premium-stat-card">
+                    <div class="premium-stat-card" onclick="viewStatDetails('completed')">
                         <div class="stat-value" id="sessionCount">247</div>
                         <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Sessions Completed</div>
                     </div>
-                    <div class="premium-stat-card">
+                    <div class="premium-stat-card" onclick="viewStatDetails('hrv')">
                         <div class="stat-value" id="hrvValue">45ms</div>
                         <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Peak HRV</div>
                     </div>
                 </div>
+
+                <!-- Quick Actions -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                    <button class="vera-btn" onclick="startQuickSession()">Quick Session</button>
+                    <button class="vera-btn secondary" onclick="switchSection('vera')">Talk to VERA</button>
+                    <button class="vera-btn secondary" onclick="switchSection('knowledge')">Knowledge Base</button>
+                    <button class="vera-btn secondary" onclick="generateReport()">Generate Report</button>
+                </div>
             </div>
 
-            <!-- Protocols Tab -->
-            <div id="protocols-tab" class="tab-content">
+            <!-- VERA Companion Section -->
+            <div id="vera-section" class="section-content">
+                <div class="vera-companion-section">
+                    <h1 style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        VERA AI Companion
+                    </h1>
+                    <p class="vera-status-text" id="veraStatus">Click below to activate VERA's voice</p>
+                    
+                    <div class="vera-voice-visualizer" id="voiceVisualizer" style="display: none;">
+                        <div class="voice-bar"></div>
+                        <div class="voice-bar"></div>
+                        <div class="voice-bar"></div>
+                        <div class="voice-bar"></div>
+                        <div class="voice-bar"></div>
+                        <div class="voice-bar"></div>
+                        <div class="voice-bar"></div>
+                        <div class="voice-bar"></div>
+                    </div>
+
+                    <div class="vera-controls">
+                        <button class="vera-btn" onclick="startVERASession()">Activate VERA</button>
+                        <button class="vera-btn secondary" onclick="pauseVERA()">Pause</button>
+                        <button class="vera-btn secondary" onclick="changeVERAMode()">Change Mode</button>
+                    </div>
+
+                    <div style="margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.03); border-radius: 20px;">
+                        <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">VERA Modes</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                            <div class="protocol-card" onclick="setVERAMode('companion')">
+                                <div>Companion</div>
+                            </div>
+                            <div class="protocol-card" onclick="setVERAMode('coach')">
+                                <div>Coach</div>
+                            </div>
+                            <div class="protocol-card" onclick="setVERAMode('therapist')">
+                                <div>Therapist</div>
+                            </div>
+                            <div class="protocol-card" onclick="setVERAMode('guide')">
+                                <div>Guide</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Sessions Section -->
+            <div id="sessions-section" class="section-content">
                 <div class="advanced-session-area">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
                         <div>
@@ -882,8 +1147,8 @@
                                 Full spectrum nervous system regulation
                             </p>
                         </div>
-                        <button onclick="startCustomProtocol()" style="padding: 1rem 3rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 50px; color: white; font-weight: 500; cursor: pointer; font-size: 1.1rem;">
-                            Start Custom Protocol
+                        <button onclick="createCustomProtocol()" style="padding: 1rem 3rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 50px; color: white; font-weight: 500; cursor: pointer; font-size: 1.1rem;">
+                            Create Custom Protocol
                         </button>
                     </div>
                     
@@ -923,6 +1188,26 @@
                             <div>Sleep Optimization</div>
                             <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">40 min</div>
                         </div>
+                        <div class="protocol-card" onclick="startProtocol('emergency')">
+                            <div class="protocol-icon"></div>
+                            <div>Emergency Reset</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">5 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('creativity')">
+                            <div class="protocol-icon"></div>
+                            <div>Creative Flow</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">30 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('social')">
+                            <div class="protocol-icon"></div>
+                            <div>Social Confidence</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">20 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('physical')">
+                            <div class="protocol-icon"></div>
+                            <div>Physical Recovery</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">25 min</div>
+                        </div>
                         <div class="protocol-card" onclick="startProtocol('custom')">
                             <div class="protocol-icon"></div>
                             <div>Custom Protocol</div>
@@ -932,12 +1217,122 @@
                 </div>
             </div>
 
-            <!-- API Tab -->
-            <div id="api-tab" class="tab-content">
+            <!-- Neural Lab Section -->
+            <div id="lab-section" class="section-content">
+                <div class="neural-lab">
+                    <h2 style="font-size: 2rem; color: var(--vera-soft-gold); margin-bottom: 1rem;">Neural Laboratory</h2>
+                    <p style="color: var(--text-soft); margin-bottom: 2rem;">Fine-tune your nervous system response</p>
+                    
+                    <div class="lab-controls">
+                        <div class="lab-control">
+                            <label style="color: var(--vera-lavender);">Coherence Frequency</label>
+                            <input type="range" class="lab-slider" id="coherenceFreq" min="0" max="100" value="50" onchange="updateLabValue('coherence', this.value)">
+                            <span id="coherenceValue">50 Hz</span>
+                        </div>
+                        <div class="lab-control">
+                            <label style="color: var(--vera-lavender);">Neural Amplitude</label>
+                            <input type="range" class="lab-slider" id="neuralAmp" min="0" max="100" value="70" onchange="updateLabValue('amplitude', this.value)">
+                            <span id="amplitudeValue">70%</span>
+                        </div>
+                        <div class="lab-control">
+                            <label style="color: var(--vera-lavender);">Synchronization</label>
+                            <input type="range" class="lab-slider" id="syncRate" min="0" max="100" value="85" onchange="updateLabValue('sync', this.value)">
+                            <span id="syncValue">85%</span>
+                        </div>
+                        <div class="lab-control">
+                            <label style="color: var(--vera-lavender);">Regulation Depth</label>
+                            <input type="range" class="lab-slider" id="regDepth" min="0" max="100" value="60" onchange="updateLabValue('depth', this.value)">
+                            <span id="depthValue">60%</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <button class="vera-btn" onclick="applyLabSettings()">Apply Settings</button>
+                        <button class="vera-btn secondary" onclick="resetLabSettings()">Reset to Default</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Knowledge Base Section -->
+            <div id="knowledge-section" class="section-content">
+                <div class="knowledge-base">
+                    <h2 style="font-size: 2rem; color: var(--vera-soft-gold); margin-bottom: 1rem;">Knowledge Base</h2>
+                    <p style="color: var(--text-soft);">Deep dive into nervous system science</p>
+                    
+                    <div class="knowledge-categories">
+                        <div class="knowledge-card" onclick="openKnowledge('basics')">
+                            <h3 style="color: var(--vera-lavender); margin-bottom: 0.5rem;">Nervous System Basics</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Understanding your autonomic nervous system</p>
+                        </div>
+                        <div class="knowledge-card" onclick="openKnowledge('protocols')">
+                            <h3 style="color: var(--vera-lavender); margin-bottom: 0.5rem;">Protocol Science</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">How our protocols work at the neural level</p>
+                        </div>
+                        <div class="knowledge-card" onclick="openKnowledge('breathing')">
+                            <h3 style="color: var(--vera-lavender); margin-bottom: 0.5rem;">Breathing Techniques</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Advanced breathing for nervous system regulation</p>
+                        </div>
+                        <div class="knowledge-card" onclick="openKnowledge('trauma')">
+                            <h3 style="color: var(--vera-lavender); margin-bottom: 0.5rem;">Trauma & Healing</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Understanding trauma's impact on the nervous system</p>
+                        </div>
+                        <div class="knowledge-card" onclick="openKnowledge('research')">
+                            <h3 style="color: var(--vera-lavender); margin-bottom: 0.5rem;">Latest Research</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Cutting-edge neuroscience discoveries</p>
+                        </div>
+                        <div class="knowledge-card" onclick="openKnowledge('faq')">
+                            <h3 style="color: var(--vera-lavender); margin-bottom: 0.5rem;">FAQ</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Common questions about VERA and regulation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div id="analytics-section" class="section-content">
+                <div class="analytics-section">
+                    <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">30-Day Neural Pattern Analysis</h3>
+                    <div class="chart-container">
+                        <div class="chart-bar" style="height: 60%;"></div>
+                        <div class="chart-bar" style="height: 75%;"></div>
+                        <div class="chart-bar" style="height: 85%;"></div>
+                        <div class="chart-bar" style="height: 90%;"></div>
+                        <div class="chart-bar" style="height: 95%;"></div>
+                        <div class="chart-bar" style="height: 88%;"></div>
+                        <div class="chart-bar" style="height: 92%;"></div>
+                        <div class="chart-bar" style="height: 97%;"></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                    <div style="background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 15px;">
+                        <h4 style="color: var(--vera-soft-gold); margin-bottom: 1rem;">Session Insights</h4>
+                        <ul style="list-style: none; color: var(--text-soft);">
+                            <li style="margin-bottom: 0.5rem;">• Average session: 32 min</li>
+                            <li style="margin-bottom: 0.5rem;">• Most used: Neural Reset</li>
+                            <li style="margin-bottom: 0.5rem;">• Peak time: 9:00 AM</li>
+                            <li>• Consistency: 87%</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 15px;">
+                        <h4 style="color: var(--vera-soft-gold); margin-bottom: 1rem;">Progress Metrics</h4>
+                        <ul style="list-style: none; color: var(--text-soft);">
+                            <li style="margin-bottom: 0.5rem;">• HRV improved: +23%</li>
+                            <li style="margin-bottom: 0.5rem;">• Stress reduced: -41%</li>
+                            <li style="margin-bottom: 0.5rem;">• Sleep quality: +35%</li>
+                            <li>• Focus enhanced: +28%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Section -->
+            <div id="api-section" class="section-content">
                 <div class="api-console">
                     <h3 style="color: var(--vera-soft-gold); margin-bottom: 1rem;">API Access Console</h3>
                     <div class="api-key" id="apiKey">
                         API Key: vera_integrator_79tier_xKj9mP2qL8nB4vC6zX3aW5dR7fY9hT1s...
+                        <button class="copy-btn" onclick="copyAPIKey()">Copy</button>
                     </div>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
                         <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
@@ -953,22 +1348,17 @@
                             <div style="color: var(--text-muted); font-size: 0.8rem;">Avg Response</div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Analytics Tab -->
-            <div id="data-tab" class="tab-content">
-                <div class="analytics-section">
-                    <h3 style="color: var(--vera-lavender); margin-bottom: 1rem;">30-Day Neural Pattern Analysis</h3>
-                    <div class="chart-container">
-                        <div class="chart-bar" style="height: 60%;"></div>
-                        <div class="chart-bar" style="height: 75%;"></div>
-                        <div class="chart-bar" style="height: 85%;"></div>
-                        <div class="chart-bar" style="height: 90%;"></div>
-                        <div class="chart-bar" style="height: 95%;"></div>
-                        <div class="chart-bar" style="height: 88%;"></div>
-                        <div class="chart-bar" style="height: 92%;"></div>
-                        <div class="chart-bar" style="height: 97%;"></div>
+                    <div style="margin-top: 2rem;">
+                        <h4 style="color: var(--vera-lavender); margin-bottom: 1rem;">API Endpoints</h4>
+                        <pre style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 10px; overflow-x: auto;">
+GET  /api/v1/sessions
+POST /api/v1/sessions/create
+GET  /api/v1/protocols
+POST /api/v1/protocols/custom
+GET  /api/v1/analytics
+GET  /api/v1/integrations
+POST /api/v1/vera/speak</pre>
                     </div>
                 </div>
             </div>
@@ -983,39 +1373,46 @@
             <!-- Device Integrations -->
             <div style="margin-bottom: 2rem;">
                 <h4 style="color: var(--vera-lavender); margin-bottom: 1rem; font-size: 1.1rem;">Connected Devices</h4>
-                <div class="integration-card connected">
+                <div class="integration-card connected" onclick="manageIntegration('apple-watch')">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <div class="integration-icon"></div>
                         <span>Apple Watch</span>
                     </div>
                     <span style="color: var(--vera-emerald); font-size: 0.8rem;">Live</span>
                 </div>
-                <div class="integration-card connected">
+                <div class="integration-card connected" onclick="manageIntegration('spotify')">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <div class="integration-icon"></div>
                         <span>Spotify</span>
                     </div>
                     <span style="color: var(--vera-emerald); font-size: 0.8rem;">Active</span>
                 </div>
-                <div class="integration-card connected">
+                <div class="integration-card connected" onclick="manageIntegration('health')">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <div class="integration-icon"></div>
                         <span>iPhone Health</span>
                     </div>
                     <span style="color: var(--vera-emerald); font-size: 0.8rem;">Synced</span>
                 </div>
-                <div class="integration-card">
+                <div class="integration-card" onclick="connectDevice('muse')">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <div class="integration-icon"></div>
                         <span>Muse Headband</span>
                     </div>
-                    <button onclick="connectDevice('muse')" style="padding: 0.3rem 0.8rem; background: var(--vera-lavender); border: none; border-radius: 10px; color: white; font-size: 0.8rem; cursor: pointer;">Connect</button>
+                    <button style="padding: 0.3rem 0.8rem; background: var(--vera-lavender); border: none; border-radius: 10px; color: white; font-size: 0.8rem; cursor: pointer;">Connect</button>
+                </div>
+                <div class="integration-card" onclick="connectDevice('oura')">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div class="integration-icon"></div>
+                        <span>Oura Ring</span>
+                    </div>
+                    <button style="padding: 0.3rem 0.8rem; background: var(--vera-lavender); border: none; border-radius: 10px; color: white; font-size: 0.8rem; cursor: pointer;">Connect</button>
                 </div>
             </div>
 
             <!-- Custom Voice Selection -->
             <div style="margin-bottom: 2rem;">
-                <h4 style="color: var(--vera-lavender); margin-bottom: 1rem; font-size: 1.1rem;">Custom Voice</h4>
+                <h4 style="color: var(--vera-lavender); margin-bottom: 1rem; font-size: 1.1rem;">VERA Voice</h4>
                 <div class="voice-selector">
                     <div class="voice-option selected" onclick="selectVoice(this)">Original</div>
                     <div class="voice-option" onclick="selectVoice(this)">Calming</div>
@@ -1071,14 +1468,24 @@
             protocols: {},
             voice: 'Original',
             integrations: ['apple-watch', 'spotify', 'iphone-health'],
-            practitionerShares: 0
+            practitionerShares: 0,
+            veraMode: 'companion',
+            labSettings: {
+                coherence: 50,
+                amplitude: 70,
+                sync: 85,
+                depth: 60
+            }
         };
+
+        // VERA Speaking State
+        let veraSpeaking = false;
+        let veraInterval = null;
 
         // Create Premium Neural Universe
         function createNeuralUniverse() {
             const universe = document.getElementById('neuralUniverse');
             
-            // Premium colors including gold
             const premiumColors = [
                 'radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, transparent 70%)',
                 'radial-gradient(circle, rgba(248, 187, 208, 0.8) 0%, transparent 70%)',
@@ -1088,7 +1495,6 @@
                 'radial-gradient(circle, rgba(16, 185, 129, 0.8) 0%, transparent 70%)'
             ];
             
-            // Create 300+ neurons for premium experience
             for (let i = 0; i < 300; i++) {
                 const neuron = document.createElement('div');
                 neuron.className = 'premium-neuron';
@@ -1103,7 +1509,6 @@
                 universe.appendChild(neuron);
             }
             
-            // Create premium neural pathways
             const pathwayStyle = document.createElement('style');
             pathwayStyle.textContent = `
                 @keyframes pathwayPulse {
@@ -1129,61 +1534,220 @@
         
         createNeuralUniverse();
 
-        // Update display values
-        function updateDisplay() {
-            document.getElementById('sessionCount').textContent = integratorData.sessionCount;
-            document.getElementById('coherenceScore').textContent = integratorData.coherenceScore + '%';
-            document.getElementById('hrvValue').textContent = integratorData.hrvPeak + 'ms';
-            document.getElementById('apiCalls').textContent = integratorData.apiCalls.toLocaleString();
+        // Section Switching
+        function switchSection(sectionName) {
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const section = document.getElementById(sectionName + '-section');
+            if (section) {
+                section.classList.add('active');
+            }
+            
+            if (event && event.target) {
+                event.target.closest('.menu-item').classList.add('active');
+            }
         }
 
-        // Start Protocol
+        // VERA AI Companion Functions
+        function activateVERA() {
+            const orb = document.getElementById('veraOrb');
+            orb.classList.add('speaking');
+            switchSection('vera');
+            startVERASession();
+        }
+
+        function startVERASession() {
+            veraSpeaking = true;
+            const status = document.getElementById('veraStatus');
+            const visualizer = document.getElementById('voiceVisualizer');
+            const orb = document.getElementById('veraOrb');
+            
+            status.textContent = 'VERA is listening and responding...';
+            visualizer.style.display = 'flex';
+            orb.classList.add('speaking');
+            
+            // Simulate VERA speaking
+            const veraResponses = [
+                "Hello, I'm here to support your nervous system regulation journey.",
+                "Let's take a deep breath together. Inhale... and exhale...",
+                "Your coherence score has improved by 5% this week.",
+                "Would you like to try the Neural Reset protocol?",
+                "I notice your HRV is optimal for a deep regulation session.",
+                "Remember, consistency is key to nervous system mastery."
+            ];
+            
+            let responseIndex = 0;
+            veraInterval = setInterval(() => {
+                if (responseIndex < veraResponses.length) {
+                    speakVERA(veraResponses[responseIndex]);
+                    responseIndex++;
+                } else {
+                    clearInterval(veraInterval);
+                    status.textContent = 'VERA session complete. Click to start again.';
+                    visualizer.style.display = 'none';
+                    orb.classList.remove('speaking');
+                    veraSpeaking = false;
+                }
+            }, 5000);
+        }
+
+        function speakVERA(text) {
+            const status = document.getElementById('veraStatus');
+            status.textContent = 'VERA: ' + text;
+            
+            // Use Web Speech API if available
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 0.9;
+                utterance.pitch = 1.1;
+                utterance.voice = speechSynthesis.getVoices().find(voice => voice.name.includes('Female')) || speechSynthesis.getVoices()[0];
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function pauseVERA() {
+            if (veraSpeaking) {
+                clearInterval(veraInterval);
+                veraSpeaking = false;
+                document.getElementById('veraStatus').textContent = 'VERA paused. Click Activate to continue.';
+                document.getElementById('voiceVisualizer').style.display = 'none';
+                document.getElementById('veraOrb').classList.remove('speaking');
+                if ('speechSynthesis' in window) {
+                    speechSynthesis.cancel();
+                }
+            }
+        }
+
+        function changeVERAMode() {
+            const modes = ['companion', 'coach', 'therapist', 'guide'];
+            const currentIndex = modes.indexOf(integratorData.veraMode);
+            const nextIndex = (currentIndex + 1) % modes.length;
+            integratorData.veraMode = modes[nextIndex];
+            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+            alert(`VERA mode changed to: ${integratorData.veraMode.toUpperCase()}`);
+        }
+
+        function setVERAMode(mode) {
+            integratorData.veraMode = mode;
+            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+            alert(`VERA is now in ${mode.toUpperCase()} mode`);
+            if (veraSpeaking) {
+                pauseVERA();
+                setTimeout(startVERASession, 1000);
+            }
+        }
+
+        // Protocol Functions
         function startProtocol(type) {
             integratorData.sessionCount++;
             integratorData.apiCalls += Math.floor(Math.random() * 50) + 20;
             
-            // Update coherence based on protocol type
             if (type === 'neural-reset') {
                 integratorData.coherenceScore = Math.min(100, integratorData.coherenceScore + 2);
             } else if (type === 'peak-performance') {
                 integratorData.hrvPeak = Math.min(60, integratorData.hrvPeak + 1);
             }
             
-            // Track protocol usage
             integratorData.protocols[type] = (integratorData.protocols[type] || 0) + 1;
-            
             localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
             updateDisplay();
             
-            alert(`Starting ${type.replace('-', ' ')} protocol...`);
+            speakVERA(`Starting ${type.replace(/-/g, ' ')} protocol. Please find a comfortable position.`);
+            alert(`Initiating ${type.replace(/-/g, ' ')} protocol...`);
         }
 
-        // Start Custom Protocol
-        function startCustomProtocol() {
-            const duration = prompt('Enter custom protocol duration (minutes):', '30');
-            if (duration) {
-                startProtocol('custom');
+        function createCustomProtocol() {
+            const name = prompt('Enter custom protocol name:');
+            const duration = prompt('Enter duration (minutes):', '30');
+            if (name && duration) {
+                startProtocol('custom-' + name);
             }
         }
 
-        // Start Premium Session
-        function startPremiumSession() {
-            integratorData.sessionCount++;
-            integratorData.apiCalls += 100;
-            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
-            updateDisplay();
-            alert('Initializing premium neural integration session...');
+        function startQuickSession() {
+            startProtocol('quick-regulation');
         }
 
-        // Voice Selection
-        function selectVoice(element) {
-            document.querySelectorAll('.voice-option').forEach(o => o.classList.remove('selected'));
-            element.classList.add('selected');
-            integratorData.voice = element.textContent;
-            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+        // Neural Lab Functions
+        function updateLabValue(type, value) {
+            const displays = {
+                'coherence': 'coherenceValue',
+                'amplitude': 'amplitudeValue',
+                'sync': 'syncValue',
+                'depth': 'depthValue'
+            };
+            
+            const display = document.getElementById(displays[type]);
+            if (display) {
+                if (type === 'coherence') {
+                    display.textContent = value + ' Hz';
+                } else {
+                    display.textContent = value + '%';
+                }
+            }
+            
+            integratorData.labSettings[type] = parseInt(value);
         }
 
-        // Connect Device
+        function applyLabSettings() {
+            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+            alert('Neural Lab settings applied successfully!');
+            speakVERA('New neural parameters have been configured.');
+        }
+
+        function resetLabSettings() {
+            integratorData.labSettings = {
+                coherence: 50,
+                amplitude: 70,
+                sync: 85,
+                depth: 60
+            };
+            document.getElementById('coherenceFreq').value = 50;
+            document.getElementById('neuralAmp').value = 70;
+            document.getElementById('syncRate').value = 85;
+            document.getElementById('regDepth').value = 60;
+            updateLabValue('coherence', 50);
+            updateLabValue('amplitude', 70);
+            updateLabValue('sync', 85);
+            updateLabValue('depth', 60);
+            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+            alert('Settings reset to default');
+        }
+
+        // Knowledge Base Functions
+        function openKnowledge(category) {
+            const content = {
+                'basics': 'Opening comprehensive guide to autonomic nervous system regulation...',
+                'protocols': 'Accessing scientific documentation on VERA protocols...',
+                'breathing': 'Loading advanced breathing technique library...',
+                'trauma': 'Opening trauma-informed regulation resources...',
+                'research': 'Accessing latest neuroscience research database...',
+                'faq': 'Opening frequently asked questions...'
+            };
+            
+            alert(content[category] || 'Loading knowledge base...');
+            speakVERA(`Accessing ${category} information from the knowledge base.`);
+        }
+
+        // Stats Functions
+        function viewStatDetails(stat) {
+            const details = {
+                'sessions': 'You have unlimited sessions. Current streak: 14 days',
+                'coherence': 'Your coherence score indicates excellent nervous system regulation',
+                'integrations': 'All 12 integrations are actively syncing data',
+                'completed': `You've completed ${integratorData.sessionCount} sessions total`,
+                'hrv': 'Your HRV peak indicates strong vagal tone'
+            };
+            
+            alert(details[stat] || 'Loading statistics...');
+        }
+
+        // Integration Functions
         function connectDevice(device) {
             if (!integratorData.integrations.includes(device)) {
                 integratorData.integrations.push(device);
@@ -1196,25 +1760,38 @@
             }
         }
 
-        // Share Session Data
+        function manageIntegration(integration) {
+            alert(`Managing ${integration} settings...`);
+        }
+
+        // Voice Selection
+        function selectVoice(element) {
+            document.querySelectorAll('.voice-option').forEach(o => o.classList.remove('selected'));
+            element.classList.add('selected');
+            integratorData.voice = element.textContent;
+            localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
+            speakVERA(`Voice changed to ${element.textContent}`);
+        }
+
+        // Data Functions
         function shareSessionData() {
             integratorData.practitionerShares++;
             localStorage.setItem('vera_integrator_data', JSON.stringify(integratorData));
             alert('Session data shared with Dr. Sarah Chen');
         }
 
-        // Export Data Functions
         function exportData(format) {
             const data = {
                 sessions: integratorData.sessionCount,
                 coherence: integratorData.coherenceScore,
                 hrv: integratorData.hrvPeak,
                 protocols: integratorData.protocols,
+                labSettings: integratorData.labSettings,
                 exportDate: new Date().toISOString()
             };
             
             if (format === 'pdf') {
-                alert('Generating PDF report...');
+                alert('Generating comprehensive PDF report...');
             } else if (format === 'raw') {
                 const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
                 const url = URL.createObjectURL(blob);
@@ -1225,46 +1802,34 @@
             }
         }
 
-        // Generate Report
         function generateReport() {
-            alert('Generating comprehensive neural integration report...');
+            alert('Generating comprehensive neural integration report with all session data, analytics, and recommendations...');
         }
 
-        // Tab Switching
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
+        function copyAPIKey() {
+            const apiKey = 'vera_integrator_79tier_xKj9mP2qL8nB4vC6zX3aW5dR7fY9hT1sG8kL2mN9pQ4wE6rT3yU5iO7aS0dF';
+            navigator.clipboard.writeText(apiKey).then(() => {
+                alert('API key copied to clipboard');
             });
-            document.querySelectorAll('.tab-nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            document.getElementById(tabName + '-tab').classList.add('active');
-            event.target.classList.add('active');
         }
 
-        // Section Switching (Desktop)
-        function switchSection(section) {
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            event.target.closest('.menu-item').classList.add('active');
-            
-            // Here you would implement section content switching
-            console.log('Switching to section:', section);
-        }
-
-        // Mobile Menu Toggle
+        // Mobile Functions
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('active');
         }
 
-        // Mobile Section Switching
         function switchMobileSection(section) {
             toggleMobileMenu();
-            // Implement mobile section switching
-            console.log('Mobile section:', section);
+            switchSection(section);
+        }
+
+        // Update Display
+        function updateDisplay() {
+            document.getElementById('sessionCount').textContent = integratorData.sessionCount;
+            document.getElementById('coherenceScore').textContent = integratorData.coherenceScore + '%';
+            document.getElementById('hrvValue').textContent = integratorData.hrvPeak + 'ms';
+            document.getElementById('apiCalls').textContent = integratorData.apiCalls.toLocaleString();
         }
 
         // Animate integration dots
@@ -1296,14 +1861,12 @@
             const hasSession = localStorage.getItem('vera_session');
             const isSuccess = urlParams.get('success') === 'true';
             
-            // Save session if coming from payment
             if (isSuccess) {
                 const sessionId = urlParams.get('session_id') || 'integrator_' + Date.now();
                 localStorage.setItem('vera_session', sessionId);
                 localStorage.setItem('vera_plan', 'integrator');
             }
             
-            // Check if user has access
             const plan = localStorage.getItem('vera_plan');
             if (!hasSession && !isSuccess) {
                 alert('Please sign up for Integrator access');
