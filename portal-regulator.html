@@ -73,15 +73,29 @@
             }
         }
 
+        .neural-pathway {
+            position: absolute;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, var(--vera-lavender), transparent);
+            transform-origin: top;
+            animation: pathwayPulse 4s infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes pathwayPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 0.7; transform: scaleY(1.2); }
+        }
+
         /* Header */
         .header {
             background: linear-gradient(180deg, 
-                rgba(10, 14, 39, 0.95) 0%, 
-                rgba(21, 24, 50, 0.9) 100%);
+                rgba(10, 14, 39, 0.98) 0%, 
+                rgba(21, 24, 50, 0.95) 100%);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid;
             border-image: linear-gradient(90deg, var(--vera-lavender), var(--vera-neural-blue)) 1;
-            padding: 1.5rem 3rem;
+            padding: 1rem 1.5rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -93,18 +107,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 300;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.2em;
             background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -113,13 +129,13 @@
 
         .tier-badge-regulator {
             background: linear-gradient(135deg, rgba(155, 89, 182, 0.3), rgba(100, 181, 246, 0.2));
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1rem;
             border-radius: 25px;
             border: 1px solid var(--vera-lavender);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--vera-lavender);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
             animation: regulatorPulse 4s infinite;
         }
 
@@ -131,15 +147,16 @@
         .user-menu {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .unlimited-badge {
             background: linear-gradient(135deg, var(--vera-emerald), var(--vera-neural-blue));
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1rem;
             border-radius: 25px;
             color: white;
             font-weight: 500;
+            font-size: 0.9rem;
             animation: shimmer 3s infinite;
         }
 
@@ -148,14 +165,38 @@
             50% { opacity: 1; }
         }
 
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-avatar::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: inherit;
+            filter: blur(10px);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
         /* Container */
         .container {
             max-width: 1600px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1.5rem;
             display: grid;
-            grid-template-columns: 300px 1fr 320px;
-            gap: 2rem;
+            grid-template-columns: 280px 1fr 320px;
+            gap: 1.5rem;
         }
 
         /* Sidebar */
@@ -164,17 +205,17 @@
                 rgba(155, 89, 182, 0.08) 0%, 
                 rgba(100, 181, 246, 0.05) 100%);
             border-radius: 25px;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid var(--vera-lavender);
             height: fit-content;
             position: sticky;
-            top: 100px;
+            top: 80px;
         }
 
         .vera-orb-regulator {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 2rem;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1.5rem;
             background: radial-gradient(circle at 35% 35%,
                 rgba(248, 187, 208, 0.5) 0%,
                 rgba(155, 89, 182, 0.7) 20%,
@@ -186,8 +227,8 @@
             align-items: center;
             justify-content: center;
             box-shadow: 
-                0 0 120px rgba(155, 89, 182, 0.6),
-                inset 0 0 80px rgba(100, 181, 246, 0.4);
+                0 0 100px rgba(155, 89, 182, 0.6),
+                inset 0 0 60px rgba(100, 181, 246, 0.4);
             animation: regulatorOrbPulse 6s infinite;
             cursor: pointer;
         }
@@ -195,18 +236,18 @@
         @keyframes regulatorOrbPulse {
             0%, 100% { 
                 transform: scale(1); 
-                box-shadow: 0 0 120px rgba(155, 89, 182, 0.6);
+                box-shadow: 0 0 100px rgba(155, 89, 182, 0.6);
             }
             50% { 
                 transform: scale(1.06); 
-                box-shadow: 0 0 160px rgba(155, 89, 182, 0.8);
+                box-shadow: 0 0 140px rgba(155, 89, 182, 0.8);
             }
         }
 
         .vera-orb-text {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 100;
-            letter-spacing: 0.5em;
+            letter-spacing: 0.4em;
             background: linear-gradient(45deg,
                 #FFD700 0%,
                 #F8BBD0 20%,
@@ -216,21 +257,43 @@
                 #10B981 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding-left: 0.5em;
+            padding-left: 0.4em;
         }
 
         .menu-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            margin: 0.5rem 0;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            margin: 0.3rem 0;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 15px;
             color: var(--text-soft);
             text-decoration: none;
             transition: all 0.3s;
             cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .menu-icon {
+            width: 26px;
+            height: 26px;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .menu-icon::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
         }
 
         .menu-item:hover {
@@ -251,32 +314,74 @@
                 rgba(155, 89, 182, 0.05) 0%, 
                 rgba(100, 181, 246, 0.03) 100%);
             border-radius: 30px;
-            padding: 3rem;
+            padding: 2rem;
             border: 1px solid var(--glass-border);
+            min-height: calc(100vh - 120px);
         }
 
         .welcome-section h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 200;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             background: linear-gradient(135deg, white 0%, var(--vera-lavender) 50%, var(--vera-neural-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1rem;
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-soft);
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1));
+            border-color: var(--vera-lavender);
+            color: var(--text-primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
         .stat-card {
             background: linear-gradient(135deg, 
                 rgba(155, 89, 182, 0.1),
                 rgba(100, 181, 246, 0.05));
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 20px;
             border: 1px solid var(--glass-border);
             transition: all 0.3s;
@@ -288,12 +393,19 @@
         }
 
         .stat-value {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 300;
             background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         /* Unlimited Session Area */
@@ -302,7 +414,7 @@
                 rgba(100, 181, 246, 0.1) 0%, 
                 rgba(155, 89, 182, 0.08) 100%);
             border-radius: 25px;
-            padding: 2.5rem;
+            padding: 2rem;
             border: 1px solid var(--vera-lavender);
             margin-bottom: 2rem;
             position: relative;
@@ -311,25 +423,25 @@
 
         .unlimited-banner {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             background: linear-gradient(135deg, var(--vera-emerald), var(--vera-neural-blue));
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
             color: white;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .protocol-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .protocol-card {
-            padding: 1.5rem;
+            padding: 1.2rem;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             text-align: center;
@@ -343,11 +455,85 @@
             background: rgba(155, 89, 182, 0.2);
         }
 
+        .protocol-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 0.8rem;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .protocol-icon::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, white 30%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        /* Advanced Breathing Visual */
+        .advanced-breath-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .advanced-breath-visual {
+            width: 250px;
+            height: 250px;
+            position: relative;
+            margin: 2rem auto;
+        }
+
+        .breath-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid;
+            animation: ringExpand 8s infinite ease-in-out;
+        }
+
+        .breath-ring:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            border-color: var(--vera-lavender);
+            animation-delay: 0s;
+        }
+
+        .breath-ring:nth-child(2) {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border-color: var(--vera-neural-blue);
+            animation-delay: 1s;
+        }
+
+        .breath-ring:nth-child(3) {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            border-color: var(--vera-glow-pink);
+            animation-delay: 2s;
+        }
+
+        @keyframes ringExpand {
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
         /* VERA Chat Unlimited */
         .vera-unlimited-chat {
             background: rgba(155, 89, 182, 0.05);
             border-radius: 25px;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid var(--vera-lavender);
             margin-top: 2rem;
         }
@@ -361,13 +547,35 @@
             margin-bottom: 1.5rem;
         }
 
+        .vera-message {
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1));
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            color: var(--text-soft);
+        }
+
+        .user-message {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+
+        .user-message-bubble {
+            display: inline-block;
+            background: rgba(100, 181, 246, 0.15);
+            padding: 1rem;
+            border-radius: 15px;
+            max-width: 70%;
+            text-align: left;
+        }
+
         /* Right Panel */
         .right-panel {
             background: linear-gradient(135deg, 
                 rgba(155, 89, 182, 0.05) 0%, 
                 rgba(100, 181, 246, 0.05) 100%);
             border-radius: 25px;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid var(--glass-border);
             height: fit-content;
         }
@@ -381,7 +589,7 @@
         .integration-item {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 15px;
-            padding: 1rem;
+            padding: 0.8rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -394,11 +602,19 @@
             background: rgba(16, 185, 129, 0.1);
         }
 
+        .integration-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            border-radius: 6px;
+            display: inline-block;
+        }
+
         .biometric-monitor {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 1rem;
+            margin-top: 1.5rem;
             border: 1px solid var(--glass-border);
         }
 
@@ -406,7 +622,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 0;
+            padding: 0.6rem 0;
             border-bottom: 1px solid var(--glass-border);
         }
 
@@ -415,7 +631,7 @@
         }
 
         .value-number {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--vera-neural-blue);
         }
 
@@ -424,7 +640,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             background: linear-gradient(135deg, #FF6B6B, #FF8E53);
             border: none;
             border-radius: 30px;
@@ -441,13 +657,109 @@
             box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
         }
 
-        /* Responsive */
-        @media (max-width: 1400px) {
+        /* Mobile Responsive */
+        @media (max-width: 1200px) {
             .container {
                 grid-template-columns: 1fr;
             }
-            .sidebar, .right-panel {
+            
+            .sidebar {
                 position: static;
+                display: none;
+            }
+            
+            .right-panel {
+                position: static;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0.5rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+            }
+            
+            .welcome-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .protocol-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .crisis-protocol-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.5);
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .mobile-sidebar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(135deg, 
+                rgba(10, 14, 39, 0.98) 0%, 
+                rgba(21, 24, 50, 0.95) 100%);
+            z-index: 999;
+            transition: left 0.3s;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-sidebar.active {
+            left: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .mobile-sidebar {
+                display: block;
             }
         }
     </style>
@@ -461,16 +773,25 @@
         <div class="header-content">
             <div class="logo-section">
                 <div class="logo" onclick="window.location.href='index.html'">VERA</div>
-                <div class="tier-badge-regulator">REGULATOR • $39/month</div>
+                <div class="tier-badge-regulator">REGULATOR</div>
             </div>
             <div class="user-menu">
-                <div class="unlimited-badge">∞ Unlimited Sessions</div>
-                <div style="width: 45px; height: 45px; border-radius: 50%; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                    👤
-                </div>
+                <div class="unlimited-badge">Unlimited Sessions</div>
+                <div class="user-avatar"></div>
             </div>
         </div>
     </header>
+
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</div>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="vera-orb-regulator">
+            <span class="vera-orb-text">VERA</span>
+        </div>
+        <nav id="mobileNav"></nav>
+    </div>
 
     <!-- Main Container -->
     <div class="container">
@@ -480,42 +801,42 @@
                 <span class="vera-orb-text">VERA</span>
             </div>
             
-            <div style="text-align: center; margin-bottom: 2rem; padding: 1rem; background: rgba(155, 89, 182, 0.1); border-radius: 15px;">
-                <div style="font-size: 0.9rem; color: var(--vera-lavender); margin-bottom: 0.5rem;">Complete Regulation</div>
-                <div style="font-size: 0.8rem; color: var(--text-soft);">Unlimited Access</div>
+            <div style="text-align: center; margin-bottom: 1.5rem; padding: 0.8rem; background: rgba(155, 89, 182, 0.1); border-radius: 15px;">
+                <div style="font-size: 0.85rem; color: var(--vera-lavender); margin-bottom: 0.3rem;">Complete Regulation</div>
+                <div style="font-size: 0.75rem; color: var(--text-soft);">Unlimited Access</div>
             </div>
             
             <nav>
-                <div class="menu-item active">
-                    <span>🏠</span>
+                <div class="menu-item active" onclick="switchTab('dashboard')">
+                    <div class="menu-icon"></div>
                     <span>Dashboard</span>
                 </div>
-                <div class="menu-item">
-                    <span>🌊</span>
+                <div class="menu-item" onclick="switchTab('unlimited')">
+                    <div class="menu-icon"></div>
                     <span>Unlimited Sessions</span>
                 </div>
-                <div class="menu-item">
-                    <span>💬</span>
+                <div class="menu-item" onclick="switchTab('chat')">
+                    <div class="menu-icon"></div>
                     <span>VERA Chat</span>
                 </div>
-                <div class="menu-item">
-                    <span>📊</span>
+                <div class="menu-item" onclick="switchTab('analytics')">
+                    <div class="menu-icon"></div>
                     <span>Analytics</span>
                 </div>
-                <div class="menu-item">
-                    <span>🎵</span>
+                <div class="menu-item" onclick="switchTab('music')">
+                    <div class="menu-icon"></div>
                     <span>Music Therapy</span>
                 </div>
-                <div class="menu-item">
-                    <span>🚨</span>
+                <div class="menu-item" onclick="switchTab('crisis')">
+                    <div class="menu-icon"></div>
                     <span>Crisis Protocols</span>
                 </div>
-                <div class="menu-item">
-                    <span>📱</span>
+                <div class="menu-item" onclick="switchTab('integrations')">
+                    <div class="menu-icon"></div>
                     <span>Integrations</span>
                 </div>
-                <div class="menu-item">
-                    <span>⚙️</span>
+                <div class="menu-item" onclick="switchTab('settings')">
+                    <div class="menu-icon"></div>
                     <span>Settings</span>
                 </div>
             </nav>
@@ -523,125 +844,184 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="welcome-section">
-                <h1>Your Regulation Command Center</h1>
-                <p style="color: var(--text-soft); font-size: 1.2rem;">
-                    Complete nervous system regulation toolkit with unlimited access
-                </p>
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="switchTab('dashboard')">Dashboard</button>
+                <button class="tab-button" onclick="switchTab('unlimited')">Sessions</button>
+                <button class="tab-button" onclick="switchTab('chat')">Chat</button>
+                <button class="tab-button" onclick="switchTab('analytics')">Analytics</button>
+                <button class="tab-button" onclick="switchTab('music')">Music</button>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">∞</div>
-                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Unlimited Sessions</div>
+            <!-- Dashboard Tab -->
+            <div id="dashboard-tab" class="tab-content active">
+                <div class="welcome-section">
+                    <h1>Your Regulation Command Center</h1>
+                    <p style="color: var(--text-soft); font-size: 1.1rem;">
+                        Complete nervous system regulation toolkit with unlimited access
+                    </p>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value">87%</div>
-                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Coherence Score</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">42ms</div>
-                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Current HRV</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">156</div>
-                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Sessions Completed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">28</div>
-                    <div style="color: var(--text-muted); text-transform: uppercase; font-size: 0.9rem;">Day Streak</div>
-                </div>
-            </div>
 
-            <div class="unlimited-session-area">
-                <div class="unlimited-banner">UNLIMITED</div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                    <div>
-                        <h2 style="font-size: 2rem; color: var(--vera-lavender);">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="sessionCount">∞</div>
+                        <div class="stat-label">Unlimited Sessions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="coherenceScore">87%</div>
+                        <div class="stat-label">Coherence Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="hrvValue">42ms</div>
+                        <div class="stat-label">Current HRV</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalSessions">156</div>
+                        <div class="stat-label">Sessions Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="streakDays">28</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                </div>
+
+                <div class="unlimited-session-area">
+                    <div class="unlimited-banner">UNLIMITED</div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h2 style="font-size: 1.8rem; color: var(--vera-lavender); margin-bottom: 0.5rem;">
                             Your Custom Protocols
                         </h2>
                         <p style="color: var(--text-soft);">
                             Personalized regulation based on your real-time biometrics
                         </p>
                     </div>
-                    <button style="padding: 1rem 3rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; font-weight: 500; cursor: pointer; font-size: 1.1rem;">
-                        Start Session Now
-                    </button>
-                </div>
-                
-                <div class="protocol-grid">
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🧘</div>
-                        <div>Daily Regulation</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">15 min</div>
-                    </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">😰</div>
-                        <div>Anxiety Relief</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">20 min</div>
-                    </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💤</div>
-                        <div>Sleep Prep</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">25 min</div>
-                    </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚡</div>
-                        <div>Energy Boost</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">10 min</div>
-                    </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎯</div>
-                        <div>Focus Mode</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">30 min</div>
-                    </div>
-                    <div class="protocol-card">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌈</div>
-                        <div>Trauma Release</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">45 min</div>
+                    
+                    <div class="protocol-grid">
+                        <div class="protocol-card" onclick="startProtocol('daily')">
+                            <div class="protocol-icon"></div>
+                            <div>Daily Regulation</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">15 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('anxiety')">
+                            <div class="protocol-icon"></div>
+                            <div>Anxiety Relief</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">20 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('sleep')">
+                            <div class="protocol-icon"></div>
+                            <div>Sleep Prep</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">25 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('energy')">
+                            <div class="protocol-icon"></div>
+                            <div>Energy Boost</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">10 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('focus')">
+                            <div class="protocol-icon"></div>
+                            <div>Focus Mode</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">30 min</div>
+                        </div>
+                        <div class="protocol-card" onclick="startProtocol('trauma')">
+                            <div class="protocol-icon"></div>
+                            <div>Trauma Release</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">45 min</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Unlimited VERA Chat -->
-            <div class="vera-unlimited-chat">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.5rem; color: var(--vera-lavender);">
-                        Unlimited VERA Conversations
-                    </h3>
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <div style="width: 8px; height: 8px; background: var(--vera-emerald); border-radius: 50%; animation: pulse 2s infinite;"></div>
-                        <span style="color: var(--vera-emerald); font-size: 0.9rem;">Active</span>
+            <!-- Unlimited Sessions Tab -->
+            <div id="unlimited-tab" class="tab-content">
+                <h2 style="color: var(--vera-lavender); margin-bottom: 1.5rem;">Advanced Breathing Session</h2>
+                <div class="advanced-breath-container">
+                    <div class="advanced-breath-visual">
+                        <div class="breath-ring"></div>
+                        <div class="breath-ring"></div>
+                        <div class="breath-ring"></div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div id="breathPhase" style="font-size: 1.5rem; color: var(--vera-lavender); margin-bottom: 1rem;">Ready to Begin</div>
+                        <button class="crisis-protocol-btn" style="position: static; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));" onclick="startAdvancedBreathing()">
+                            Start Advanced Session
+                        </button>
                     </div>
                 </div>
-                
-                <div class="chat-interface">
-                    <div style="background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1)); padding: 1rem; border-radius: 15px; margin-bottom: 1rem;">
-                        "I've been monitoring your nervous system all day. I notice a pattern of activation around 3pm. Let's work with this together..."
-                    </div>
-                    <div style="text-align: right; margin-bottom: 1rem;">
-                        <div style="display: inline-block; background: rgba(100, 181, 246, 0.15); padding: 1rem; border-radius: 15px; max-width: 70%;">
-                            Yes, that's when I usually feel the most anxious
+            </div>
+
+            <!-- Chat Tab -->
+            <div id="chat-tab" class="tab-content">
+                <div class="vera-unlimited-chat">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.3rem; color: var(--vera-lavender);">
+                            Unlimited VERA Conversations
+                        </h3>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 8px; height: 8px; background: var(--vera-emerald); border-radius: 50%; animation: pulse 2s infinite;"></div>
+                            <span style="color: var(--vera-emerald); font-size: 0.85rem;">Active</span>
                         </div>
                     </div>
-                    <div style="background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(100, 181, 246, 0.1)); padding: 1rem; border-radius: 15px;">
-                        "Your body is so wise. Let's create a custom 3pm protocol just for you. Small movements, breath work, and grounding..."
+                    
+                    <div class="chat-interface" id="chatMessages">
+                        <div class="vera-message">
+                            I've been monitoring your nervous system patterns. I notice you're ready for deeper regulation work. What would you like to explore today?
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="text" id="chatInput" placeholder="Continue your conversation with VERA..." 
+                               style="flex: 1; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 50px; color: white; font-size: 0.95rem;"
+                               onkeypress="if(event.key === 'Enter') sendMessage()">
+                        <button style="padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;" onclick="sendMessage()">
+                            Send
+                        </button>
                     </div>
                 </div>
-                
-                <div style="display: flex; gap: 1rem;">
-                    <input type="text" placeholder="Continue your conversation with VERA..." 
-                           style="flex: 1; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 50px; color: white;">
-                    <button style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; cursor: pointer;">
-                        Send
+            </div>
+
+            <!-- Analytics Tab -->
+            <div id="analytics-tab" class="tab-content">
+                <h2 style="color: var(--vera-lavender); margin-bottom: 1.5rem;">Your Analytics</h2>
+                <div id="analyticsContent"></div>
+            </div>
+
+            <!-- Music Therapy Tab -->
+            <div id="music-tab" class="tab-content">
+                <h2 style="color: var(--vera-lavender); margin-bottom: 1.5rem;">Music Therapy</h2>
+                <div style="background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 1.5rem;">
+                    <p style="color: var(--text-soft);">Spotify and YouTube integration for nervous system regulation through sound.</p>
+                </div>
+            </div>
+
+            <!-- Crisis Tab -->
+            <div id="crisis-tab" class="tab-content">
+                <h2 style="color: #FF6B6B; margin-bottom: 1.5rem;">Crisis Protocols</h2>
+                <div style="background: rgba(255, 107, 107, 0.1); border-radius: 20px; padding: 1.5rem; border: 1px solid #FF6B6B;">
+                    <p style="color: var(--text-soft); margin-bottom: 1rem;">Emergency regulation protocols for acute distress.</p>
+                    <button onclick="activateCrisisProtocol()" style="padding: 0.8rem 2rem; background: linear-gradient(135deg, #FF6B6B, #FF8E53); border: none; border-radius: 25px; color: white; cursor: pointer;">
+                        Activate Crisis Protocol
                     </button>
+                </div>
+            </div>
+
+            <!-- Integrations Tab -->
+            <div id="integrations-tab" class="tab-content">
+                <h2 style="color: var(--vera-lavender); margin-bottom: 1.5rem;">Your Integrations</h2>
+                <div id="integrationsContent"></div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settings-tab" class="tab-content">
+                <h2 style="color: var(--vera-lavender); margin-bottom: 1.5rem;">Settings</h2>
+                <div style="background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 1.5rem;">
+                    <p style="color: var(--text-soft);">Preferences and account management.</p>
                 </div>
             </div>
         </main>
 
         <!-- Right Panel -->
         <aside class="right-panel">
-            <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--vera-lavender);">
+            <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--vera-lavender);">
                 Your Integrations
             </h3>
             
@@ -649,44 +1029,44 @@
             <div class="integration-list">
                 <div class="integration-item active">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span>🎵</span>
+                        <div class="integration-icon"></div>
                         <span>Spotify</span>
                     </div>
-                    <span style="color: var(--vera-emerald); font-size: 0.8rem;">Connected</span>
+                    <span style="color: var(--vera-emerald); font-size: 0.75rem;">Connected</span>
                 </div>
                 <div class="integration-item active">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span>📺</span>
+                        <div class="integration-icon"></div>
                         <span>YouTube</span>
                     </div>
-                    <span style="color: var(--vera-emerald); font-size: 0.8rem;">Connected</span>
+                    <span style="color: var(--vera-emerald); font-size: 0.75rem;">Connected</span>
                 </div>
                 <div class="integration-item active">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span>⌚</span>
+                        <div class="integration-icon"></div>
                         <span>Apple Watch</span>
                     </div>
-                    <span style="color: var(--vera-emerald); font-size: 0.8rem;">Live</span>
+                    <span style="color: var(--vera-emerald); font-size: 0.75rem;">Live</span>
                 </div>
                 <div class="integration-item">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span>💓</span>
+                        <div class="integration-icon"></div>
                         <span>Fitbit</span>
                     </div>
-                    <button style="padding: 0.3rem 0.8rem; background: var(--vera-lavender); border: none; border-radius: 10px; color: white; font-size: 0.8rem; cursor: pointer;">Connect</button>
+                    <button style="padding: 0.2rem 0.6rem; background: var(--vera-lavender); border: none; border-radius: 10px; color: white; font-size: 0.75rem; cursor: pointer;">Connect</button>
                 </div>
             </div>
 
             <!-- Real-time Biometrics -->
             <div class="biometric-monitor">
-                <h4 style="color: var(--vera-neural-blue); margin-bottom: 1rem;">Live Biometrics</h4>
+                <h4 style="color: var(--vera-neural-blue); margin-bottom: 0.8rem; font-size: 1rem;">Live Biometrics</h4>
                 <div class="biometric-value">
                     <span>Heart Rate</span>
-                    <span class="value-number">72 bpm</span>
+                    <span class="value-number" id="heartRate">72 bpm</span>
                 </div>
                 <div class="biometric-value">
                     <span>HRV</span>
-                    <span class="value-number">42 ms</span>
+                    <span class="value-number" id="hrvLive">42 ms</span>
                 </div>
                 <div class="biometric-value">
                     <span>Stress Level</span>
@@ -698,36 +1078,10 @@
                 </div>
             </div>
 
-            <!-- Weekly Report -->
-            <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(100, 181, 246, 0.1)); border-radius: 20px;">
-                <h4 style="color: var(--vera-lavender); margin-bottom: 1rem;">Weekly Report</h4>
-                <div style="margin-bottom: 0.8rem;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
-                        <span style="font-size: 0.9rem; color: var(--text-soft);">Sessions</span>
-                        <span style="color: var(--vera-neural-blue);">42/∞</span>
-                    </div>
-                </div>
-                <div style="margin-bottom: 0.8rem;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
-                        <span style="font-size: 0.9rem; color: var(--text-soft);">Avg HRV</span>
-                        <span style="color: var(--vera-emerald);">↑15%</span>
-                    </div>
-                </div>
-                <div>
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
-                        <span style="font-size: 0.9rem; color: var(--text-soft);">Coherence</span>
-                        <span style="color: var(--vera-lavender);">87%</span>
-                    </div>
-                </div>
-                <button style="width: 100%; margin-top: 1rem; padding: 0.8rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 15px; color: white; cursor: pointer;">
-                    View Full Report
-                </button>
-            </div>
-
             <!-- Upgrade Prompt -->
-            <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(155, 89, 182, 0.1)); border-radius: 20px; text-align: center;">
-                <div style="font-size: 0.9rem; color: var(--vera-soft-gold); margin-bottom: 0.5rem;">Unlock API Access</div>
-                <button onclick="window.location.href='index.html#pricing'" style="width: 100%; padding: 0.8rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 15px; color: white; cursor: pointer;">
+            <div style="margin-top: 1.5rem; padding: 1rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(155, 89, 182, 0.1)); border-radius: 20px; text-align: center;">
+                <div style="font-size: 0.85rem; color: var(--vera-soft-gold); margin-bottom: 0.5rem;">Unlock API Access</div>
+                <button onclick="window.location.href='index.html#pricing'" style="width: 100%; padding: 0.6rem; background: linear-gradient(135deg, var(--vera-soft-gold), var(--vera-lavender)); border: none; border-radius: 15px; color: white; cursor: pointer; font-size: 0.85rem;">
                     Upgrade to Integrator
                 </button>
             </div>
@@ -744,69 +1098,234 @@
         function createNeuralUniverse() {
             const universe = document.getElementById('neuralUniverse');
             
-            // Enhanced colors for Regulator tier
-            const colors = [
-                'radial-gradient(circle, rgba(155, 89, 182, 0.7) 0%, transparent 70%)',
-                'radial-gradient(circle, rgba(100, 181, 246, 0.7) 0%, transparent 70%)',
-                'radial-gradient(circle, rgba(248, 187, 208, 0.7) 0%, transparent 70%)',
-                'radial-gradient(circle, rgba(177, 156, 217, 0.7) 0%, transparent 70%)',
-                'radial-gradient(circle, rgba(16, 185, 129, 0.7) 0%, transparent 70%)'
-            ];
-            
-            // Create 200 neurons for enhanced experience
-            for (let i = 0; i < 200; i++) {
+            // Create enhanced neurons
+            for (let i = 0; i < 150; i++) {
                 const neuron = document.createElement('div');
                 neuron.className = 'enhanced-neuron';
-                const size = 3 + Math.random() * 8;
+                const size = 3 + Math.random() * 6;
                 neuron.style.width = size + 'px';
                 neuron.style.height = size + 'px';
                 neuron.style.left = Math.random() * 100 + '%';
                 neuron.style.top = Math.random() * 100 + '%';
-                neuron.style.background = colors[Math.floor(Math.random() * colors.length)];
                 neuron.style.animationDelay = Math.random() * 18 + 's';
+                
+                const colors = ['var(--vera-purple)', 'var(--vera-neural-blue)', 'var(--vera-lavender)', 'var(--vera-glow-pink)', 'var(--vera-emerald)'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                neuron.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+                
                 universe.appendChild(neuron);
             }
             
             // Create neural pathways
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 40; i++) {
                 const pathway = document.createElement('div');
-                pathway.style.position = 'absolute';
-                pathway.style.width = (100 + Math.random() * 150) + 'px';
-                pathway.style.height = '1px';
-                pathway.style.background = 'linear-gradient(90deg, transparent, rgba(155, 89, 182, 0.5), transparent)';
+                pathway.className = 'neural-pathway';
+                pathway.style.height = (80 + Math.random() * 150) + 'px';
                 pathway.style.left = Math.random() * 100 + '%';
                 pathway.style.top = Math.random() * 100 + '%';
                 pathway.style.transform = `rotate(${Math.random() * 360}deg)`;
-                pathway.style.animation = 'pathwayPulse 4s infinite';
+                pathway.style.animationDelay = Math.random() * 4 + 's';
                 universe.appendChild(pathway);
             }
         }
-        
-        createNeuralUniverse();
 
+        // Initialize user data
+        let userData = {
+            totalSessions: parseInt(localStorage.getItem('vera_regulator_sessions') || '156'),
+            streakDays: parseInt(localStorage.getItem('vera_regulator_streak') || '28'),
+            coherenceScore: parseInt(localStorage.getItem('vera_regulator_coherence') || '87'),
+            protocols: JSON.parse(localStorage.getItem('vera_regulator_protocols') || '[]')
+        };
+
+        // Tab switching
+        function switchTab(tabName) {
+            // Update tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            const tabElement = document.getElementById(`${tabName}-tab`);
+            if (tabElement) {
+                tabElement.classList.add('active');
+            }
+            
+            // Update navigation buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(tabName.toLowerCase().substring(0, 4))) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update sidebar
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+        }
+
+        // Start protocol
+        function startProtocol(type) {
+            const protocolData = {
+                date: new Date().toISOString(),
+                type: type,
+                completed: false
+            };
+            
+            userData.protocols.push(protocolData);
+            localStorage.setItem('vera_regulator_protocols', JSON.stringify(userData.protocols));
+            
+            // Switch to session tab
+            switchTab('unlimited');
+        }
+
+        // Advanced breathing session
+        let breathingActive = false;
+        
+        function startAdvancedBreathing() {
+            if (breathingActive) {
+                stopBreathing();
+                return;
+            }
+            
+            breathingActive = true;
+            const button = event.target;
+            button.textContent = 'Stop Session';
+            
+            const phases = [
+                { text: 'Breathe In', duration: 4000 },
+                { text: 'Hold', duration: 4000 },
+                { text: 'Breathe Out', duration: 6000 },
+                { text: 'Rest', duration: 2000 }
+            ];
+            
+            let currentPhase = 0;
+            const phaseElement = document.getElementById('breathPhase');
+            
+            function runPhase() {
+                if (!breathingActive) return;
+                
+                const phase = phases[currentPhase];
+                phaseElement.textContent = phase.text;
+                
+                setTimeout(() => {
+                    currentPhase = (currentPhase + 1) % phases.length;
+                    runPhase();
+                }, phase.duration);
+            }
+            
+            runPhase();
+        }
+
+        function stopBreathing() {
+            breathingActive = false;
+            document.getElementById('breathPhase').textContent = 'Session Complete';
+            userData.totalSessions++;
+            localStorage.setItem('vera_regulator_sessions', userData.totalSessions.toString());
+            document.getElementById('totalSessions').textContent = userData.totalSessions;
+        }
+
+        // Chat functionality
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
+            const userText = input.value.trim();
+            
+            if (!userText) return;
+            
+            // Add user message
+            messages.innerHTML += `
+                <div class="user-message">
+                    <div class="user-message-bubble">${userText}</div>
+                </div>
+            `;
+            
+            // VERA response
+            setTimeout(() => {
+                const response = getVeraResponse(userText);
+                messages.innerHTML += `
+                    <div class="vera-message">${response}</div>
+                `;
+                messages.scrollTop = messages.scrollHeight;
+            }, 1000);
+            
+            input.value = '';
+        }
+
+        function getVeraResponse(input) {
+            const responses = {
+                'anxiety': "I sense the activation in your system. Let's work with a custom anxiety protocol. Your HRV patterns show you respond best to 4-7-8 breathing.",
+                'sleep': "Your nervous system needs to downregulate. I'll guide you through a progressive relaxation specifically calibrated to your evening patterns.",
+                'energy': "Your body is asking for activation. Let's use controlled stress - cold exposure breathing followed by movement.",
+                'default': "I'm tracking your biometrics in real-time. Tell me more about what you're experiencing so I can create the perfect protocol for this moment."
+            };
+            
+            const lowered = input.toLowerCase();
+            for (let key in responses) {
+                if (lowered.includes(key)) {
+                    return responses[key];
+                }
+            }
+            return responses.default;
+        }
+
+        // Crisis Protocol
         function activateCrisisProtocol() {
-            alert('Crisis Protocol Activated\n\nVERA is here with you.\n\n1. Take 3 deep breaths\n2. Feel your feet on the ground\n3. Name 5 things you can see\n\nEmergency support: 988 (Crisis Lifeline)');
+            alert('Crisis Protocol Activated\n\nVERA is here with you.\n\n1. Take 3 deep breaths\n2. Feel your feet on the ground\n3. Name 5 things you can see\n4. Place hand on heart\n5. Say: "I am safe in this moment"\n\nEmergency support: 988 (Crisis Lifeline)');
         }
 
         // Simulate real-time biometric updates
         setInterval(() => {
-            const hrv = document.querySelector('.biometric-value .value-number');
-            if (hrv && hrv.textContent.includes('ms')) {
+            const hrv = document.getElementById('hrvLive');
+            if (hrv) {
                 const value = parseInt(hrv.textContent);
-                const newValue = value + Math.floor(Math.random() * 5) - 2;
+                const newValue = Math.max(30, Math.min(60, value + Math.floor(Math.random() * 5) - 2));
                 hrv.textContent = newValue + ' ms';
+                document.getElementById('hrvValue').textContent = newValue + 'ms';
+            }
+            
+            const heartRate = document.getElementById('heartRate');
+            if (heartRate) {
+                const value = parseInt(heartRate.textContent);
+                const newValue = Math.max(60, Math.min(80, value + Math.floor(Math.random() * 3) - 1));
+                heartRate.textContent = newValue + ' bpm';
             }
         }, 3000);
 
-        @keyframes pathwayPulse {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('mobileSidebar');
+            sidebar.classList.toggle('active');
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        // Initialize mobile navigation
+        function initMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            const desktopNav = document.querySelector('.sidebar nav');
+            
+            if (mobileNav && desktopNav) {
+                mobileNav.innerHTML = desktopNav.innerHTML;
+            }
         }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createNeuralUniverse();
+            initMobileNav();
+            
+            // Update stats
+            document.getElementById('totalSessions').textContent = userData.totalSessions;
+            document.getElementById('streakDays').textContent = userData.streakDays;
+            document.getElementById('coherenceScore').textContent = userData.coherenceScore + '%';
+        });
+
+        // Animation for pulse
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.5; }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
