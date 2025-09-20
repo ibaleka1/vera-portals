@@ -124,6 +124,27 @@
             50% { box-shadow: 0 0 50px rgba(255, 215, 0, 0.7); }
         }
 
+        .admin-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--vera-platinum), var(--vera-soft-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .admin-avatar::after {
+            content: '';
+            width: 25px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            position: absolute;
+        }
+
         /* Enterprise Dashboard */
         .enterprise-dashboard {
             max-width: 1920px;
@@ -152,6 +173,29 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .action-btn {
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, var(--vera-platinum), var(--vera-soft-gold));
+            border: none;
+            border-radius: 25px;
+            color: var(--vera-deep-space);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--vera-platinum);
+            color: var(--vera-platinum);
+        }
+
         /* Organization Stats Grid */
         .org-stats-grid {
             display: grid;
@@ -171,6 +215,13 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .org-stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(229, 228, 226, 0.3);
         }
 
         .org-stat-card::before {
@@ -223,6 +274,7 @@
             border-radius: 25px;
             padding: 2rem;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .department-card:hover {
@@ -287,8 +339,24 @@
         }
 
         .control-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--vera-platinum), var(--vera-soft-gold));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .control-icon::after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            position: absolute;
         }
 
         /* Analytics Dashboard */
@@ -350,7 +418,32 @@
             border-radius: 20px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .compliance-badge:hover {
+            transform: translateY(-3px);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .compliance-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--vera-emerald), var(--vera-neural-blue));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .compliance-icon::after {
+            content: '✓';
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
         /* Custom Solutions */
@@ -370,6 +463,7 @@
             border: 1px solid rgba(229, 228, 226, 0.2);
             text-align: center;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .solution-card:hover {
@@ -378,8 +472,24 @@
         }
 
         .solution-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--vera-platinum), var(--vera-soft-gold), var(--vera-lavender));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .solution-icon::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            position: absolute;
         }
 
         .solution-title {
@@ -412,6 +522,13 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             border: 1px solid rgba(229, 228, 226, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            background: rgba(229, 228, 226, 0.05);
         }
 
         .contact-title {
@@ -423,6 +540,44 @@
         .contact-info {
             color: var(--vera-soft-gold);
             font-size: 1.1rem;
+        }
+
+        /* Real-time Dashboard */
+        .realtime-dashboard {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--vera-platinum);
+            border-radius: 25px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .realtime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .realtime-stat {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            border: 1px solid rgba(229, 228, 226, 0.1);
+        }
+
+        .realtime-value {
+            font-size: 2rem;
+            color: var(--vera-soft-gold);
+            font-weight: 300;
+        }
+
+        .realtime-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
         }
 
         /* Footer */
@@ -452,6 +607,7 @@
             display: block;
             padding: 0.3rem 0;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         .footer-link:hover {
@@ -477,6 +633,14 @@
             .org-stats-grid {
                 grid-template-columns: 1fr;
             }
+
+            .control-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .realtime-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -492,12 +656,10 @@
                 <div class="enterprise-badge">ENTERPRISE</div>
             </div>
             <div style="display: flex; align-items: center; gap: 2rem;">
-                <div style="padding: 0.5rem 1.5rem; background: rgba(229, 228, 226, 0.2); border: 1px solid var(--vera-platinum); border-radius: 20px; color: var(--vera-platinum);">
+                <div style="padding: 0.5rem 1.5rem; background: rgba(229, 228, 226, 0.2); border: 1px solid var(--vera-platinum); border-radius: 20px; color: var(--vera-platinum); cursor: pointer;" onclick="openAdminConsole()">
                     Admin Console
                 </div>
-                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--vera-platinum), var(--vera-soft-gold)); display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                    👔
-                </div>
+                <div class="admin-avatar" onclick="openAdminProfile()"></div>
             </div>
         </div>
     </header>
@@ -512,42 +674,67 @@
             </p>
             
             <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                <button style="padding: 1rem 3rem; background: linear-gradient(135deg, var(--vera-platinum), var(--vera-soft-gold)); border: none; border-radius: 25px; color: var(--vera-deep-space); font-weight: 600; font-size: 1.1rem; cursor: pointer;">
-                    Organization Dashboard
-                </button>
-                <button style="padding: 1rem 3rem; background: transparent; border: 2px solid var(--vera-platinum); border-radius: 25px; color: var(--vera-platinum); font-weight: 600; font-size: 1.1rem; cursor: pointer;">
-                    Generate Reports
-                </button>
-                <button style="padding: 1rem 3rem; background: transparent; border: 2px solid var(--vera-platinum); border-radius: 25px; color: var(--vera-platinum); font-weight: 600; font-size: 1.1rem; cursor: pointer;">
-                    API Documentation
-                </button>
+                <button class="action-btn" onclick="openDashboard()">Organization Dashboard</button>
+                <button class="action-btn secondary" onclick="generateReports()">Generate Reports</button>
+                <button class="action-btn secondary" onclick="openAPIDocumentation()">API Documentation</button>
+            </div>
+        </section>
+
+        <!-- Real-time Global Stats -->
+        <section class="realtime-dashboard">
+            <h2 style="font-size: 2rem; color: var(--vera-platinum); margin-bottom: 1rem;">Real-Time Global Metrics</h2>
+            <div class="realtime-grid">
+                <div class="realtime-stat">
+                    <div class="realtime-value" id="activeUsers">1.2B</div>
+                    <div class="realtime-label">Active Users</div>
+                </div>
+                <div class="realtime-stat">
+                    <div class="realtime-value" id="sessionsLive">847K</div>
+                    <div class="realtime-label">Live Sessions</div>
+                </div>
+                <div class="realtime-stat">
+                    <div class="realtime-value" id="dataProcessed">92TB</div>
+                    <div class="realtime-label">Data Processed/Day</div>
+                </div>
+                <div class="realtime-stat">
+                    <div class="realtime-value" id="apiCalls">2.4M</div>
+                    <div class="realtime-label">API Calls/Min</div>
+                </div>
+                <div class="realtime-stat">
+                    <div class="realtime-value" id="uptime">99.99%</div>
+                    <div class="realtime-label">Uptime</div>
+                </div>
+                <div class="realtime-stat">
+                    <div class="realtime-value" id="regions">187</div>
+                    <div class="realtime-label">Countries</div>
+                </div>
             </div>
         </section>
 
         <!-- Organization Stats -->
         <section class="org-stats-grid">
-            <div class="org-stat-card">
-                <div class="org-stat-value">10,847</div>
-                <div class="org-stat-label">Active Users</div>
+            <div class="org-stat-card" onclick="viewStatDetails('users')">
+                <div class="org-stat-value" id="totalUsers">10,847</div>
+                <div class="org-stat-label">Organization Users</div>
             </div>
-            <div class="org-stat-card">
-                <div class="org-stat-value">92%</div>
+            <div class="org-stat-card" onclick="viewStatDetails('engagement')">
+                <div class="org-stat-value" id="engagementRate">92%</div>
                 <div class="org-stat-label">Engagement Rate</div>
             </div>
-            <div class="org-stat-card">
-                <div class="org-stat-value">45ms</div>
+            <div class="org-stat-card" onclick="viewStatDetails('hrv')">
+                <div class="org-stat-value" id="hrvImprovement">45ms</div>
                 <div class="org-stat-label">Avg HRV Improvement</div>
             </div>
-            <div class="org-stat-card">
-                <div class="org-stat-value">$2.4M</div>
+            <div class="org-stat-card" onclick="viewStatDetails('savings')">
+                <div class="org-stat-value" id="healthcareSavings">$2.4M</div>
                 <div class="org-stat-label">Healthcare Savings</div>
             </div>
-            <div class="org-stat-card">
-                <div class="org-stat-value">18</div>
+            <div class="org-stat-card" onclick="viewStatDetails('departments')">
+                <div class="org-stat-value" id="departmentCount">18</div>
                 <div class="org-stat-label">Departments</div>
             </div>
-            <div class="org-stat-card">
-                <div class="org-stat-value">247k</div>
+            <div class="org-stat-card" onclick="viewStatDetails('sessions')">
+                <div class="org-stat-value" id="monthSessions">247K</div>
                 <div class="org-stat-label">Sessions This Month</div>
             </div>
         </section>
@@ -555,86 +742,8 @@
         <!-- Department Management -->
         <section style="margin: 3rem 0;">
             <h2 style="font-size: 2.5rem; color: var(--vera-platinum); margin-bottom: 2rem;">Department Overview</h2>
-            <div class="department-grid">
-                <div class="department-card">
-                    <div class="department-header">
-                        <div class="department-name">Engineering</div>
-                        <div class="department-status">Active</div>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div>
-                            <div style="color: var(--text-muted); font-size: 0.9rem;">Users</div>
-                            <div style="font-size: 1.5rem; color: var(--vera-neural-blue);">2,847</div>
-                        </div>
-                        <div>
-                            <div style="color: var(--text-muted); font-size: 0.9rem;">Avg Coherence</div>
-                            <div style="font-size: 1.5rem; color: var(--vera-emerald);">89%</div>
-                        </div>
-                    </div>
-                    <button style="width: 100%; margin-top: 1rem; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 15px; color: var(--text-soft); cursor: pointer;">
-                        View Details
-                    </button>
-                </div>
-
-                <div class="department-card">
-                    <div class="department-header">
-                        <div class="department-name">Human Resources</div>
-                        <div class="department-status">Active</div>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div>
-                            <div style="color: var(--text-muted); font-size: 0.9rem;">Users</div>
-                            <div style="font-size: 1.5rem; color: var(--vera-neural-blue);">456</div>
-                        </div>
-                        <div>
-                            <div style="color: var(--text-muted); font-size: 0.9rem;">Avg Coherence</div>
-                            <div style="font-size: 1.5rem; color: var(--vera-emerald);">94%</div>
-                        </div>
-                    </div>
-                    <button style="width: 100%; margin-top: 1rem; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 15px; color: var(--text-soft); cursor: pointer;">
-                        View Details
-                    </button>
-                </div>
-
-                <div class="department-card">
-                    <div class="department-header">
-                        <div class="department-name">Sales</div>
-                        <div class="department-status">Active</div>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div>
-                            <div style="color: var(--text-muted); font-size: 0.9rem;">Users</div>
-                            <div style="font-size: 1.5rem; color: var(--vera-neural-blue);">1,892</div>
-                        </div>
-                        <div>
-                            <div style="color: var(--text-muted); font-size: 0.9rem;">Avg Coherence</div>
-                            <div style="font-size: 1.5rem; color: var(--vera-emerald);">86%</div>
-                        </div>
-                    </div>
-                    <button style="width: 100%; margin-top: 1rem; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 15px; color: var(--text-soft); cursor: pointer;">
-                        View Details
-                    </button>
-                </div>
-
-                <div class="department-card">
-                    <div class="department-header">
-                        <div class="department-name">Marketing</div>
-                        <div class="department-status">Active</div>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div>
-                            <div style="color: var(--text-muted); font-size: 0.9rem;">Users</div>
-                            <div style="font-size: 1.5rem; color: var(--vera-neural-blue);">783</div>
-                        </div>
-                        <div>
-                            <div style="color: var(--text-muted); font-size: 0.9rem;">Avg Coherence</div>
-                            <div style="font-size: 1.5rem; color: var(--vera-emerald);">91%</div>
-                        </div>
-                    </div>
-                    <button style="width: 100%; margin-top: 1rem; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 15px; color: var(--text-soft); cursor: pointer;">
-                        View Details
-                    </button>
-                </div>
+            <div class="department-grid" id="departmentGrid">
+                <!-- Departments will be dynamically loaded -->
             </div>
         </section>
 
@@ -644,38 +753,38 @@
             <p style="color: var(--text-soft); margin-bottom: 2rem;">Manage your organization's VERA deployment</p>
             
             <div class="control-grid">
-                <div class="control-button">
-                    <div class="control-icon">👥</div>
+                <div class="control-button" onclick="manageUsers()">
+                    <div class="control-icon"></div>
                     <div style="font-weight: 600; margin-bottom: 0.5rem;">User Management</div>
                     <div style="font-size: 0.9rem; color: var(--text-muted);">Add, remove, and manage users</div>
                 </div>
                 
-                <div class="control-button">
-                    <div class="control-icon">📊</div>
+                <div class="control-button" onclick="openAnalytics()">
+                    <div class="control-icon"></div>
                     <div style="font-weight: 600; margin-bottom: 0.5rem;">Analytics</div>
                     <div style="font-size: 0.9rem; color: var(--text-muted);">Deep insights and reports</div>
                 </div>
                 
-                <div class="control-button">
-                    <div class="control-icon">⚙️</div>
+                <div class="control-button" onclick="openSettings()">
+                    <div class="control-icon"></div>
                     <div style="font-weight: 600; margin-bottom: 0.5rem;">Settings</div>
                     <div style="font-size: 0.9rem; color: var(--text-muted);">Configure platform settings</div>
                 </div>
                 
-                <div class="control-button">
-                    <div class="control-icon">🔐</div>
+                <div class="control-button" onclick="manageSecurity()">
+                    <div class="control-icon"></div>
                     <div style="font-weight: 600; margin-bottom: 0.5rem;">Security</div>
                     <div style="font-size: 0.9rem; color: var(--text-muted);">Manage access and permissions</div>
                 </div>
                 
-                <div class="control-button">
-                    <div class="control-icon">🔄</div>
+                <div class="control-button" onclick="manageIntegrations()">
+                    <div class="control-icon"></div>
                     <div style="font-weight: 600; margin-bottom: 0.5rem;">Integrations</div>
                     <div style="font-size: 0.9rem; color: var(--text-muted);">Connect with other tools</div>
                 </div>
                 
-                <div class="control-button">
-                    <div class="control-icon">📝</div>
+                <div class="control-button" onclick="manageContent()">
+                    <div class="control-icon"></div>
                     <div style="font-weight: 600; margin-bottom: 0.5rem;">Content Library</div>
                     <div style="font-size: 0.9rem; color: var(--text-muted);">Manage protocols and content</div>
                 </div>
@@ -713,20 +822,20 @@
             </p>
             
             <div class="compliance-badges">
-                <div class="compliance-badge">
-                    <span style="font-size: 1.5rem;">🔒</span>
+                <div class="compliance-badge" onclick="viewCompliance('hipaa')">
+                    <div class="compliance-icon"></div>
                     <span style="font-weight: 600;">HIPAA Compliant</span>
                 </div>
-                <div class="compliance-badge">
-                    <span style="font-size: 1.5rem;">🛡️</span>
+                <div class="compliance-badge" onclick="viewCompliance('soc2')">
+                    <div class="compliance-icon"></div>
                     <span style="font-weight: 600;">SOC 2 Type II</span>
                 </div>
-                <div class="compliance-badge">
-                    <span style="font-size: 1.5rem;">🔐</span>
+                <div class="compliance-badge" onclick="viewCompliance('iso')">
+                    <div class="compliance-icon"></div>
                     <span style="font-weight: 600;">ISO 27001</span>
                 </div>
-                <div class="compliance-badge">
-                    <span style="font-size: 1.5rem;">✓</span>
+                <div class="compliance-badge" onclick="viewCompliance('gdpr')">
+                    <div class="compliance-icon"></div>
                     <span style="font-weight: 600;">GDPR Ready</span>
                 </div>
             </div>
@@ -742,48 +851,48 @@
             </p>
             
             <div class="solutions-grid">
-                <div class="solution-card">
-                    <div class="solution-icon">🎯</div>
+                <div class="solution-card" onclick="exploreSolution('executive')">
+                    <div class="solution-icon"></div>
                     <div class="solution-title">Executive Wellness Program</div>
                     <p style="color: var(--text-soft);">
                         Specialized protocols for leadership teams focused on stress resilience, decision-making clarity, and sustained peak performance
                     </p>
                 </div>
                 
-                <div class="solution-card">
-                    <div class="solution-icon">🏥</div>
+                <div class="solution-card" onclick="exploreSolution('healthcare')">
+                    <div class="solution-icon"></div>
                     <div class="solution-title">Healthcare Integration</div>
                     <p style="color: var(--text-soft);">
                         Seamless integration with existing wellness programs, EAPs, and healthcare benefits for comprehensive employee support
                     </p>
                 </div>
                 
-                <div class="solution-card">
-                    <div class="solution-icon">📈</div>
+                <div class="solution-card" onclick="exploreSolution('performance')">
+                    <div class="solution-icon"></div>
                     <div class="solution-title">Performance Optimization</div>
                     <p style="color: var(--text-soft);">
                         Data-driven insights to enhance team productivity, reduce burnout, and improve organizational resilience
                     </p>
                 </div>
                 
-                <div class="solution-card">
-                    <div class="solution-icon">🌍</div>
+                <div class="solution-card" onclick="exploreSolution('global')">
+                    <div class="solution-icon"></div>
                     <div class="solution-title">Global Deployment</div>
                     <p style="color: var(--text-soft);">
                         Multi-language support and culturally adapted content for organizations with international teams
                     </p>
                 </div>
                 
-                <div class="solution-card">
-                    <div class="solution-icon">🔧</div>
+                <div class="solution-card" onclick="exploreSolution('api')">
+                    <div class="solution-icon"></div>
                     <div class="solution-title">Custom API Access</div>
                     <p style="color: var(--text-soft);">
                         Full API access for integration with your existing HR systems, wellness platforms, and data analytics tools
                     </p>
                 </div>
                 
-                <div class="solution-card">
-                    <div class="solution-icon">🎓</div>
+                <div class="solution-card" onclick="exploreSolution('training')">
+                    <div class="solution-icon"></div>
                     <div class="solution-title">Training & Certification</div>
                     <p style="color: var(--text-soft);">
                         Comprehensive onboarding and certification programs for wellness champions and HR teams
@@ -800,19 +909,19 @@
             </p>
             
             <div class="support-contact">
-                <div class="contact-card">
+                <div class="contact-card" onclick="contactSupport('technical')">
                     <div class="contact-title">Technical Support</div>
                     <div class="contact-info">enterprise@vera.ai</div>
                     <div style="color: var(--text-muted); margin-top: 0.5rem;">24/7 Priority Response</div>
                 </div>
                 
-                <div class="contact-card">
+                <div class="contact-card" onclick="contactSupport('account')">
                     <div class="contact-title">Account Manager</div>
                     <div class="contact-info">1-800-VERA-ENT</div>
                     <div style="color: var(--text-muted); margin-top: 0.5rem;">Direct Line Support</div>
                 </div>
                 
-                <div class="contact-card">
+                <div class="contact-card" onclick="contactSupport('implementation')">
                     <div class="contact-title">Implementation Team</div>
                     <div class="contact-info">deploy@vera.ai</div>
                     <div style="color: var(--text-muted); margin-top: 0.5rem;">Onboarding Assistance</div>
@@ -826,34 +935,34 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Platform</h3>
-                <a href="#" class="footer-link">Features</a>
-                <a href="#" class="footer-link">Integrations</a>
-                <a href="#" class="footer-link">API Documentation</a>
-                <a href="#" class="footer-link">Security</a>
+                <a class="footer-link" onclick="navigate('features')">Features</a>
+                <a class="footer-link" onclick="navigate('integrations')">Integrations</a>
+                <a class="footer-link" onclick="navigate('api')">API Documentation</a>
+                <a class="footer-link" onclick="navigate('security')">Security</a>
             </div>
             
             <div class="footer-section">
                 <h3>Solutions</h3>
-                <a href="#" class="footer-link">Healthcare</a>
-                <a href="#" class="footer-link">Corporate Wellness</a>
-                <a href="#" class="footer-link">Government</a>
-                <a href="#" class="footer-link">Education</a>
+                <a class="footer-link" onclick="navigate('healthcare')">Healthcare</a>
+                <a class="footer-link" onclick="navigate('corporate')">Corporate Wellness</a>
+                <a class="footer-link" onclick="navigate('government')">Government</a>
+                <a class="footer-link" onclick="navigate('education')">Education</a>
             </div>
             
             <div class="footer-section">
                 <h3>Resources</h3>
-                <a href="#" class="footer-link">Research Papers</a>
-                <a href="#" class="footer-link">Case Studies</a>
-                <a href="#" class="footer-link">ROI Calculator</a>
-                <a href="#" class="footer-link">Implementation Guide</a>
+                <a class="footer-link" onclick="navigate('research')">Research Papers</a>
+                <a class="footer-link" onclick="navigate('casestudies')">Case Studies</a>
+                <a class="footer-link" onclick="navigate('roi')">ROI Calculator</a>
+                <a class="footer-link" onclick="navigate('guide')">Implementation Guide</a>
             </div>
             
             <div class="footer-section">
                 <h3>Company</h3>
-                <a href="#" class="footer-link">About VERA</a>
-                <a href="#" class="footer-link">Careers</a>
-                <a href="#" class="footer-link">Partners</a>
-                <a href="#" class="footer-link">Contact</a>
+                <a class="footer-link" onclick="navigate('about')">About VERA</a>
+                <a class="footer-link" onclick="navigate('careers')">Careers</a>
+                <a class="footer-link" onclick="navigate('partners')">Partners</a>
+                <a class="footer-link" onclick="navigate('contact')">Contact</a>
             </div>
         </div>
         
@@ -863,6 +972,33 @@
     </footer>
 
     <script>
+        // Enterprise Data
+        let enterpriseData = {
+            users: 10847,
+            engagement: 92,
+            hrv: 45,
+            savings: 2.4,
+            departments: [
+                { name: 'Engineering', users: 2847, coherence: 89, status: 'Active' },
+                { name: 'Human Resources', users: 456, coherence: 94, status: 'Active' },
+                { name: 'Sales', users: 1892, coherence: 86, status: 'Active' },
+                { name: 'Marketing', users: 783, coherence: 91, status: 'Active' },
+                { name: 'Operations', users: 1456, coherence: 88, status: 'Active' },
+                { name: 'Finance', users: 672, coherence: 93, status: 'Active' },
+                { name: 'Customer Success', users: 984, coherence: 90, status: 'Active' },
+                { name: 'Product', users: 567, coherence: 92, status: 'Active' },
+                { name: 'Legal', users: 234, coherence: 87, status: 'Active' }
+            ],
+            globalMetrics: {
+                activeUsers: 1200000000,
+                liveSessions: 847000,
+                dataProcessed: '92TB',
+                apiCalls: 2400000,
+                uptime: 99.99,
+                regions: 187
+            }
+        };
+
         // Create enterprise neural network animation
         function createEnterpriseUniverse() {
             const universe = document.getElementById('enterpriseUniverse');
@@ -886,6 +1022,152 @@
                 
                 universe.appendChild(neuron);
             }
+        }
+
+        // Load departments dynamically
+        function loadDepartments() {
+            const grid = document.getElementById('departmentGrid');
+            grid.innerHTML = '';
+            
+            enterpriseData.departments.forEach(dept => {
+                const card = document.createElement('div');
+                card.className = 'department-card';
+                card.onclick = () => viewDepartment(dept.name);
+                
+                card.innerHTML = `
+                    <div class="department-header">
+                        <div class="department-name">${dept.name}</div>
+                        <div class="department-status">${dept.status}</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">Users</div>
+                            <div style="font-size: 1.5rem; color: var(--vera-neural-blue);">${dept.users.toLocaleString()}</div>
+                        </div>
+                        <div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">Avg Coherence</div>
+                            <div style="font-size: 1.5rem; color: var(--vera-emerald);">${dept.coherence}%</div>
+                        </div>
+                    </div>
+                    <button style="width: 100%; margin-top: 1rem; padding: 0.8rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 15px; color: var(--text-soft); cursor: pointer;">
+                        View Details
+                    </button>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Update real-time metrics
+        function updateRealTimeMetrics() {
+            // Simulate real-time updates
+            const metrics = enterpriseData.globalMetrics;
+            
+            // Active users fluctuation
+            metrics.activeUsers += Math.floor(Math.random() * 10000 - 5000);
+            document.getElementById('activeUsers').textContent = (metrics.activeUsers / 1000000000).toFixed(2) + 'B';
+            
+            // Live sessions
+            metrics.liveSessions += Math.floor(Math.random() * 1000 - 500);
+            document.getElementById('sessionsLive').textContent = (metrics.liveSessions / 1000).toFixed(0) + 'K';
+            
+            // API calls
+            metrics.apiCalls += Math.floor(Math.random() * 10000);
+            document.getElementById('apiCalls').textContent = (metrics.apiCalls / 1000000).toFixed(1) + 'M';
+        }
+
+        // Department functions
+        function viewDepartment(name) {
+            alert(`Opening detailed dashboard for ${name} department...`);
+        }
+
+        // Admin control functions
+        function openAdminConsole() {
+            alert('Opening Admin Console with full organizational controls...');
+        }
+
+        function openAdminProfile() {
+            alert('Opening Administrator Profile...');
+        }
+
+        function openDashboard() {
+            alert('Loading comprehensive organization dashboard with all metrics and insights...');
+        }
+
+        function generateReports() {
+            alert('Generating enterprise reports:\n- Executive Summary\n- Department Analytics\n- ROI Analysis\n- Wellness Trends\n- Compliance Reports');
+        }
+
+        function openAPIDocumentation() {
+            alert('Opening Enterprise API Documentation v2.0...');
+        }
+
+        function manageUsers() {
+            alert('Opening User Management System:\n- Add/Remove Users\n- Role Management\n- Access Control\n- Bulk Import/Export');
+        }
+
+        function openAnalytics() {
+            alert('Opening Advanced Analytics Dashboard:\n- Predictive Analytics\n- Cohort Analysis\n- Engagement Metrics\n- Health Outcomes');
+        }
+
+        function openSettings() {
+            alert('Opening Platform Settings:\n- Organization Configuration\n- Protocol Customization\n- Branding Options\n- Integration Settings');
+        }
+
+        function manageSecurity() {
+            alert('Opening Security Center:\n- Access Logs\n- Permission Matrix\n- Security Policies\n- Audit Trail');
+        }
+
+        function manageIntegrations() {
+            alert('Managing Enterprise Integrations:\n- HR Systems\n- Health Platforms\n- Data Warehouses\n- Communication Tools');
+        }
+
+        function manageContent() {
+            alert('Opening Content Library:\n- Custom Protocols\n- Training Materials\n- Research Database\n- Multimedia Resources');
+        }
+
+        // Stats functions
+        function viewStatDetails(stat) {
+            const details = {
+                users: 'Total active users across all departments with daily engagement',
+                engagement: 'Average daily engagement rate with VERA protocols',
+                hrv: 'Organization-wide HRV improvement average',
+                savings: 'Projected annual healthcare cost savings',
+                departments: 'Active departments using VERA platform',
+                sessions: 'Total regulation sessions completed this month'
+            };
+            alert(details[stat] || 'Loading detailed statistics...');
+        }
+
+        // Compliance functions
+        function viewCompliance(type) {
+            const compliance = {
+                hipaa: 'HIPAA Compliance Certificate\nLast Audit: January 2024\nStatus: Fully Compliant',
+                soc2: 'SOC 2 Type II Certification\nAuditor: Ernst & Young\nStatus: Certified',
+                iso: 'ISO 27001:2013 Certification\nCertification Body: BSI\nStatus: Active',
+                gdpr: 'GDPR Compliance\nData Protection Officer: Assigned\nStatus: Fully Compliant'
+            };
+            alert(compliance[type] || 'Loading compliance details...');
+        }
+
+        // Solution functions
+        function exploreSolution(solution) {
+            alert(`Loading detailed information about ${solution.toUpperCase()} solution...`);
+        }
+
+        // Support functions
+        function contactSupport(type) {
+            const support = {
+                technical: 'Connecting to 24/7 Technical Support...',
+                account: 'Connecting to your dedicated Account Manager...',
+                implementation: 'Connecting to Implementation Team...'
+            };
+            alert(support[type] || 'Initiating support connection...');
+        }
+
+        // Navigation functions
+        function navigate(page) {
+            alert(`Navigating to ${page} page...`);
         }
 
         // Animate stat cards on scroll
@@ -919,16 +1201,21 @@
         `;
         document.head.appendChild(style);
 
-        // Initialize animations
+        // Initialize
         window.addEventListener('load', () => {
             createEnterpriseUniverse();
+            loadDepartments();
             animateOnScroll();
+            
+            // Start real-time updates
+            setInterval(updateRealTimeMetrics, 3000);
         });
 
         // Add interactive hover effects to buttons
         document.querySelectorAll('button').forEach(btn => {
             btn.addEventListener('mouseenter', function() {
                 this.style.transform = 'scale(1.05)';
+                this.style.transition = 'all 0.3s';
             });
             btn.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1)';
