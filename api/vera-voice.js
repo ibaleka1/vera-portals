@@ -1,72 +1,86 @@
 // api/vera-voice.js
-// ElevenLabs TTS proxy -> returns audio/mpeg
-// Env vars required on Vercel: ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID
+// Claude-style: Edge function that returns a Response (works reliably on Vercel)
 
-async function tts(text, apiKey, voiceId) {
-  const resp = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
-    method: 'POST',
-    headers: {
-      'xi-api-key': apiKey,
-      'Content-Type': 'application/json',
-      'Accept': 'audio/mpeg'
-    },
-    body: JSON.stringify({
-      text,
-      model_id: 'eleven_multilingual_v2',
-      voice_settings: { stability: 0.5, similarity_boost: 0.7, style: 0.2, use_speaker_boost: true }
-    })
-  });
+export const config = { runtime: 'edge' }; // run on Edge
 
-  if (!resp.ok) {
-    const detail = await resp.text().catch(() => '');
-    const err = new Error('TTS request failed');
-    err.status = resp.status;
-    err.detail = detail;
-    throw err;
-  }
-  return Buffer.from(await resp.arrayBuffer());
-}
-
-module.exports = async (req, res) => {
+export default async function handler(req) {
   try {
     if (req.method !== 'POST') {
-      res.statusCode = 405;
-      res.setHeader('Content-Type', 'application/json');
-      return res.end(JSON.stringify({ error: 'Method not allowed' }));
+      return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+        status: 405,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
-    let body = req.body;
-    if (typeof body === 'string') {
-      try { body = JSON.parse(body); } catch {}
+    // read JSON body (Edge-style)
+    let body;
+    try {
+      body = await req.json();
+    } catch {
+      return new Response(JSON.stringify({ error: 'Invalid JSON body' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
-    const text = body && typeof body.text === 'string' ? body.text.trim() : '';
 
+    const text = (body?.text || '').toString().trim();
     if (!text) {
-      res.statusCode = 400;
-      res.setHeader('Content-Type', 'application/json');
-      return res.end(JSON.stringify({ error: 'Missing "text" string in body.' }));
+      return new Response(JSON.stringify({ error: 'Missing "text" string in body.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
-    const apiKey = process.env.ELEVENLABS_API_KEY;
+    const apiKey  = process.env.ELEVENLABS_API_KEY;
     const voiceId = process.env.ELEVENLABS_VOICE_ID;
     if (!apiKey || !voiceId) {
-      res.statusCode = 500;
-      res.setHeader('Content-Type', 'application/json');
-      return res.end(JSON.stringify({ error: 'Voice or API key not configured on server.' }));
+      return new Response(JSON.stringify({ error: 'Voice or API key not configured on server.' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
-    const audio = await tts(text, apiKey, voiceId);
+    // call ElevenLabs
+    const resp = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+      method: 'POST',
+      headers: {
+        'xi-api-key': apiKey,
+        'Content-Type': 'application/json',
+        'Accept': 'audio/mpeg'
+      },
+      body: JSON.stringify({
+        text,
+        model_id: 'eleven_multilingual_v2',
+        voice_settings: {
+          stability: 0.5,
+          similarity_boost: 0.7,
+          style: 0.2,
+          use_speaker_boost: true
+        }
+      })
+    });
 
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'audio/mpeg');
-    res.setHeader('Cache-Control', 'no-store');
-    return res.end(audio);
+    if (!resp.ok) {
+      const detail = await resp.text().catch(() => '');
+      return new Response(JSON.stringify({ error: 'TTS request failed', detail }), {
+        status: resp.status,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    // stream/return audio as a proper Response
+    const audio = await resp.arrayBuffer();
+    return new Response(audio, {
+      status: 200,
+      headers: {
+        'Content-Type': 'audio/mpeg',
+        'Cache-Control': 'no-store'
+      }
+    });
   } catch (e) {
-    res.statusCode = e.status || 500;
-    res.setHeader('Content-Type', 'application/json');
-    return res.end(JSON.stringify({ error: 'Server error', detail: e.detail || e.message || String(e) }));
+    return new Response(JSON.stringify({ error: 'Server error', detail: e?.message || String(e) }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
-};
-
-// Force Node runtime so Vercel never treats this as an Edge function
-module.exports.config = { runtime: 'nodejs18.x' };
+}
