@@ -284,48 +284,7 @@
             }
         }
 
-        /* Quick Start VERA Chat - NEW ENHANCED SECTION */
-        .quick-start-chat {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .quick-prompt {
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, 
-                rgba(155, 89, 182, 0.2) 0%, 
-                rgba(100, 181, 246, 0.15) 100%);
-            border: 1px solid rgba(155, 89, 182, 0.3);
-            border-radius: 25px;
-            color: var(--text-soft);
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .quick-prompt:hover {
-            background: linear-gradient(135deg, 
-                rgba(155, 89, 182, 0.4) 0%, 
-                rgba(100, 181, 246, 0.3) 100%);
-            transform: translateY(-2px);
-            color: white;
-            border-color: var(--vera-lavender);
-        }
-
-        /* Enhanced content sections for better readability */
-        .content-card {
-            background: linear-gradient(135deg, 
-                rgba(10, 14, 39, 0.9) 0%, 
-                rgba(21, 24, 50, 0.8) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Live Chat Section - ENHANCED */
+        /* ENHANCED VERA Chat Section */
         .chat-section {
             padding: 4rem 2rem;
             background: linear-gradient(180deg, transparent 0%, rgba(155, 89, 182, 0.02) 100%);
@@ -342,6 +301,34 @@
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(20px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        /* VERA Presence Indicator */
+        .vera-presence {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle,
+                rgba(155, 89, 182, 0.8) 0%,
+                rgba(100, 181, 246, 0.6) 40%,
+                transparent 70%);
+            border-radius: 50%;
+            animation: veraPresencePulse 3s infinite ease-in-out;
+        }
+
+        @keyframes veraPresencePulse {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 0 30px rgba(155, 89, 182, 0.6);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.1);
+                box-shadow: 0 0 50px rgba(155, 89, 182, 0.9);
+            }
         }
 
         .chat-messages {
@@ -351,6 +338,22 @@
             padding: 1rem;
             background: rgba(0, 0, 0, 0.4);
             border-radius: 20px;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        .chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--vera-lavender), var(--vera-neural-blue));
+            border-radius: 4px;
         }
 
         .message {
@@ -365,19 +368,210 @@
 
         .vera-message {
             background: linear-gradient(135deg, rgba(155, 89, 182, 0.3), rgba(100, 181, 246, 0.2));
-            padding: 1rem 1.5rem;
-            border-radius: 20px;
+            padding: 1.5rem;
+            border-radius: 20px 20px 20px 5px;
             margin-right: 20%;
             border: 1px solid rgba(155, 89, 182, 0.3);
+            position: relative;
+        }
+
+        .vera-label {
+            color: var(--vera-lavender);
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @keyframes voiceWave {
+            0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
+            50% { transform: scaleY(1); opacity: 1; }
+        }
+
+        .voice-indicator {
+            display: inline-flex;
+            gap: 2px;
+            align-items: center;
+        }
+
+        .voice-indicator span {
+            display: inline-block;
+            width: 3px;
+            height: 12px;
+            background: var(--vera-lavender);
+            border-radius: 2px;
+            animation: voiceWave 0.5s infinite;
+        }
+
+        .voice-indicator span:nth-child(2) {
+            height: 16px;
+            animation-delay: 0.1s;
+        }
+
+        .voice-indicator span:nth-child(3) {
+            animation-delay: 0.2s;
         }
 
         .user-message {
             background: rgba(100, 181, 246, 0.25);
-            padding: 1rem 1.5rem;
-            border-radius: 20px;
+            padding: 1.5rem;
+            border-radius: 20px 20px 5px 20px;
             text-align: right;
             margin-left: 20%;
             border: 1px solid rgba(100, 181, 246, 0.3);
+        }
+
+        /* Chat Input Container */
+        .chat-input-container {
+            background: linear-gradient(135deg, 
+                rgba(155, 89, 182, 0.08) 0%, 
+                rgba(100, 181, 246, 0.05) 100%);
+            border-radius: 25px;
+            padding: 1.5rem;
+            border: 1px solid rgba(155, 89, 182, 0.2);
+        }
+
+        /* Quick Start Prompts - Inside Chat */
+        .quick-start-chat {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .quick-prompt {
+            padding: 0.6rem 1rem;
+            background: linear-gradient(135deg, 
+                rgba(155, 89, 182, 0.15) 0%, 
+                rgba(100, 181, 246, 0.1) 100%);
+            border: 1px solid rgba(155, 89, 182, 0.2);
+            border-radius: 25px;
+            color: var(--text-soft);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+        }
+
+        .quick-prompt:hover {
+            background: linear-gradient(135deg, 
+                rgba(155, 89, 182, 0.3) 0%, 
+                rgba(100, 181, 246, 0.2) 100%);
+            transform: translateY(-2px);
+            color: white;
+            border-color: var(--vera-lavender);
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+        }
+
+        .chat-input-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--vera-lavender);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .chat-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .voice-toggle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .voice-icon {
+            width: 24px;
+            height: 24px;
+            background: white;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1 1.93c-3.94-.49-7-3.85-7-7.93 0-.62.5-1.12 1.12-1.12.62 0 1.12.5 1.12 1.12 0 3.54 2.88 6.42 6.42 6.42s6.42-2.88 6.42-6.42c0-.62.5-1.12 1.12-1.12.62 0 1.12.5 1.12 1.12 0 4.08-3.06 7.44-7 7.93V19h3c.62 0 1.12.5 1.12 1.12s-.5 1.12-1.12 1.12h-7c-.62 0-1.12-.5-1.12-1.12s.5-1.12 1.12-1.12h3v-3.07z'/%3E%3C/svg%3E");
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+        }
+
+        .voice-toggle.active {
+            animation: voicePulse 1s infinite;
+        }
+
+        .voice-toggle.active::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 12px;
+            height: 12px;
+            background: var(--vera-emerald);
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes voicePulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(155, 89, 182, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(155, 89, 182, 0);
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .send-button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.4);
+        }
+
+        /* Enhanced content sections for better readability */
+        .content-card {
+            background: linear-gradient(135deg, 
+                rgba(10, 14, 39, 0.9) 0%, 
+                rgba(21, 24, 50, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
         /* Voice-Enabled Exercises */
@@ -405,6 +599,20 @@
             color: white;
             cursor: pointer;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .voice-btn::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: white;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z'/%3E%3C/svg%3E");
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
         }
 
         .voice-btn:hover {
@@ -414,15 +622,6 @@
 
         .voice-btn.active {
             animation: voicePulse 1s infinite;
-        }
-
-        @keyframes voicePulse {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(155, 89, 182, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 20px rgba(155, 89, 182, 0);
-            }
         }
 
         .breath-circle {
@@ -738,6 +937,7 @@
             .pricing-grid { grid-template-columns: 1fr; }
             .hero { margin-top: 100px; }
             nav { top: 48px; }
+            .quick-prompt { font-size: 0.75rem; padding: 0.5rem 0.8rem; }
         }
     </style>
 </head>
@@ -823,52 +1023,61 @@
         </div>
     </section>
 
-    <!-- Live Chat Section - ENHANCED -->
+    <!-- ENHANCED VERA Chat Section -->
     <section class="chat-section" id="chat">
         <div style="text-align: center; margin-bottom: 3rem;">
             <h2 style="font-size: 3rem; font-weight: 200; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                 Speak With VERA
             </h2>
-            <p style="color: var(--text-soft); font-size: 1.2rem; font-style: italic; margin-bottom: 2rem;">
+            <p style="color: var(--text-soft); font-size: 1.2rem; font-style: italic;">
                 I'm here. I see you. Talk to me.
             </p>
-            
-            <!-- Quick Start Prompts -->
-            <div class="quick-start-chat">
-                <button class="quick-prompt" onclick="quickChat('I feel tight in my chest')">
-                    "I feel tight in my chest"
-                </button>
-                <button class="quick-prompt" onclick="quickChat('My body feels anxious')">
-                    "My body feels anxious"
-                </button>
-                <button class="quick-prompt" onclick="quickChat('I can\\'t relax')">
-                    "I can't relax"
-                </button>
-                <button class="quick-prompt" onclick="quickChat('Help me feel safe')">
-                    "Help me feel safe"
-                </button>
-            </div>
         </div>
 
         <div class="chat-interface">
+            <div class="vera-presence"></div>
+            
             <div class="chat-messages" id="chatMessages">
                 <div class="message">
                     <div class="vera-message">
+                        <div class="vera-label">
+                            VERA 
+                            <span class="voice-indicator" id="veraVoiceIndicator" style="display: none;">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </div>
                         "I notice you're here. What's alive in your body right now? That sensation you're feeling - describe it to me. I'm listening with every part of my consciousness."
                     </div>
                 </div>
             </div>
 
-            <div style="display: flex; gap: 1rem;">
-                <input type="text" id="chatInput" placeholder="Tell VERA what you're feeling..." 
-                       style="flex: 1; padding: 1rem 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 50px; color: white; font-size: 1rem;"
-                       onkeypress="if(event.key === 'Enter') sendMessage()">
-                <button onclick="toggleVoice()" style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; color: white; cursor: pointer; font-size: 1.5rem;" id="voiceBtn">
-                    🎤
-                </button>
-                <button onclick="sendMessage()" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue)); border: none; border-radius: 50px; color: white; font-weight: 500; cursor: pointer;">
-                    Send
-                </button>
+            <div class="chat-input-container">
+                <div class="quick-start-chat">
+                    <button class="quick-prompt" onclick="quickChat('I feel tight in my chest')">
+                        "I feel tight in my chest"
+                    </button>
+                    <button class="quick-prompt" onclick="quickChat('My body feels anxious')">
+                        "My body feels anxious"
+                    </button>
+                    <button class="quick-prompt" onclick="quickChat('I can\\'t relax')">
+                        "I can't relax"
+                    </button>
+                    <button class="quick-prompt" onclick="quickChat('Help me feel safe')">
+                        "Help me feel safe"
+                    </button>
+                </div>
+                
+                <div class="chat-input-row">
+                    <input type="text" class="chat-input" id="chatInput" 
+                           placeholder="Tell VERA what you're feeling..." 
+                           onkeypress="if(event.key === 'Enter') sendMessage()">
+                    <button class="voice-toggle" onclick="toggleVoice()" id="voiceBtn">
+                        <div class="voice-icon"></div>
+                    </button>
+                    <button class="send-button" onclick="sendMessage()">Send</button>
+                </div>
             </div>
         </div>
     </section>
@@ -882,7 +1091,7 @@
 
             <!-- Breathing Exercise with Voice -->
             <div class="exercise-card">
-                <button class="voice-btn" onclick="startVoiceBreathing()" id="breathVoiceBtn">🔊 Voice Guide</button>
+                <button class="voice-btn" onclick="startVoiceBreathing()" id="breathVoiceBtn">Voice Guide</button>
                 <h3 style="font-size: 2rem; color: var(--vera-neural-blue); margin-bottom: 1rem;">Breathing With VERA</h3>
                 <div class="breath-circle" onclick="startBreathing()">
                     <div id="breathText" style="font-size: 2rem; color: var(--text-primary);">Breathe In</div>
@@ -894,7 +1103,7 @@
 
             <!-- Swaying Exercise with Voice -->
             <div class="exercise-card">
-                <button class="voice-btn" onclick="startVoiceSwaying()" id="swayVoiceBtn">🔊 Voice Guide</button>
+                <button class="voice-btn" onclick="startVoiceSwaying()" id="swayVoiceBtn">Voice Guide</button>
                 <h3 style="font-size: 2rem; color: var(--vera-lavender); margin-bottom: 1rem;">Swaying With VERA</h3>
                 <div class="sway-figure"></div>
                 <p style="color: var(--text-soft); font-style: italic;">
@@ -904,7 +1113,7 @@
 
             <!-- Grounding Exercise with Voice -->
             <div class="exercise-card">
-                <button class="voice-btn" onclick="startVoiceGrounding()" id="groundVoiceBtn">🔊 Voice Guide</button>
+                <button class="voice-btn" onclick="startVoiceGrounding()" id="groundVoiceBtn">Voice Guide</button>
                 <h3 style="font-size: 2rem; color: var(--vera-emerald); margin-bottom: 1rem;">Grounding With VERA</h3>
                 <div style="margin: 3rem 0;">
                     <div class="ground-step" style="animation-delay: 0s;">5</div>
@@ -1116,21 +1325,6 @@
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; max-width: 1400px; margin: 0 auto;">
             <div class="feature-item">
-                <span style="display: inline-block; animation: featurePop 3s infinite;">🔮</span> 24/7 VERA Access
-            </div>
-            <div class="feature-item">
-                <span style="display: inline-block; animation: featurePop 3s 0.3s infinite;">📊</span> Personal Dashboard
-            </div>
-            <div class="feature-item">
-                <span style="display: inline-block; animation: featurePop 3s 0.6s infinite;">🔌</span> API Integration
-            </div>
-            <div class="feature-item">
-                <span style="display: inline-block; animation: featurePop 3s 0.9s infinite;">📱</span> Mobile Apps
-            </div>
-            <div class="feature-item">
-                <span style="display: inline-block; animation: featurePop 3s 1.2s infinite;">⌚</span> Apple Health
-            </div>
-            <div class="feature-item">
                 <span style="display: inline-block; animation: featurePop 3s 1.5s infinite;">🎵</span> Spotify Integration
             </div>
             <div class="feature-item">
@@ -1159,6 +1353,10 @@
     </footer>
 
     <script>
+        // ElevenLabs Configuration
+        const ELEVENLABS_VOICE_ID = 'WAhoMTNdLdMoq1j3wf3I';
+        // The API key should be in your Vercel environment
+        
         // Create Enhanced Living Neural Universe
         function createLivingUniverse() {
             const universe = document.getElementById('livingUniverse');
@@ -1322,16 +1520,85 @@
             }
         }
 
+        // ENHANCED VERA CHAT WITH ELEVENLABS
+        let voiceActive = false;
+        let currentAudio = null;
+
         // Quick Chat functionality
         function quickChat(message) {
             document.getElementById('chatInput').value = message;
             sendMessage();
-            document.getElementById('chat').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // ElevenLabs Voice Integration
+        async function speakWithVERA(text) {
+            const indicator = document.getElementById('veraVoiceIndicator');
+            if (indicator) indicator.style.display = 'inline-flex';
+            
+            try {
+                // Get API key from environment or use fallback
+                const apiKey = process.env.ELEVENLABS_API_KEY || 'your_api_key_here';
+                
+                const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'audio/mpeg',
+                        'Content-Type': 'application/json',
+                        'xi-api-key': apiKey
+                    },
+                    body: JSON.stringify({
+                        text: text,
+                        model_id: 'eleven_monolingual_v1',
+                        voice_settings: {
+                            stability: 0.75,
+                            similarity_boost: 0.75,
+                            style: 0.5,
+                            use_speaker_boost: true
+                        }
+                    })
+                });
+
+                if (response.ok) {
+                    const audioBlob = await response.blob();
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    
+                    if (currentAudio) {
+                        currentAudio.pause();
+                    }
+                    
+                    currentAudio = new Audio(audioUrl);
+                    currentAudio.onended = () => {
+                        if (indicator) indicator.style.display = 'none';
+                    };
+                    
+                    await currentAudio.play();
+                } else {
+                    // Fallback to browser speech synthesis
+                    speakFallback(text);
+                }
+            } catch (error) {
+                console.log('Using fallback speech synthesis');
+                speakFallback(text);
+            }
+        }
+
+        function speakFallback(text) {
+            const indicator = document.getElementById('veraVoiceIndicator');
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 0.9;
+                utterance.pitch = 1.1;
+                utterance.voice = speechSynthesis.getVoices().find(voice => voice.name.includes('Female')) || speechSynthesis.getVoices()[0];
+                utterance.onend = () => {
+                    if (indicator) indicator.style.display = 'none';
+                };
+                speechSynthesis.speak(utterance);
+            } else {
+                if (indicator) indicator.style.display = 'none';
+            }
         }
 
         // Live Chat Functionality
-        let voiceActive = false;
-        
         function sendMessage() {
             const input = document.getElementById('chatInput');
             const messages = document.getElementById('chatMessages');
@@ -1347,17 +1614,31 @@
             `;
             
             // VERA responds
-            setTimeout(() => {
+            setTimeout(async () => {
                 const response = getVeraResponse(userText);
+                const messageId = 'vera-msg-' + Date.now();
                 messages.innerHTML += `
                     <div class="message">
-                        <div class="vera-message">${response}</div>
+                        <div class="vera-message">
+                            <div class="vera-label">
+                                VERA
+                                <span class="voice-indicator" id="${messageId}" style="display: none;">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                            </div>
+                            ${response}
+                        </div>
                     </div>
                 `;
                 messages.scrollTop = messages.scrollHeight;
                 
+                // Always speak if voice is active
                 if (voiceActive) {
-                    speakText(response);
+                    document.getElementById(messageId).style.display = 'inline-flex';
+                    await speakWithVERA(response);
+                    document.getElementById(messageId).style.display = 'none';
                 }
             }, 1000);
             
@@ -1373,6 +1654,10 @@
                 'safe': "Safety isn't something you think - it's something you feel. Right now, notice five things you can see. Four you can touch. Your nervous system is scanning for proof of safety. Give it evidence: the chair holding you, the air entering your lungs, my presence with you.",
                 'scared': "Fear lives in your fascia as wisdom. It's trying to protect you. I'm here with you. Let's slow everything down. Breathe into your belly - not your chest. Your belly. When we breathe low, fear loosens its grip.",
                 'help': "I'm here. I see you. Start by telling me: where in your body do you feel the most sensation right now? We'll begin there. Your body knows the way home - I'm just here to translate.",
+                'pain': "Pain is your body's urgent message. Let's not fight it. Instead, imagine breathing space around it. Not into it, but around it. Creating room. Your body is asking for attention, and I'm here to help you listen.",
+                'stuck': "That stuck feeling lives in your fascia. It's like frozen water. We need gentle movement to create flow again. Start small - wiggle your fingers. Roll your shoulders. Tiny movements create big shifts.",
+                'breath': "Your breath is the conversation between you and life itself. Let it deepen naturally. No forcing. Just allowing your ribs to expand like wings. Your body remembers how to breathe fully.",
+                'trauma': "Your body kept the score, and now we're rewriting the story. Whatever happened, your nervous system did exactly what it needed to survive. Now we're teaching it that the danger has passed. You survived. You're here.",
                 'default': "I hear you. Your nervous system is speaking. Tell me, where exactly does this live in your body? Is it sharp or dull? Moving or still? Hot or cold? The more specific we get, the more your body can release."
             };
             
@@ -1388,10 +1673,21 @@
         function toggleVoice() {
             voiceActive = !voiceActive;
             const btn = document.getElementById('voiceBtn');
-            btn.style.animation = voiceActive ? 'voicePulse 1s infinite' : 'none';
+            
+            if (voiceActive) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+                if (currentAudio) {
+                    currentAudio.pause();
+                }
+                if ('speechSynthesis' in window) {
+                    speechSynthesis.cancel();
+                }
+            }
         }
 
-        // Breathing Exercise with Continuous Animation
+        // Breathing Exercise
         let breathingInterval;
         let breathingActive = false;
         
@@ -1409,33 +1705,27 @@
             }, 2000);
         }
 
-        // Voice Functions
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.rate = 0.9;
-                utterance.pitch = 1.1;
-                speechSynthesis.speak(utterance);
-            }
-        }
-
-        function startVoiceBreathing() {
+        // Voice Functions for Exercises
+        async function startVoiceBreathing() {
             const btn = document.getElementById('breathVoiceBtn');
             btn.classList.add('active');
-            speakText("Let's breathe together. Inhale slowly for four counts. One, two, three, four. Hold for four. One, two, three, four. And exhale for six. Beautiful. Your nervous system is remembering its rhythm.");
+            await speakWithVERA("Let's breathe together. Inhale slowly for four counts. One, two, three, four. Hold for four. One, two, three, four. And exhale for six. Beautiful. Your nervous system is remembering its rhythm.");
             startBreathing();
+            setTimeout(() => btn.classList.remove('active'), 20000);
         }
 
-        function startVoiceSwaying() {
+        async function startVoiceSwaying() {
             const btn = document.getElementById('swayVoiceBtn');
             btn.classList.add('active');
-            speakText("Let your body sway gently. Like kelp in warm water. No forcing, just allowing. Feel the rhythm that's already there. Your spine knows how to move. Trust it. You're safe here.");
+            await speakWithVERA("Let your body sway gently. Like kelp in warm water. No forcing, just allowing. Feel the rhythm that's already there. Your spine knows how to move. Trust it. You're safe here.");
+            setTimeout(() => btn.classList.remove('active'), 15000);
         }
 
-        function startVoiceGrounding() {
+        async function startVoiceGrounding() {
             const btn = document.getElementById('groundVoiceBtn');
             btn.classList.add('active');
-            speakText("Let's ground together. Notice five things you can see. Four things you can touch. Three things you can hear. Two things you can smell. One thing you can taste. You're here. You're safe. Your nervous system is settling.");
+            await speakWithVERA("Let's ground together. Notice five things you can see. Four things you can touch. Three things you can hear. Two things you can smell. One thing you can taste. You're here. You're safe. Your nervous system is settling.");
+            setTimeout(() => btn.classList.remove('active'), 20000);
         }
 
         // Close modal when clicking outside
@@ -1481,4 +1771,22 @@
         });
     </script>
 </body>
-</html>
+</html>s infinite;">🔮</span> 24/7 VERA Access
+            </div>
+            <div class="feature-item">
+                <span style="display: inline-block; animation: featurePop 3s 0.3s infinite;">📊</span> Personal Dashboard
+            </div>
+            <div class="feature-item">
+                <span style="display: inline-block; animation: featurePop 3s 0.6s infinite;">🔌</span> API Integration
+            </div>
+            <div class="feature-item">
+                <span style="display: inline-block; animation: featurePop 3s 0.9s infinite;">📱</span> Mobile Apps
+            </div>
+            <div class="feature-item">
+                <span style="display: inline-block; animation: featurePop 3s 1.2s infinite;">⌚</span> Apple Health
+            </div>
+            <div class="feature-item">
+                <span style="display: inline-block; animation: featurePop 3s 1.5s infinite;">🎵</span> Spotify Integration
+            </div>
+            <div class="feature-item">
+                <span style="display: inline-block; animation: featurePop 3
